@@ -1,0 +1,25 @@
+{
+  "story_angle": {
+    "angle_name": "The rise of AI-powered impersonation in political espionage.",
+    "description": "Visual narrative with 0 planned story beats",
+    "target_emotion": "concern"
+  },
+  "script_outline": {
+    "hook": "\"In the shadows, AI manipulators weave digital masks\u2014faces forged by deepfake technology.",
+    "main_points": [],
+    "conclusion": "\" *",
+    "target_duration": 240,
+    "narrative_style": "investigative",
+    "pacing_strategy": "fast-paced"
+  },
+  "visual_cues": [],
+  "visual_strategy": {
+    "pacing_strategy": "fast-paced",
+    "style_suggestion": "dynamic",
+    "opening_strategy": {
+      "style": "animated_scroll",
+      "transition_out": "zoom_out",
+      "screenshot_duration": 3.5
+    }
+  }
+}

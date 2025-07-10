@@ -1,0 +1,25 @@
+{
+  "main_headline": {
+    "text": "FBI warns of text messaging campaign impersonating US officials",
+    "coordinates": {
+      "x": 0,
+      "y": 80,
+      "width": 900,
+      "height": 70
+    }
+  },
+  "main_image": {
+    "text": "'Lord of the Rings' director backs long shot de-extinction plan...",
+    "coordinates": {
+      "x": 380,
+      "y": 840,
+      "width": 500,
+      "height": 100
+    }
+  },
+  "scroll_range": {
+    "start_y": 80,
+    "end_y": 3000,
+    "total_scroll": 2920
+  }
+}

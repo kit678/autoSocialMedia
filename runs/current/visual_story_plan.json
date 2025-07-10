@@ -1,0 +1,180 @@
+{
+  "story_hook": {
+    "opening_visual": "A shadowy figure manipulating a digital interface with AI-generated images of Marco Rubio on multiple screens.",
+    "hook_concept": "The rise of AI-powered impersonation in political espionage.",
+    "emotional_target": "concern"
+  },
+  "visual_segments": [
+    {
+      "segment_number": 1,
+      "narrative_purpose": "Introduce the concept of AI impersonation.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "AI deepfake technology",
+      "secondary_keywords": [
+        "digital impersonation",
+        "AI manipulation"
+      ],
+      "narrative_context": "Show the technology behind the impersonation to set the stage.",
+      "script_guidance": "As AI technology advances, so does its potential for misuse.",
+      "emotional_tone": "ominous",
+      "duration_target": 5
+    },
+    {
+      "segment_number": 2,
+      "narrative_purpose": "Highlight the impersonation of Marco Rubio.",
+      "visual_type": "Proper Noun",
+      "primary_search_term": "Marco Rubio official",
+      "secondary_keywords": [
+        "politician",
+        "U.S. Senator"
+      ],
+      "narrative_context": "Establish Rubio's identity to contrast with the impersonation.",
+      "script_guidance": "Senator Marco Rubio became an unwitting target of this digital deception.",
+      "emotional_tone": "serious",
+      "duration_target": 4
+    },
+    {
+      "segment_number": 3,
+      "narrative_purpose": "Show the methods used in the impersonation.",
+      "visual_type": "Concrete Object/Action",
+      "primary_search_term": "text message scam",
+      "secondary_keywords": [
+        "Signal app",
+        "voice mail"
+      ],
+      "narrative_context": "Demonstrate how the impersonation was carried out.",
+      "script_guidance": "Through texts, Signal messages, and voicemails, the impostor reached out.",
+      "emotional_tone": "urgent",
+      "duration_target": 6
+    },
+    {
+      "segment_number": 4,
+      "narrative_purpose": "Reveal the targets of the impersonation.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "political espionage",
+      "secondary_keywords": [
+        "foreign ministers",
+        "U.S. officials"
+      ],
+      "narrative_context": "Illustrate the high stakes of the impersonation attempts.",
+      "script_guidance": "The targets included foreign ministers and U.S. officials, raising alarms.",
+      "emotional_tone": "concerned",
+      "duration_target": 5
+    },
+    {
+      "segment_number": 5,
+      "narrative_purpose": "Discuss the State Department's response.",
+      "visual_type": "Proper Noun",
+      "primary_search_term": "State Department building",
+      "secondary_keywords": [
+        "U.S. diplomacy",
+        "cybersecurity"
+      ],
+      "narrative_context": "Show the institution taking action against the threat.",
+      "script_guidance": "The State Department has issued warnings and is monitoring the situation closely.",
+      "emotional_tone": "authoritative",
+      "duration_target": 4
+    },
+    {
+      "segment_number": 6,
+      "narrative_purpose": "Compare to past impersonation incidents.",
+      "visual_type": "Proper Noun",
+      "primary_search_term": "Susie Wiles impersonation",
+      "secondary_keywords": [
+        "Trump administration",
+        "AI scam"
+      ],
+      "narrative_context": "Link current events to a pattern of similar threats.",
+      "script_guidance": "This isn't the first time high-profile figures have been impersonated.",
+      "emotional_tone": "investigative",
+      "duration_target": 5
+    },
+    {
+      "segment_number": 7,
+      "narrative_purpose": "Explore the technology behind deepfakes.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "deepfake technology",
+      "secondary_keywords": [
+        "AI voice generation",
+        "digital forgery"
+      ],
+      "narrative_context": "Explain how deepfakes are created and why they're convincing.",
+      "script_guidance": "Deepfake technology has reached a level where distinguishing real from fake is increasingly difficult.",
+      "emotional_tone": "educational",
+      "duration_target": 6
+    },
+    {
+      "segment_number": 8,
+      "narrative_purpose": "Highlight the arms race in AI detection.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "AI detection tools",
+      "secondary_keywords": [
+        "deepfake detection",
+        "cybersecurity measures"
+      ],
+      "narrative_context": "Show efforts to combat AI misuse.",
+      "script_guidance": "As AI improves, so do the tools designed to detect and prevent its misuse.",
+      "emotional_tone": "hopeful",
+      "duration_target": 5
+    }
+  ],
+  "visual_entities": {
+    "companies": [
+      "State Department",
+      "The Washington Post",
+      "The Associated Press",
+      "The Wall Street Journal"
+    ],
+    "people": [
+      "Marco Rubio",
+      "Tammy Bruce",
+      "Susie Wiles",
+      "Siwei Lyu"
+    ],
+    "products_services": [
+      "Signal app",
+      "Starlink internet service"
+    ],
+    "locations": [
+      "Washington D.C.",
+      "University at Buffalo"
+    ],
+    "technologies": [
+      "AI deepfake technology",
+      "AI voice generation",
+      "deepfake detection tools"
+    ]
+  },
+  "visual_metaphors": {
+    "primary_concepts": [
+      {
+        "concept": "AI impersonation",
+        "visual_metaphor": "A mask being digitally superimposed over a face.",
+        "search_terms": [
+          "digital mask overlay",
+          "face replacement technology"
+        ]
+      },
+      {
+        "concept": "Cybersecurity arms race",
+        "visual_metaphor": "Two knights in a digital joust, one representing AI, the other detection tools.",
+        "search_terms": [
+          "digital jousting",
+          "AI vs cybersecurity"
+        ]
+      }
+    ]
+  },
+  "script_structure": {
+    "target_duration": 240,
+    "pacing": "fast-paced",
+    "narrative_style": "investigative",
+    "call_to_action": "Stay vigilant and informed about the evolving threats of AI impersonation."
+  },
+  "visual_variety_plan": {
+    "proper_noun_count": 4,
+    "concrete_action_count": 1,
+    "abstract_concept_count": 3,
+    "total_visual_segments": 8
+  }
+}

@@ -1,0 +1,1759 @@
+{
+  "word_timings": {
+    "in": {
+      "start_time": 28.66,
+      "end_time": 28.84,
+      "confidence": 0.996,
+      "original_text": "in"
+    },
+    "the": {
+      "start_time": 31.04,
+      "end_time": 31.2,
+      "confidence": 0.988,
+      "original_text": "the"
+    },
+    "shadows": {
+      "start_time": 0.6,
+      "end_time": 0.94,
+      "confidence": 0.985,
+      "original_text": "shadows,"
+    },
+    "ai": {
+      "start_time": 20.3,
+      "end_time": 20.5,
+      "confidence": 0.954,
+      "original_text": "AI"
+    },
+    "manipulators": {
+      "start_time": 1.42,
+      "end_time": 2.14,
+      "confidence": 0.989,
+      "original_text": "manipulators"
+    },
+    "weave": {
+      "start_time": 2.14,
+      "end_time": 2.4,
+      "confidence": 0.926,
+      "original_text": "weave"
+    },
+    "digital": {
+      "start_time": 25.94,
+      "end_time": 26.14,
+      "confidence": 0.979,
+      "original_text": "digital"
+    },
+    "masks": {
+      "start_time": 2.68,
+      "end_time": 3.08,
+      "confidence": 0.987,
+      "original_text": "masks,"
+    },
+    "faces": {
+      "start_time": 3.4,
+      "end_time": 3.74,
+      "confidence": 0.659,
+      "original_text": "faces"
+    },
+    "forged": {
+      "start_time": 3.74,
+      "end_time": 4.12,
+      "confidence": 0.983,
+      "original_text": "forged"
+    },
+    "by": {
+      "start_time": 4.12,
+      "end_time": 4.32,
+      "confidence": 0.987,
+      "original_text": "by"
+    },
+    "deep": {
+      "start_time": 4.32,
+      "end_time": 4.5,
+      "confidence": 0.914,
+      "original_text": "deep"
+    },
+    "fake": {
+      "start_time": 32.22,
+      "end_time": 32.46,
+      "confidence": 0.999,
+      "original_text": "fake"
+    },
+    "technology": {
+      "start_time": 4.7,
+      "end_time": 5.18,
+      "confidence": 0.977,
+      "original_text": "technology."
+    },
+    "senator": {
+      "start_time": 5.96,
+      "end_time": 6.22,
+      "confidence": 0.976,
+      "original_text": "Senator"
+    },
+    "marco": {
+      "start_time": 6.22,
+      "end_time": 6.52,
+      "confidence": 0.974,
+      "original_text": "Marco"
+    },
+    "rubio": {
+      "start_time": 6.52,
+      "end_time": 6.94,
+      "confidence": 0.998,
+      "original_text": "Rubio"
+    },
+    "became": {
+      "start_time": 6.94,
+      "end_time": 7.18,
+      "confidence": 0.996,
+      "original_text": "became"
+    },
+    "their": {
+      "start_time": 7.18,
+      "end_time": 7.38,
+      "confidence": 0.999,
+      "original_text": "their"
+    },
+    "latest": {
+      "start_time": 7.38,
+      "end_time": 7.62,
+      "confidence": 0.996,
+      "original_text": "latest"
+    },
+    "target": {
+      "start_time": 7.62,
+      "end_time": 7.98,
+      "confidence": 1.0,
+      "original_text": "target,"
+    },
+    "his": {
+      "start_time": 8.32,
+      "end_time": 8.46,
+      "confidence": 0.969,
+      "original_text": "his"
+    },
+    "identity": {
+      "start_time": 8.46,
+      "end_time": 8.82,
+      "confidence": 0.99,
+      "original_text": "identity"
+    },
+    "hijacked": {
+      "start_time": 8.82,
+      "end_time": 9.28,
+      "confidence": 0.985,
+      "original_text": "hijacked"
+    },
+    "texts": {
+      "start_time": 9.42,
+      "end_time": 9.7,
+      "confidence": 0.992,
+      "original_text": "texts,"
+    },
+    "signal": {
+      "start_time": 9.96,
+      "end_time": 10.2,
+      "confidence": 0.984,
+      "original_text": "signal"
+    },
+    "messages": {
+      "start_time": 10.2,
+      "end_time": 10.56,
+      "confidence": 0.998,
+      "original_text": "messages"
+    },
+    "and": {
+      "start_time": 32.02,
+      "end_time": 32.22,
+      "confidence": 0.997,
+      "original_text": "and"
+    },
+    "voicemails": {
+      "start_time": 10.88,
+      "end_time": 11.4,
+      "confidence": 0.754,
+      "original_text": "voicemails."
+    },
+    "foreign": {
+      "start_time": 11.94,
+      "end_time": 12.18,
+      "confidence": 0.998,
+      "original_text": "Foreign"
+    },
+    "ministers": {
+      "start_time": 12.18,
+      "end_time": 12.54,
+      "confidence": 0.922,
+      "original_text": "ministers"
+    },
+    "us": {
+      "start_time": 12.86,
+      "end_time": 13.18,
+      "confidence": 0.807,
+      "original_text": "U.S."
+    },
+    "officials": {
+      "start_time": 13.36,
+      "end_time": 13.48,
+      "confidence": 0.995,
+      "original_text": "officials"
+    },
+    "were": {
+      "start_time": 13.48,
+      "end_time": 13.7,
+      "confidence": 0.999,
+      "original_text": "were"
+    },
+    "approached": {
+      "start_time": 13.7,
+      "end_time": 14.0,
+      "confidence": 0.998,
+      "original_text": "approached,"
+    },
+    "sparking": {
+      "start_time": 14.26,
+      "end_time": 14.6,
+      "confidence": 0.988,
+      "original_text": "sparking"
+    },
+    "state": {
+      "start_time": 14.6,
+      "end_time": 14.78,
+      "confidence": 0.647,
+      "original_text": "State"
+    },
+    "department": {
+      "start_time": 14.78,
+      "end_time": 15.14,
+      "confidence": 0.987,
+      "original_text": "Department"
+    },
+    "alarms": {
+      "start_time": 15.14,
+      "end_time": 15.5,
+      "confidence": 0.972,
+      "original_text": "alarms."
+    },
+    "this": {
+      "start_time": 16.14,
+      "end_time": 16.3,
+      "confidence": 0.999,
+      "original_text": "This"
+    },
+    "isnt": {
+      "start_time": 16.3,
+      "end_time": 16.5,
+      "confidence": 0.998,
+      "original_text": "isn't"
+    },
+    "new": {
+      "start_time": 16.5,
+      "end_time": 16.7,
+      "confidence": 0.998,
+      "original_text": "new,"
+    },
+    "remember": {
+      "start_time": 16.96,
+      "end_time": 17.22,
+      "confidence": 0.993,
+      "original_text": "remember"
+    },
+    "suzy": {
+      "start_time": 17.22,
+      "end_time": 17.62,
+      "confidence": 0.681,
+      "original_text": "Suzy"
+    },
+    "wiles": {
+      "start_time": 17.62,
+      "end_time": 18.06,
+      "confidence": 0.725,
+      "original_text": "Wiles'"
+    },
+    "impersonation": {
+      "start_time": 18.06,
+      "end_time": 18.7,
+      "confidence": 0.986,
+      "original_text": "impersonation."
+    },
+    "behind": {
+      "start_time": 19.36,
+      "end_time": 19.54,
+      "confidence": 0.997,
+      "original_text": "Behind"
+    },
+    "scams": {
+      "start_time": 19.72,
+      "end_time": 20.08,
+      "confidence": 0.986,
+      "original_text": "scams,"
+    },
+    "voice": {
+      "start_time": 20.5,
+      "end_time": 20.78,
+      "confidence": 0.974,
+      "original_text": "voice"
+    },
+    "generation": {
+      "start_time": 20.78,
+      "end_time": 21.24,
+      "confidence": 0.906,
+      "original_text": "generation"
+    },
+    "crafts": {
+      "start_time": 21.24,
+      "end_time": 21.64,
+      "confidence": 0.756,
+      "original_text": "crafts"
+    },
+    "flawless": {
+      "start_time": 21.64,
+      "end_time": 22.06,
+      "confidence": 0.987,
+      "original_text": "flawless"
+    },
+    "lies": {
+      "start_time": 22.06,
+      "end_time": 22.42,
+      "confidence": 0.98,
+      "original_text": "lies,"
+    },
+    "while": {
+      "start_time": 22.74,
+      "end_time": 22.86,
+      "confidence": 0.996,
+      "original_text": "while"
+    },
+    "detection": {
+      "start_time": 22.86,
+      "end_time": 23.18,
+      "confidence": 0.969,
+      "original_text": "detection"
+    },
+    "tools": {
+      "start_time": 23.18,
+      "end_time": 23.52,
+      "confidence": 0.997,
+      "original_text": "tools"
+    },
+    "scramble": {
+      "start_time": 23.52,
+      "end_time": 23.79,
+      "confidence": 0.99,
+      "original_text": "scramble"
+    },
+    "to": {
+      "start_time": 23.79,
+      "end_time": 24.18,
+      "confidence": 0.998,
+      "original_text": "to"
+    },
+    "keep": {
+      "start_time": 24.18,
+      "end_time": 24.36,
+      "confidence": 0.999,
+      "original_text": "keep"
+    },
+    "pace": {
+      "start_time": 24.36,
+      "end_time": 24.6,
+      "confidence": 0.999,
+      "original_text": "pace."
+    },
+    "arms": {
+      "start_time": 26.14,
+      "end_time": 26.4,
+      "confidence": 0.978,
+      "original_text": "arms"
+    },
+    "race": {
+      "start_time": 26.4,
+      "end_time": 26.7,
+      "confidence": 0.999,
+      "original_text": "race"
+    },
+    "unfolds": {
+      "start_time": 26.7,
+      "end_time": 27.48,
+      "confidence": 0.998,
+      "original_text": "unfolds,"
+    },
+    "nights": {
+      "start_time": 27.64,
+      "end_time": 27.82,
+      "confidence": 0.656,
+      "original_text": "nights"
+    },
+    "of": {
+      "start_time": 27.82,
+      "end_time": 28.0,
+      "confidence": 0.994,
+      "original_text": "of"
+    },
+    "code": {
+      "start_time": 28.0,
+      "end_time": 28.22,
+      "confidence": 0.989,
+      "original_text": "code"
+    },
+    "clashing": {
+      "start_time": 28.22,
+      "end_time": 28.66,
+      "confidence": 0.988,
+      "original_text": "clashing"
+    },
+    "cyberspace": {
+      "start_time": 28.84,
+      "end_time": 29.36,
+      "confidence": 0.987,
+      "original_text": "cyberspace."
+    },
+    "stay": {
+      "start_time": 29.98,
+      "end_time": 30.16,
+      "confidence": 0.997,
+      "original_text": "Stay"
+    },
+    "vigilant": {
+      "start_time": 30.16,
+      "end_time": 30.54,
+      "confidence": 0.99,
+      "original_text": "vigilant,"
+    },
+    "line": {
+      "start_time": 31.2,
+      "end_time": 31.42,
+      "confidence": 0.998,
+      "original_text": "line"
+    },
+    "between": {
+      "start_time": 31.42,
+      "end_time": 31.72,
+      "confidence": 0.999,
+      "original_text": "between"
+    },
+    "real": {
+      "start_time": 31.72,
+      "end_time": 32.02,
+      "confidence": 0.999,
+      "original_text": "real"
+    },
+    "is": {
+      "start_time": 32.46,
+      "end_time": 32.68,
+      "confidence": 0.998,
+      "original_text": "is"
+    },
+    "vanishing": {
+      "start_time": 32.68,
+      "end_time": 33.14,
+      "confidence": 0.996,
+      "original_text": "vanishing."
+    }
+  },
+  "all_words": [
+    {
+      "word": "in",
+      "start_time": 0.38,
+      "end_time": 0.48,
+      "confidence": 0.967
+    },
+    {
+      "word": "the",
+      "start_time": 0.48,
+      "end_time": 0.6,
+      "confidence": 0.985
+    },
+    {
+      "word": "shadows",
+      "start_time": 0.6,
+      "end_time": 0.94,
+      "confidence": 0.985
+    },
+    {
+      "word": "ai",
+      "start_time": 1.26,
+      "end_time": 1.42,
+      "confidence": 0.889
+    },
+    {
+      "word": "manipulators",
+      "start_time": 1.42,
+      "end_time": 2.14,
+      "confidence": 0.989
+    },
+    {
+      "word": "weave",
+      "start_time": 2.14,
+      "end_time": 2.4,
+      "confidence": 0.926
+    },
+    {
+      "word": "digital",
+      "start_time": 2.4,
+      "end_time": 2.68,
+      "confidence": 0.991
+    },
+    {
+      "word": "masks",
+      "start_time": 2.68,
+      "end_time": 3.08,
+      "confidence": 0.987
+    },
+    {
+      "word": "faces",
+      "start_time": 3.4,
+      "end_time": 3.74,
+      "confidence": 0.659
+    },
+    {
+      "word": "forged",
+      "start_time": 3.74,
+      "end_time": 4.12,
+      "confidence": 0.983
+    },
+    {
+      "word": "by",
+      "start_time": 4.12,
+      "end_time": 4.32,
+      "confidence": 0.987
+    },
+    {
+      "word": "deep",
+      "start_time": 4.32,
+      "end_time": 4.5,
+      "confidence": 0.914
+    },
+    {
+      "word": "fake",
+      "start_time": 4.5,
+      "end_time": 4.7,
+      "confidence": 0.686
+    },
+    {
+      "word": "technology",
+      "start_time": 4.7,
+      "end_time": 5.18,
+      "confidence": 0.977
+    },
+    {
+      "word": "senator",
+      "start_time": 5.96,
+      "end_time": 6.22,
+      "confidence": 0.976
+    },
+    {
+      "word": "marco",
+      "start_time": 6.22,
+      "end_time": 6.52,
+      "confidence": 0.974
+    },
+    {
+      "word": "rubio",
+      "start_time": 6.52,
+      "end_time": 6.94,
+      "confidence": 0.998
+    },
+    {
+      "word": "became",
+      "start_time": 6.94,
+      "end_time": 7.18,
+      "confidence": 0.996
+    },
+    {
+      "word": "their",
+      "start_time": 7.18,
+      "end_time": 7.38,
+      "confidence": 0.999
+    },
+    {
+      "word": "latest",
+      "start_time": 7.38,
+      "end_time": 7.62,
+      "confidence": 0.996
+    },
+    {
+      "word": "target",
+      "start_time": 7.62,
+      "end_time": 7.98,
+      "confidence": 1.0
+    },
+    {
+      "word": "his",
+      "start_time": 8.32,
+      "end_time": 8.46,
+      "confidence": 0.969
+    },
+    {
+      "word": "identity",
+      "start_time": 8.46,
+      "end_time": 8.82,
+      "confidence": 0.99
+    },
+    {
+      "word": "hijacked",
+      "start_time": 8.82,
+      "end_time": 9.28,
+      "confidence": 0.985
+    },
+    {
+      "word": "in",
+      "start_time": 9.28,
+      "end_time": 9.42,
+      "confidence": 0.995
+    },
+    {
+      "word": "texts",
+      "start_time": 9.42,
+      "end_time": 9.7,
+      "confidence": 0.992
+    },
+    {
+      "word": "signal",
+      "start_time": 9.96,
+      "end_time": 10.2,
+      "confidence": 0.984
+    },
+    {
+      "word": "messages",
+      "start_time": 10.2,
+      "end_time": 10.56,
+      "confidence": 0.998
+    },
+    {
+      "word": "and",
+      "start_time": 10.74,
+      "end_time": 10.88,
+      "confidence": 1.0
+    },
+    {
+      "word": "voicemails",
+      "start_time": 10.88,
+      "end_time": 11.4,
+      "confidence": 0.754
+    },
+    {
+      "word": "foreign",
+      "start_time": 11.94,
+      "end_time": 12.18,
+      "confidence": 0.998
+    },
+    {
+      "word": "ministers",
+      "start_time": 12.18,
+      "end_time": 12.54,
+      "confidence": 0.922
+    },
+    {
+      "word": "and",
+      "start_time": 12.54,
+      "end_time": 12.86,
+      "confidence": 0.999
+    },
+    {
+      "word": "us",
+      "start_time": 12.86,
+      "end_time": 13.18,
+      "confidence": 0.807
+    },
+    {
+      "word": "officials",
+      "start_time": 13.36,
+      "end_time": 13.48,
+      "confidence": 0.995
+    },
+    {
+      "word": "were",
+      "start_time": 13.48,
+      "end_time": 13.7,
+      "confidence": 0.999
+    },
+    {
+      "word": "approached",
+      "start_time": 13.7,
+      "end_time": 14.0,
+      "confidence": 0.998
+    },
+    {
+      "word": "sparking",
+      "start_time": 14.26,
+      "end_time": 14.6,
+      "confidence": 0.988
+    },
+    {
+      "word": "state",
+      "start_time": 14.6,
+      "end_time": 14.78,
+      "confidence": 0.647
+    },
+    {
+      "word": "department",
+      "start_time": 14.78,
+      "end_time": 15.14,
+      "confidence": 0.987
+    },
+    {
+      "word": "alarms",
+      "start_time": 15.14,
+      "end_time": 15.5,
+      "confidence": 0.972
+    },
+    {
+      "word": "this",
+      "start_time": 16.14,
+      "end_time": 16.3,
+      "confidence": 0.999
+    },
+    {
+      "word": "isnt",
+      "start_time": 16.3,
+      "end_time": 16.5,
+      "confidence": 0.998
+    },
+    {
+      "word": "new",
+      "start_time": 16.5,
+      "end_time": 16.7,
+      "confidence": 0.998
+    },
+    {
+      "word": "remember",
+      "start_time": 16.96,
+      "end_time": 17.22,
+      "confidence": 0.993
+    },
+    {
+      "word": "suzy",
+      "start_time": 17.22,
+      "end_time": 17.62,
+      "confidence": 0.681
+    },
+    {
+      "word": "wiles",
+      "start_time": 17.62,
+      "end_time": 18.06,
+      "confidence": 0.725
+    },
+    {
+      "word": "impersonation",
+      "start_time": 18.06,
+      "end_time": 18.7,
+      "confidence": 0.986
+    },
+    {
+      "word": "behind",
+      "start_time": 19.36,
+      "end_time": 19.54,
+      "confidence": 0.997
+    },
+    {
+      "word": "the",
+      "start_time": 19.54,
+      "end_time": 19.72,
+      "confidence": 0.998
+    },
+    {
+      "word": "scams",
+      "start_time": 19.72,
+      "end_time": 20.08,
+      "confidence": 0.986
+    },
+    {
+      "word": "ai",
+      "start_time": 20.3,
+      "end_time": 20.5,
+      "confidence": 0.954
+    },
+    {
+      "word": "voice",
+      "start_time": 20.5,
+      "end_time": 20.78,
+      "confidence": 0.974
+    },
+    {
+      "word": "generation",
+      "start_time": 20.78,
+      "end_time": 21.24,
+      "confidence": 0.906
+    },
+    {
+      "word": "crafts",
+      "start_time": 21.24,
+      "end_time": 21.64,
+      "confidence": 0.756
+    },
+    {
+      "word": "flawless",
+      "start_time": 21.64,
+      "end_time": 22.06,
+      "confidence": 0.987
+    },
+    {
+      "word": "lies",
+      "start_time": 22.06,
+      "end_time": 22.42,
+      "confidence": 0.98
+    },
+    {
+      "word": "while",
+      "start_time": 22.74,
+      "end_time": 22.86,
+      "confidence": 0.996
+    },
+    {
+      "word": "detection",
+      "start_time": 22.86,
+      "end_time": 23.18,
+      "confidence": 0.969
+    },
+    {
+      "word": "tools",
+      "start_time": 23.18,
+      "end_time": 23.52,
+      "confidence": 0.997
+    },
+    {
+      "word": "scramble",
+      "start_time": 23.52,
+      "end_time": 23.79,
+      "confidence": 0.99
+    },
+    {
+      "word": "to",
+      "start_time": 23.79,
+      "end_time": 24.18,
+      "confidence": 0.998
+    },
+    {
+      "word": "keep",
+      "start_time": 24.18,
+      "end_time": 24.36,
+      "confidence": 0.999
+    },
+    {
+      "word": "pace",
+      "start_time": 24.36,
+      "end_time": 24.6,
+      "confidence": 0.999
+    },
+    {
+      "word": "digital",
+      "start_time": 25.94,
+      "end_time": 26.14,
+      "confidence": 0.979
+    },
+    {
+      "word": "arms",
+      "start_time": 26.14,
+      "end_time": 26.4,
+      "confidence": 0.978
+    },
+    {
+      "word": "race",
+      "start_time": 26.4,
+      "end_time": 26.7,
+      "confidence": 0.999
+    },
+    {
+      "word": "unfolds",
+      "start_time": 26.7,
+      "end_time": 27.48,
+      "confidence": 0.998
+    },
+    {
+      "word": "nights",
+      "start_time": 27.64,
+      "end_time": 27.82,
+      "confidence": 0.656
+    },
+    {
+      "word": "of",
+      "start_time": 27.82,
+      "end_time": 28.0,
+      "confidence": 0.994
+    },
+    {
+      "word": "code",
+      "start_time": 28.0,
+      "end_time": 28.22,
+      "confidence": 0.989
+    },
+    {
+      "word": "clashing",
+      "start_time": 28.22,
+      "end_time": 28.66,
+      "confidence": 0.988
+    },
+    {
+      "word": "in",
+      "start_time": 28.66,
+      "end_time": 28.84,
+      "confidence": 0.996
+    },
+    {
+      "word": "cyberspace",
+      "start_time": 28.84,
+      "end_time": 29.36,
+      "confidence": 0.987
+    },
+    {
+      "word": "stay",
+      "start_time": 29.98,
+      "end_time": 30.16,
+      "confidence": 0.997
+    },
+    {
+      "word": "vigilant",
+      "start_time": 30.16,
+      "end_time": 30.54,
+      "confidence": 0.99
+    },
+    {
+      "word": "the",
+      "start_time": 31.04,
+      "end_time": 31.2,
+      "confidence": 0.988
+    },
+    {
+      "word": "line",
+      "start_time": 31.2,
+      "end_time": 31.42,
+      "confidence": 0.998
+    },
+    {
+      "word": "between",
+      "start_time": 31.42,
+      "end_time": 31.72,
+      "confidence": 0.999
+    },
+    {
+      "word": "real",
+      "start_time": 31.72,
+      "end_time": 32.02,
+      "confidence": 0.999
+    },
+    {
+      "word": "and",
+      "start_time": 32.02,
+      "end_time": 32.22,
+      "confidence": 0.997
+    },
+    {
+      "word": "fake",
+      "start_time": 32.22,
+      "end_time": 32.46,
+      "confidence": 0.999
+    },
+    {
+      "word": "is",
+      "start_time": 32.46,
+      "end_time": 32.68,
+      "confidence": 0.998
+    },
+    {
+      "word": "vanishing",
+      "start_time": 32.68,
+      "end_time": 33.14,
+      "confidence": 0.996
+    }
+  ],
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.38,
+      "end": 5.18,
+      "text": " In the shadows, AI manipulators weave digital masks, faces forged by deep fake technology.",
+      "tokens": [
+        50364,
+        682,
+        264,
+        14740,
+        11,
+        7318,
+        9258,
+        39265,
+        29145,
+        4562,
+        11830,
+        11,
+        8475,
+        40226,
+        538,
+        2452,
+        7592,
+        2899,
+        13,
+        50676
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.921,
+      "words": [
+        {
+          "text": "In",
+          "start": 0.38,
+          "end": 0.48,
+          "confidence": 0.967
+        },
+        {
+          "text": "the",
+          "start": 0.48,
+          "end": 0.6,
+          "confidence": 0.985
+        },
+        {
+          "text": "shadows,",
+          "start": 0.6,
+          "end": 0.94,
+          "confidence": 0.985
+        },
+        {
+          "text": "AI",
+          "start": 1.26,
+          "end": 1.42,
+          "confidence": 0.889
+        },
+        {
+          "text": "manipulators",
+          "start": 1.42,
+          "end": 2.14,
+          "confidence": 0.989
+        },
+        {
+          "text": "weave",
+          "start": 2.14,
+          "end": 2.4,
+          "confidence": 0.926
+        },
+        {
+          "text": "digital",
+          "start": 2.4,
+          "end": 2.68,
+          "confidence": 0.991
+        },
+        {
+          "text": "masks,",
+          "start": 2.68,
+          "end": 3.08,
+          "confidence": 0.987
+        },
+        {
+          "text": "faces",
+          "start": 3.4,
+          "end": 3.74,
+          "confidence": 0.659
+        },
+        {
+          "text": "forged",
+          "start": 3.74,
+          "end": 4.12,
+          "confidence": 0.983
+        },
+        {
+          "text": "by",
+          "start": 4.12,
+          "end": 4.32,
+          "confidence": 0.987
+        },
+        {
+          "text": "deep",
+          "start": 4.32,
+          "end": 4.5,
+          "confidence": 0.914
+        },
+        {
+          "text": "fake",
+          "start": 4.5,
+          "end": 4.7,
+          "confidence": 0.686
+        },
+        {
+          "text": "technology.",
+          "start": 4.7,
+          "end": 5.18,
+          "confidence": 0.977
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 5.96,
+      "end": 10.56,
+      "text": " Senator Marco Rubio became their latest target, his identity hijacked in texts, signal messages",
+      "tokens": [
+        50676,
+        10893,
+        26535,
+        10518,
+        1004,
+        3062,
+        641,
+        6792,
+        3779,
+        11,
+        702,
+        6575,
+        10625,
+        25949,
+        294,
+        15765,
+        11,
+        6358,
+        7897,
+        50900
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.989,
+      "words": [
+        {
+          "text": "Senator",
+          "start": 5.96,
+          "end": 6.22,
+          "confidence": 0.976
+        },
+        {
+          "text": "Marco",
+          "start": 6.22,
+          "end": 6.52,
+          "confidence": 0.974
+        },
+        {
+          "text": "Rubio",
+          "start": 6.52,
+          "end": 6.94,
+          "confidence": 0.998
+        },
+        {
+          "text": "became",
+          "start": 6.94,
+          "end": 7.18,
+          "confidence": 0.996
+        },
+        {
+          "text": "their",
+          "start": 7.18,
+          "end": 7.38,
+          "confidence": 0.999
+        },
+        {
+          "text": "latest",
+          "start": 7.38,
+          "end": 7.62,
+          "confidence": 0.996
+        },
+        {
+          "text": "target,",
+          "start": 7.62,
+          "end": 7.98,
+          "confidence": 1.0
+        },
+        {
+          "text": "his",
+          "start": 8.32,
+          "end": 8.46,
+          "confidence": 0.969
+        },
+        {
+          "text": "identity",
+          "start": 8.46,
+          "end": 8.82,
+          "confidence": 0.99
+        },
+        {
+          "text": "hijacked",
+          "start": 8.82,
+          "end": 9.28,
+          "confidence": 0.985
+        },
+        {
+          "text": "in",
+          "start": 9.28,
+          "end": 9.42,
+          "confidence": 0.995
+        },
+        {
+          "text": "texts,",
+          "start": 9.42,
+          "end": 9.7,
+          "confidence": 0.992
+        },
+        {
+          "text": "signal",
+          "start": 9.96,
+          "end": 10.2,
+          "confidence": 0.984
+        },
+        {
+          "text": "messages",
+          "start": 10.2,
+          "end": 10.56,
+          "confidence": 0.998
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 10.74,
+      "end": 11.4,
+      "text": " and voicemails.",
+      "tokens": [
+        50900,
+        293,
+        1650,
+        46343,
+        6227,
+        13,
+        50976
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.809,
+      "words": [
+        {
+          "text": "and",
+          "start": 10.74,
+          "end": 10.88,
+          "confidence": 1.0
+        },
+        {
+          "text": "voicemails.",
+          "start": 10.88,
+          "end": 11.4,
+          "confidence": 0.754
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 11.94,
+      "end": 15.5,
+      "text": " Foreign ministers and U.S. officials were approached, sparking State Department alarms.",
+      "tokens": [
+        50976,
+        20430,
+        26220,
+        293,
+        624,
+        13,
+        50,
+        13,
+        9798,
+        645,
+        17247,
+        11,
+        9908,
+        278,
+        4533,
+        5982,
+        45039,
+        13,
+        51178
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.916,
+      "words": [
+        {
+          "text": "Foreign",
+          "start": 11.94,
+          "end": 12.18,
+          "confidence": 0.998
+        },
+        {
+          "text": "ministers",
+          "start": 12.18,
+          "end": 12.54,
+          "confidence": 0.922
+        },
+        {
+          "text": "and",
+          "start": 12.54,
+          "end": 12.86,
+          "confidence": 0.999
+        },
+        {
+          "text": "U.S.",
+          "start": 12.86,
+          "end": 13.18,
+          "confidence": 0.807
+        },
+        {
+          "text": "officials",
+          "start": 13.36,
+          "end": 13.48,
+          "confidence": 0.995
+        },
+        {
+          "text": "were",
+          "start": 13.48,
+          "end": 13.7,
+          "confidence": 0.999
+        },
+        {
+          "text": "approached,",
+          "start": 13.7,
+          "end": 14.0,
+          "confidence": 0.998
+        },
+        {
+          "text": "sparking",
+          "start": 14.26,
+          "end": 14.6,
+          "confidence": 0.988
+        },
+        {
+          "text": "State",
+          "start": 14.6,
+          "end": 14.78,
+          "confidence": 0.647
+        },
+        {
+          "text": "Department",
+          "start": 14.78,
+          "end": 15.14,
+          "confidence": 0.987
+        },
+        {
+          "text": "alarms.",
+          "start": 15.14,
+          "end": 15.5,
+          "confidence": 0.972
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 16.14,
+      "end": 18.7,
+      "text": " This isn't new, remember Suzy Wiles' impersonation.",
+      "tokens": [
+        51178,
+        639,
+        1943,
+        380,
+        777,
+        11,
+        1604,
+        2746,
+        1229,
+        343,
+        4680,
+        6,
+        38147,
+        399,
+        13,
+        51346
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.863,
+      "words": [
+        {
+          "text": "This",
+          "start": 16.14,
+          "end": 16.3,
+          "confidence": 0.999
+        },
+        {
+          "text": "isn't",
+          "start": 16.3,
+          "end": 16.5,
+          "confidence": 0.998
+        },
+        {
+          "text": "new,",
+          "start": 16.5,
+          "end": 16.7,
+          "confidence": 0.998
+        },
+        {
+          "text": "remember",
+          "start": 16.96,
+          "end": 17.22,
+          "confidence": 0.993
+        },
+        {
+          "text": "Suzy",
+          "start": 17.22,
+          "end": 17.62,
+          "confidence": 0.681
+        },
+        {
+          "text": "Wiles'",
+          "start": 17.62,
+          "end": 18.06,
+          "confidence": 0.725
+        },
+        {
+          "text": "impersonation.",
+          "start": 18.06,
+          "end": 18.7,
+          "confidence": 0.986
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 19.36,
+      "end": 23.79,
+      "text": " Behind the scams, AI voice generation crafts flawless lies, while detection tools scramble",
+      "tokens": [
+        51346,
+        20475,
+        264,
+        795,
+        4070,
+        11,
+        7318,
+        3177,
+        5125,
+        27831,
+        45693,
+        9134,
+        11,
+        1339,
+        17784,
+        3873,
+        795,
+        48382,
+        51566
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.962,
+      "words": [
+        {
+          "text": "Behind",
+          "start": 19.36,
+          "end": 19.54,
+          "confidence": 0.997
+        },
+        {
+          "text": "the",
+          "start": 19.54,
+          "end": 19.72,
+          "confidence": 0.998
+        },
+        {
+          "text": "scams,",
+          "start": 19.72,
+          "end": 20.08,
+          "confidence": 0.986
+        },
+        {
+          "text": "AI",
+          "start": 20.3,
+          "end": 20.5,
+          "confidence": 0.954
+        },
+        {
+          "text": "voice",
+          "start": 20.5,
+          "end": 20.78,
+          "confidence": 0.974
+        },
+        {
+          "text": "generation",
+          "start": 20.78,
+          "end": 21.24,
+          "confidence": 0.906
+        },
+        {
+          "text": "crafts",
+          "start": 21.24,
+          "end": 21.64,
+          "confidence": 0.756
+        },
+        {
+          "text": "flawless",
+          "start": 21.64,
+          "end": 22.06,
+          "confidence": 0.987
+        },
+        {
+          "text": "lies,",
+          "start": 22.06,
+          "end": 22.42,
+          "confidence": 0.98
+        },
+        {
+          "text": "while",
+          "start": 22.74,
+          "end": 22.86,
+          "confidence": 0.996
+        },
+        {
+          "text": "detection",
+          "start": 22.86,
+          "end": 23.18,
+          "confidence": 0.969
+        },
+        {
+          "text": "tools",
+          "start": 23.18,
+          "end": 23.52,
+          "confidence": 0.997
+        },
+        {
+          "text": "scramble",
+          "start": 23.52,
+          "end": 23.79,
+          "confidence": 0.99
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 23.79,
+      "end": 24.6,
+      "text": " to keep pace.",
+      "tokens": [
+        51566,
+        281,
+        1066,
+        11638,
+        13,
+        51628
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1643126426486794,
+      "compression_ratio": 1.510135135135135,
+      "no_speech_prob": 0.046715714037418365,
+      "confidence": 0.998,
+      "words": [
+        {
+          "text": "to",
+          "start": 23.79,
+          "end": 24.18,
+          "confidence": 0.998
+        },
+        {
+          "text": "keep",
+          "start": 24.18,
+          "end": 24.36,
+          "confidence": 0.999
+        },
+        {
+          "text": "pace.",
+          "start": 24.36,
+          "end": 24.6,
+          "confidence": 0.999
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seek": 2528,
+      "start": 25.78,
+      "end": 29.36,
+      "text": " A digital arms race unfolds, nights of code clashing in cyberspace.",
+      "tokens": [
+        50390,
+        316,
+        4562,
+        5812,
+        4569,
+        17980,
+        82,
+        11,
+        13249,
+        295,
+        3089,
+        596,
+        11077,
+        294,
+        3185,
+        1616,
+        17940,
+        13,
+        50602
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23489657810756137,
+      "compression_ratio": 1.1981132075471699,
+      "no_speech_prob": 0.4057205319404602,
+      "confidence": 0.964,
+      "words": [
+        {
+          "text": "A",
+          "start": 25.78,
+          "end": 25.94,
+          "confidence": 0.998
+        },
+        {
+          "text": "digital",
+          "start": 25.94,
+          "end": 26.14,
+          "confidence": 0.979
+        },
+        {
+          "text": "arms",
+          "start": 26.14,
+          "end": 26.4,
+          "confidence": 0.978
+        },
+        {
+          "text": "race",
+          "start": 26.4,
+          "end": 26.7,
+          "confidence": 0.999
+        },
+        {
+          "text": "unfolds,",
+          "start": 26.7,
+          "end": 27.48,
+          "confidence": 0.998
+        },
+        {
+          "text": "nights",
+          "start": 27.64,
+          "end": 27.82,
+          "confidence": 0.656
+        },
+        {
+          "text": "of",
+          "start": 27.82,
+          "end": 28.0,
+          "confidence": 0.994
+        },
+        {
+          "text": "code",
+          "start": 28.0,
+          "end": 28.22,
+          "confidence": 0.989
+        },
+        {
+          "text": "clashing",
+          "start": 28.22,
+          "end": 28.66,
+          "confidence": 0.988
+        },
+        {
+          "text": "in",
+          "start": 28.66,
+          "end": 28.84,
+          "confidence": 0.996
+        },
+        {
+          "text": "cyberspace.",
+          "start": 28.84,
+          "end": 29.36,
+          "confidence": 0.987
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seek": 2528,
+      "start": 29.98,
+      "end": 33.14,
+      "text": " Stay vigilant, the line between real and fake is vanishing.",
+      "tokens": [
+        50602,
+        8691,
+        45737,
+        11,
+        264,
+        1622,
+        1296,
+        957,
+        293,
+        7592,
+        307,
+        3161,
+        3807,
+        13,
+        50764
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23489657810756137,
+      "compression_ratio": 1.1981132075471699,
+      "no_speech_prob": 0.4057205319404602,
+      "confidence": 0.996,
+      "words": [
+        {
+          "text": "Stay",
+          "start": 29.98,
+          "end": 30.16,
+          "confidence": 0.997
+        },
+        {
+          "text": "vigilant,",
+          "start": 30.16,
+          "end": 30.54,
+          "confidence": 0.99
+        },
+        {
+          "text": "the",
+          "start": 31.04,
+          "end": 31.2,
+          "confidence": 0.988
+        },
+        {
+          "text": "line",
+          "start": 31.2,
+          "end": 31.42,
+          "confidence": 0.998
+        },
+        {
+          "text": "between",
+          "start": 31.42,
+          "end": 31.72,
+          "confidence": 0.999
+        },
+        {
+          "text": "real",
+          "start": 31.72,
+          "end": 32.02,
+          "confidence": 0.999
+        },
+        {
+          "text": "and",
+          "start": 32.02,
+          "end": 32.22,
+          "confidence": 0.997
+        },
+        {
+          "text": "fake",
+          "start": 32.22,
+          "end": 32.46,
+          "confidence": 0.999
+        },
+        {
+          "text": "is",
+          "start": 32.46,
+          "end": 32.68,
+          "confidence": 0.998
+        },
+        {
+          "text": "vanishing.",
+          "start": 32.68,
+          "end": 33.14,
+          "confidence": 0.996
+        }
+      ]
+    }
+  ],
+  "total_duration": 33.14,
+  "text": " In the shadows, AI manipulators weave digital masks, faces forged by deep fake technology. Senator Marco Rubio became their latest target, his identity hijacked in texts, signal messages and voicemails. Foreign ministers and U.S. officials were approached, sparking State Department alarms. This isn't new, remember Suzy Wiles' impersonation. Behind the scams, AI voice generation crafts flawless lies, while detection tools scramble to keep pace. A digital arms race unfolds, nights of code clashing in cyberspace. Stay vigilant, the line between real and fake is vanishing."
+}
