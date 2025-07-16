@@ -1,5 +1,45 @@
 """
-AutoSocialMedia Agent - Main Pipeline Orchestration with Smart Visual Direction
+AutoSocialMedia Agent - Automated Social Media Content Generation Pipeline
+
+This module provides an end-to-end pipeline for creating social media videos from news articles.
+The pipeline features intelligent visual direction, audio synchronization, and multi-orientation
+support for various social media platforms.
+
+Orientation Handling:
+    - Portrait Mode (1080x1920): Optimized for TikTok, Instagram Reels, YouTube Shorts
+    - Landscape Mode (1920x1080): Optimized for YouTube, Facebook, LinkedIn
+    - Square Mode (1080x1080): Optimized for Instagram posts, Twitter videos
+    
+    Video orientation is configured via the video_config module. Default is landscape,
+    but can be adjusted for specific platform requirements.
+
+Timeline Expectations:
+    - Average video duration: 30-60 seconds based on script length
+    - Visual segments: 2-8 seconds each with AI-synchronized timing
+    - Audio synchronization: Word-level timestamp alignment using Whisper
+    - Opening sequence: 3-second webpage video capture
+    - Transition duration: 1.0 second between visual segments
+    
+    Timeline calculation is based on natural speech patterns (2.5 words/second)
+    and keyword synchronization from the transcript.
+
+Configuration:
+    - config.ini: Main configuration file for TTS provider, API keys
+    - video_config.py: Video parameters (resolution, FPS, transitions)
+    - Component registry: Modular pipeline components with dependency validation
+    - Decision logging: Comprehensive logging of AI decisions and pipeline state
+    
+    The pipeline is designed to be configurable and extensible, with clear
+    separation between visual acquisition, audio processing, and video assembly.
+
+Example Usage:
+    >>> from agent import create_smart_video
+    >>> video_path = create_smart_video()
+    >>> print(f"Generated video: {video_path}")
+
+Note:
+    This pipeline requires FFmpeg, proper API keys for image/video sources,
+    and sufficient disk space for temporary files during processing.
 """
 
 import os
@@ -10,11 +50,47 @@ def create_smart_video(max_images: int = 10) -> Optional[str]:
     """
     Main pipeline function with AI-driven visual direction and fast-paced video creation.
     
+    Executes the complete AutoSocialMedia pipeline including content discovery,
+    article scraping, visual direction, audio generation, and video assembly.
+    Creates a professionally edited video with synchronized visuals and captions.
+    
     Args:
-        max_images: Maximum number of images to download (kept for compatibility)
-        
+        max_images (int, optional): Maximum number of images to download. This parameter
+            is kept for backward compatibility but is not actively used in the current
+            implementation. The visual director determines optimal image count based on
+            content length and timing. Defaults to 10.
+    
     Returns:
-        str: Path to final video if successful, None if failed
+        Optional[str]: Path to the final generated video file (.mp4) if successful,
+            None if the pipeline fails at any stage. The video includes:
+            - Opening webpage capture sequence (3 seconds)
+            - Synchronized visual segments with AI-driven timing
+            - Professional transitions between segments
+            - Word-level synchronized captions
+            - High-quality audio narration
+    
+    Raises:
+        FileNotFoundError: If required configuration files or dependencies are missing
+        OSError: If FFmpeg is not installed or accessible
+        RuntimeError: If critical pipeline components fail (visual direction, audio generation)
+        
+    Example:
+        >>> from agent import create_smart_video
+        >>> video_path = create_smart_video()
+        >>> if video_path:
+        ...     print(f"Video created successfully: {video_path}")
+        ... else:
+        ...     print("Pipeline failed - check logs for details")
+    
+    Note:
+        This function requires:
+        - FFmpeg installed and in PATH
+        - Valid API keys in config.ini
+        - Internet connection for content discovery and visual assets
+        - Sufficient disk space (~500MB for temporary files)
+        
+        The pipeline creates a 'runs/current' directory structure with intermediate
+        files that can be useful for debugging or manual inspection.
     """
     from .component_runner import ComponentRunner
     from .decision_logger import init_decision_logger, get_decision_logger
@@ -141,6 +217,34 @@ def create_smart_video(max_images: int = 10) -> Optional[str]:
 # Keep the original function for backwards compatibility
 def create_video(max_images: int = 10) -> Optional[str]:
     """
-    Legacy video creation function - now uses smart pipeline
+    Legacy video creation function that wraps the smart pipeline.
+    
+    This function is maintained for backward compatibility with existing code
+    that uses the original API. It internally calls create_smart_video() with
+    the same parameters and behavior.
+    
+    Args:
+        max_images (int, optional): Maximum number of images to download.
+            This parameter is kept for backward compatibility but is not
+            actively used in the current implementation. Defaults to 10.
+    
+    Returns:
+        Optional[str]: Path to the final generated video file (.mp4) if successful,
+            None if the pipeline fails at any stage.
+    
+    Raises:
+        FileNotFoundError: If required configuration files or dependencies are missing
+        OSError: If FFmpeg is not installed or accessible
+        RuntimeError: If critical pipeline components fail
+        
+    Example:
+        >>> from agent import create_video  # Legacy import
+        >>> video_path = create_video()
+        >>> if video_path:
+        ...     print(f"Video created: {video_path}")
+    
+    Note:
+        For new code, prefer using create_smart_video() directly as it provides
+        the same functionality with more explicit naming.
     """
     return create_smart_video(max_images)

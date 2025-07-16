@@ -1,25 +1,25 @@
 {
   "main_headline": {
-    "text": "FBI warns of text messaging campaign impersonating US officials",
+    "text": "Indeed, Glassdoor cutting jobs as artificial intelligence utilization grows",
     "coordinates": {
-      "x": 0,
-      "y": 80,
-      "width": 900,
-      "height": 70
-    }
-  },
-  "main_image": {
-    "text": "'Lord of the Rings' director backs long shot de-extinction plan...",
-    "coordinates": {
-      "x": 380,
-      "y": 840,
-      "width": 500,
+      "x": 70,
+      "y": 320,
+      "width": 480,
       "height": 100
     }
   },
+  "main_image": {
+    "text": null,
+    "coordinates": {
+      "x": 0,
+      "y": 700,
+      "width": 400,
+      "height": 200
+    }
+  },
   "scroll_range": {
-    "start_y": 80,
+    "start_y": 320,
     "end_y": 3000,
-    "total_scroll": 2920
+    "total_scroll": 2680
   }
 }

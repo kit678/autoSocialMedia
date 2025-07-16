@@ -11,6 +11,9 @@ import re
 import google.generativeai as genai
 import PIL.Image
 import random
+from agent.video_config import get_default_config
+from agent.video.ffmpeg_utils import scale_crop_str
+from agent.media_utils import standardize_image
 
 # Load environment variables from .env file
 load_dotenv()
@@ -50,7 +53,7 @@ def run(url: str, output_path: str, viewport_width: int = 375, viewport_height: 
             time.sleep(3)
             
             # Enhanced verification handling
-            verification_cleared = _handle_verification_page(page, max_wait_time=45)
+            verification_cleared = _handle_verification_page(page, url, max_wait_time=45)
             if not verification_cleared:
                 # Still on verification page - this URL is problematic
                 logging.error(f"  ✗ Verification page could not be cleared for: {url}")
@@ -96,6 +99,12 @@ def run(url: str, output_path: str, viewport_width: int = 375, viewport_height: 
             # Take full-page screenshot
             logging.info(f"  > Capturing screenshot...")
             page.screenshot(path=output_path, full_page=True, type='png')
+            
+            # Standardize to portrait orientation
+            if standardize_image(output_path, target_width=1080, target_height=1920):
+                logging.info(f"  > Standardized screenshot to portrait: {output_path}")
+            else:
+                logging.warning(f"  > Failed to standardize screenshot: {output_path}")
             
             browser.close()
             
@@ -244,7 +253,7 @@ def create_intelligent_scroll_video(url: str, output_path: str, layout_data: Dic
             time.sleep(3)
             
             # Enhanced verification handling for intelligent capture
-            verification_cleared = _handle_verification_page(page, max_wait_time=45)
+            verification_cleared = _handle_verification_page(page, url, max_wait_time=45)
             if not verification_cleared:
                 # Still on verification page - this URL is problematic
                 logging.error(f"  ✗ Verification page could not be cleared for intelligent video capture: {url}")
@@ -667,11 +676,15 @@ def _convert_frames_to_mobile_video(temp_dir: str, output_path: str, fps: int) -
     """Convert mobile frame images to 1080x1920 portrait MP4 video."""
     logging.info("  > Converting mobile frames to 1080x1920 portrait video...")
     
+    # Get portrait video configuration
+    config = get_default_config("portrait")
+    scale_crop_filter = scale_crop_str(config)
+    
     cmd = [
         'ffmpeg', '-y',
         '-framerate', str(fps),
         '-i', os.path.join(temp_dir, 'frame_%04d.png'),
-        '-vf', 'scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920',
+        '-vf', scale_crop_filter,
         '-c:v', 'libx264',
         '-preset', 'fast',
         '-crf', '23',
@@ -758,7 +771,7 @@ def _capture_scroll_video_original(url: str, output_path: str, duration: float =
             time.sleep(3)
             
             # Enhanced verification handling for basic video capture
-            verification_cleared = _handle_verification_page(page, max_wait_time=45)
+            verification_cleared = _handle_verification_page(page, url, max_wait_time=45)
             if not verification_cleared:
                 # Still on verification page - this URL is problematic
                 logging.error(f"  ✗ Verification page could not be cleared for basic video capture: {url}")
@@ -787,11 +800,13 @@ def _capture_scroll_video_original(url: str, output_path: str, duration: float =
                 page.screenshot(path=screenshot_path, type='png')
                 
                 # Convert to video using FFmpeg
+                config = get_default_config("portrait")
+                scale_crop_filter = scale_crop_str(config)
                 cmd = [
                     'ffmpeg', '-y',
                     '-loop', '1',
                     '-i', screenshot_path,
-                    '-vf', 'scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920',
+                    '-vf', scale_crop_filter,
                     '-c:v', 'libx264',
                     '-t', str(duration),
                     '-pix_fmt', 'yuv420p',
@@ -855,11 +870,13 @@ def _capture_scroll_video_original(url: str, output_path: str, duration: float =
             # Convert frames to video using FFmpeg
             logging.info("  > Converting frames to video...")
             
+            config = get_default_config("portrait")
+            scale_crop_filter = scale_crop_str(config)
             cmd = [
                 'ffmpeg', '-y',
                 '-framerate', str(fps),
                 '-i', os.path.join(temp_dir, 'frame_%04d.png'),
-                '-vf', 'scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920',
+                '-vf', scale_crop_filter,
                 '-c:v', 'libx264',
                 '-preset', 'fast',  # Changed to fast for better compatibility
                 '-crf', '23',
@@ -1041,7 +1058,7 @@ def find_main_elements(url: str) -> dict:
             time.sleep(3)
             
             # Enhanced verification handling for Gemini analysis
-            verification_cleared = _handle_verification_page(page, max_wait_time=45)
+            verification_cleared = _handle_verification_page(page, url, max_wait_time=45)
             if not verification_cleared:
                 # Still on verification page - this URL is problematic
                 logging.error(f"  ✗ Verification page could not be cleared for Gemini analysis: {url}")
@@ -1147,7 +1164,10 @@ def find_end_of_content(url: str) -> int:
     # to find a specific element like "comments" or "related articles".
     return 3000 # Default fallback
 
-def _handle_verification_page(page, max_wait_time: int = 60) -> bool:
+from .verification_handler import get_verification_handler
+
+
+def _handle_verification_page(page, url, max_wait_time: int = 60) -> bool:
     """
     Actively handle verification pages with multiple strategies.
     
@@ -1159,54 +1179,10 @@ def _handle_verification_page(page, max_wait_time: int = 60) -> bool:
         bool: True if verification cleared, False if still stuck
     """
     verification_start = time.time()
-    
-    # Try multiple strategies in a loop
-    for attempt in range(max_wait_time // 10): # Try every 10s
-        if time.time() - verification_start > max_wait_time:
-            break
 
-        try:
-            # Check for iframe-based challenges (e.g., hCaptcha, reCAPTCHA)
-            iframe = page.frame_locator('iframe[src*="challenge"]')
-            if iframe.locator('input[type="checkbox"]').is_visible(timeout=5000):
-                logging.info("  > Found iframe-based challenge, attempting to click checkbox...")
-                iframe.locator('input[type="checkbox"]').click()
-                time.sleep(5) # Wait for challenge to process
-
-            # Check for common text indicators
-            page_content = page.content().lower()
-            verification_indicators = [
-                'verifying you are human', 'cloudflare', 'checking your browser',
-                'security check', 'captcha', 'challenge'
-            ]
-            if not any(indicator in page_content for indicator in verification_indicators):
-                logging.info("  > Verification cleared.")
-                return True
-
-            logging.info(f"  > Verification page detected (Attempt {attempt+1})...")
-
-            # Simulate human-like interaction
-            page.mouse.move(random.randint(100, 500), random.randint(100, 500))
-            time.sleep(0.5)
-            page.keyboard.press('PageDown')
-            time.sleep(1)
-
-            # Wait before next check
-            time.sleep(10)
-
-        except Exception as e:
-            logging.debug(f"  > Error during verification handling: {e}")
-            time.sleep(5)
-            
-    # Final check
-    final_content = page.content().lower()
-    if any(indicator in final_content for indicator in [
-        'verifying you are human', 'cloudflare', 'checking your browser'
-    ]):
-        logging.error("  > Failed to bypass verification page.")
-        return False
-        
-    return True
+    # Use the new verification handler
+    verification_handler = get_verification_handler()
+    return verification_handler.handle_verification(page, url, max_attempts=max_wait_time // 10)
 
 def _launch_stealth_browser(p):
     """

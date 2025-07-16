@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from agent.utils import http_retry_session
 from typing import List, Optional
 import json
+from agent.media_utils import standardize_image
 
 def _download_searxng_image(session: requests.Session, image_url: str, filepath: str) -> bool:
     """
@@ -28,21 +29,23 @@ def _download_searxng_image(session: requests.Session, image_url: str, filepath:
         response = session.get(image_url, headers=headers, timeout=10, stream=True)
         response.raise_for_status()
         
-        # Check content type
         content_type = response.headers.get('content-type', '')
         if not content_type.startswith('image/'):
             logging.warning(f"Invalid content type for image: {content_type}")
             return False
         
-        # Save image
         with open(filepath, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:
                     f.write(chunk)
         
-        # Verify file was created and has reasonable size
-        if os.path.exists(filepath) and os.path.getsize(filepath) > 1000:  # At least 1KB
-            return True
+        if os.path.exists(filepath) and os.path.getsize(filepath) > 1000:
+            # Standardize the image to portrait
+            if standardize_image(filepath):
+                return True
+            else:
+                os.remove(filepath)
+                return False
         else:
             if os.path.exists(filepath):
                 os.remove(filepath)
@@ -300,4 +303,4 @@ def search_with_custom_api(keywords: list, num_images: int, output_dir: str):
     Use SearXNG instead for unlimited searches.
     """
     logging.warning("Google Custom Search API is deprecated due to quota limits. Using SearXNG instead.")
-    return [] 
+    return []

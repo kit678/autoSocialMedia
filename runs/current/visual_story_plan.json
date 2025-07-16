@@ -1,180 +1,171 @@
 {
   "story_hook": {
-    "opening_visual": "A shadowy figure manipulating a digital interface with AI-generated images of Marco Rubio on multiple screens.",
-    "hook_concept": "The rise of AI-powered impersonation in political espionage.",
+    "opening_visual": "A futuristic robot hand shaking hands with a human, symbolizing the intersection of AI and human employment.",
+    "hook_concept": "The impact of AI on job markets and the human workforce.",
     "emotional_target": "concern"
   },
   "visual_segments": [
     {
       "segment_number": 1,
-      "narrative_purpose": "Introduce the concept of AI impersonation.",
-      "visual_type": "Abstract Concept",
-      "primary_search_term": "AI deepfake technology",
+      "narrative_purpose": "Introduce the layoffs at Indeed and Glassdoor due to AI.",
+      "visual_type": "Proper Noun",
+      "primary_search_term": "Indeed Glassdoor layoffs",
       "secondary_keywords": [
-        "digital impersonation",
-        "AI manipulation"
+        "AI job cuts",
+        "HR technology layoffs"
       ],
-      "narrative_context": "Show the technology behind the impersonation to set the stage.",
-      "script_guidance": "As AI technology advances, so does its potential for misuse.",
-      "emotional_tone": "ominous",
-      "duration_target": 5
+      "narrative_context": "Show the logos of Indeed and Glassdoor with a downward trend graph to illustrate layoffs.",
+      "script_guidance": "As AI reshapes industries, companies like Indeed and Glassdoor are making tough decisions.",
+      "emotional_tone": "serious",
+      "duration_target": "5"
     },
     {
       "segment_number": 2,
-      "narrative_purpose": "Highlight the impersonation of Marco Rubio.",
-      "visual_type": "Proper Noun",
-      "primary_search_term": "Marco Rubio official",
+      "narrative_purpose": "Highlight the role of AI in changing the workforce.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "AI changing jobs",
       "secondary_keywords": [
-        "politician",
-        "U.S. Senator"
+        "automation workforce",
+        "technology employment impact"
       ],
-      "narrative_context": "Establish Rubio's identity to contrast with the impersonation.",
-      "script_guidance": "Senator Marco Rubio became an unwitting target of this digital deception.",
-      "emotional_tone": "serious",
-      "duration_target": 4
+      "narrative_context": "An animation of AI algorithms replacing traditional job roles.",
+      "script_guidance": "AI is not just a tool but a transformative force in the job market.",
+      "emotional_tone": "informative",
+      "duration_target": "6"
     },
     {
       "segment_number": 3,
-      "narrative_purpose": "Show the methods used in the impersonation.",
+      "narrative_purpose": "Show the human aspect of the layoffs.",
       "visual_type": "Concrete Object/Action",
-      "primary_search_term": "text message scam",
+      "primary_search_term": "office layoffs",
       "secondary_keywords": [
-        "Signal app",
-        "voice mail"
+        "employees packing",
+        "job loss"
       ],
-      "narrative_context": "Demonstrate how the impersonation was carried out.",
-      "script_guidance": "Through texts, Signal messages, and voicemails, the impostor reached out.",
-      "emotional_tone": "urgent",
-      "duration_target": 6
+      "narrative_context": "Employees packing their desks, symbolizing the personal impact of layoffs.",
+      "script_guidance": "Behind every statistic are real people facing uncertain futures.",
+      "emotional_tone": "empathetic",
+      "duration_target": "7"
     },
     {
       "segment_number": 4,
-      "narrative_purpose": "Reveal the targets of the impersonation.",
-      "visual_type": "Abstract Concept",
-      "primary_search_term": "political espionage",
+      "narrative_purpose": "Introduce Recruit Holdings and its decision.",
+      "visual_type": "Proper Noun",
+      "primary_search_term": "Recruit Holdings CEO",
       "secondary_keywords": [
-        "foreign ministers",
-        "U.S. officials"
+        "HR technology",
+        "company layoffs"
       ],
-      "narrative_context": "Illustrate the high stakes of the impersonation attempts.",
-      "script_guidance": "The targets included foreign ministers and U.S. officials, raising alarms.",
-      "emotional_tone": "concerned",
-      "duration_target": 5
+      "narrative_context": "A portrait of Hisayuki Idekoba with the Recruit Holdings logo.",
+      "script_guidance": "Recruit Holdings, the parent company, faces the challenge of adapting to AI.",
+      "emotional_tone": "authoritative",
+      "duration_target": "4"
     },
     {
       "segment_number": 5,
-      "narrative_purpose": "Discuss the State Department's response.",
-      "visual_type": "Proper Noun",
-      "primary_search_term": "State Department building",
+      "narrative_purpose": "Discuss the merger of Glassdoor into Indeed.",
+      "visual_type": "Concrete Object/Action",
+      "primary_search_term": "Indeed Glassdoor merger",
       "secondary_keywords": [
-        "U.S. diplomacy",
-        "cybersecurity"
+        "company integration",
+        "simplified hiring"
       ],
-      "narrative_context": "Show the institution taking action against the threat.",
-      "script_guidance": "The State Department has issued warnings and is monitoring the situation closely.",
-      "emotional_tone": "authoritative",
-      "duration_target": 4
+      "narrative_context": "A visual merger of the Indeed and Glassdoor logos.",
+      "script_guidance": "The merger aims to streamline the hiring process in the age of AI.",
+      "emotional_tone": "optimistic",
+      "duration_target": "5"
     },
     {
       "segment_number": 6,
-      "narrative_purpose": "Compare to past impersonation incidents.",
+      "narrative_purpose": "Highlight leadership changes.",
       "visual_type": "Proper Noun",
-      "primary_search_term": "Susie Wiles impersonation",
+      "primary_search_term": "Glassdoor CEO departure",
       "secondary_keywords": [
-        "Trump administration",
-        "AI scam"
+        "Christian Sutherland-Wong",
+        "leadership transition"
       ],
-      "narrative_context": "Link current events to a pattern of similar threats.",
-      "script_guidance": "This isn't the first time high-profile figures have been impersonated.",
-      "emotional_tone": "investigative",
-      "duration_target": 5
+      "narrative_context": "A photo of Christian Sutherland-Wong with a departure announcement graphic.",
+      "script_guidance": "Leadership changes reflect the company's new direction.",
+      "emotional_tone": "neutral",
+      "duration_target": "4"
     },
     {
       "segment_number": 7,
-      "narrative_purpose": "Explore the technology behind deepfakes.",
+      "narrative_purpose": "Show the global impact of the layoffs.",
       "visual_type": "Abstract Concept",
-      "primary_search_term": "deepfake technology",
+      "primary_search_term": "global job cuts",
       "secondary_keywords": [
-        "AI voice generation",
-        "digital forgery"
+        "international layoffs",
+        "workforce reduction"
       ],
-      "narrative_context": "Explain how deepfakes are created and why they're convincing.",
-      "script_guidance": "Deepfake technology has reached a level where distinguishing real from fake is increasingly difficult.",
-      "emotional_tone": "educational",
-      "duration_target": 6
+      "narrative_context": "A world map with highlighted areas affected by layoffs.",
+      "script_guidance": "The layoffs span across functions and countries, showing a global trend.",
+      "emotional_tone": "concerned",
+      "duration_target": "6"
     },
     {
       "segment_number": 8,
-      "narrative_purpose": "Highlight the arms race in AI detection.",
+      "narrative_purpose": "End with a look towards the future.",
       "visual_type": "Abstract Concept",
-      "primary_search_term": "AI detection tools",
+      "primary_search_term": "future of work",
       "secondary_keywords": [
-        "deepfake detection",
-        "cybersecurity measures"
+        "AI employment",
+        "technology workforce"
       ],
-      "narrative_context": "Show efforts to combat AI misuse.",
-      "script_guidance": "As AI improves, so do the tools designed to detect and prevent its misuse.",
+      "narrative_context": "A futuristic cityscape with AI and humans working side by side.",
+      "script_guidance": "As we navigate these changes, the future of work remains a shared journey.",
       "emotional_tone": "hopeful",
-      "duration_target": 5
+      "duration_target": "8"
     }
   ],
   "visual_entities": {
     "companies": [
-      "State Department",
-      "The Washington Post",
-      "The Associated Press",
-      "The Wall Street Journal"
+      "Indeed",
+      "Glassdoor",
+      "Recruit Holdings"
     ],
     "people": [
-      "Marco Rubio",
-      "Tammy Bruce",
-      "Susie Wiles",
-      "Siwei Lyu"
+      "Hisayuki Idekoba",
+      "Christian Sutherland-Wong",
+      "LaFawn Davis",
+      "Ayano Senaha"
     ],
     "products_services": [
-      "Signal app",
-      "Starlink internet service"
+      "HR technology",
+      "job search platforms"
     ],
     "locations": [
-      "Washington D.C.",
-      "University at Buffalo"
+      "Austin, Texas",
+      "Tokyo, Japan",
+      "Dublin, Ireland"
     ],
     "technologies": [
-      "AI deepfake technology",
-      "AI voice generation",
-      "deepfake detection tools"
+      "Artificial Intelligence",
+      "automation"
     ]
   },
   "visual_metaphors": {
     "primary_concepts": [
       {
-        "concept": "AI impersonation",
-        "visual_metaphor": "A mask being digitally superimposed over a face.",
+        "concept": "AI replacing jobs",
+        "visual_metaphor": "Robot hand taking a job application from a human hand.",
         "search_terms": [
-          "digital mask overlay",
-          "face replacement technology"
-        ]
-      },
-      {
-        "concept": "Cybersecurity arms race",
-        "visual_metaphor": "Two knights in a digital joust, one representing AI, the other detection tools.",
-        "search_terms": [
-          "digital jousting",
-          "AI vs cybersecurity"
+          "AI job replacement",
+          "robot human interaction"
         ]
       }
     ]
   },
   "script_structure": {
-    "target_duration": 240,
-    "pacing": "fast-paced",
+    "target_duration": "60",
+    "pacing": "varied",
     "narrative_style": "investigative",
-    "call_to_action": "Stay vigilant and informed about the evolving threats of AI impersonation."
+    "call_to_action": "How will AI shape your career? Stay informed and adapt."
   },
   "visual_variety_plan": {
-    "proper_noun_count": 4,
-    "concrete_action_count": 1,
-    "abstract_concept_count": 3,
-    "total_visual_segments": 8
+    "proper_noun_count": "4",
+    "concrete_action_count": "3",
+    "abstract_concept_count": "3",
+    "total_visual_segments": "8"
   }
 }

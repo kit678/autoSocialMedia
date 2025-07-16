@@ -1,960 +1,972 @@
 {
   "word_timings": {
-    "in": {
-      "start_time": 28.66,
-      "end_time": 28.84,
-      "confidence": 0.996,
-      "original_text": "in"
+    "robotic": {
+      "start_time": 0.52,
+      "end_time": 0.86,
+      "confidence": 0.995,
+      "original_text": "robotic"
+    },
+    "handshake": {
+      "start_time": 0.86,
+      "end_time": 1.4,
+      "confidence": 0.995,
+      "original_text": "handshake"
+    },
+    "symbolizing": {
+      "start_time": 1.4,
+      "end_time": 2.18,
+      "confidence": 0.789,
+      "original_text": "symbolizing"
     },
     "the": {
-      "start_time": 31.04,
-      "end_time": 31.2,
-      "confidence": 0.988,
+      "start_time": 35.32,
+      "end_time": 35.38,
+      "confidence": 0.993,
       "original_text": "the"
     },
-    "shadows": {
-      "start_time": 0.6,
-      "end_time": 0.94,
-      "confidence": 0.985,
-      "original_text": "shadows,"
+    "uneasy": {
+      "start_time": 2.36,
+      "end_time": 2.68,
+      "confidence": 0.981,
+      "original_text": "uneasy"
     },
-    "ai": {
-      "start_time": 20.3,
-      "end_time": 20.5,
-      "confidence": 0.954,
-      "original_text": "AI"
-    },
-    "manipulators": {
-      "start_time": 1.42,
-      "end_time": 2.14,
-      "confidence": 0.989,
-      "original_text": "manipulators"
-    },
-    "weave": {
-      "start_time": 2.14,
-      "end_time": 2.4,
-      "confidence": 0.926,
-      "original_text": "weave"
-    },
-    "digital": {
-      "start_time": 25.94,
-      "end_time": 26.14,
-      "confidence": 0.979,
-      "original_text": "digital"
-    },
-    "masks": {
+    "partnership": {
       "start_time": 2.68,
-      "end_time": 3.08,
-      "confidence": 0.987,
-      "original_text": "masks,"
-    },
-    "faces": {
-      "start_time": 3.4,
-      "end_time": 3.74,
-      "confidence": 0.659,
-      "original_text": "faces"
-    },
-    "forged": {
-      "start_time": 3.74,
-      "end_time": 4.12,
-      "confidence": 0.983,
-      "original_text": "forged"
-    },
-    "by": {
-      "start_time": 4.12,
-      "end_time": 4.32,
-      "confidence": 0.987,
-      "original_text": "by"
-    },
-    "deep": {
-      "start_time": 4.32,
-      "end_time": 4.5,
-      "confidence": 0.914,
-      "original_text": "deep"
-    },
-    "fake": {
-      "start_time": 32.22,
-      "end_time": 32.46,
-      "confidence": 0.999,
-      "original_text": "fake"
-    },
-    "technology": {
-      "start_time": 4.7,
-      "end_time": 5.18,
-      "confidence": 0.977,
-      "original_text": "technology."
-    },
-    "senator": {
-      "start_time": 5.96,
-      "end_time": 6.22,
-      "confidence": 0.976,
-      "original_text": "Senator"
-    },
-    "marco": {
-      "start_time": 6.22,
-      "end_time": 6.52,
-      "confidence": 0.974,
-      "original_text": "Marco"
-    },
-    "rubio": {
-      "start_time": 6.52,
-      "end_time": 6.94,
-      "confidence": 0.998,
-      "original_text": "Rubio"
-    },
-    "became": {
-      "start_time": 6.94,
-      "end_time": 7.18,
-      "confidence": 0.996,
-      "original_text": "became"
-    },
-    "their": {
-      "start_time": 7.18,
-      "end_time": 7.38,
-      "confidence": 0.999,
-      "original_text": "their"
-    },
-    "latest": {
-      "start_time": 7.38,
-      "end_time": 7.62,
-      "confidence": 0.996,
-      "original_text": "latest"
-    },
-    "target": {
-      "start_time": 7.62,
-      "end_time": 7.98,
-      "confidence": 1.0,
-      "original_text": "target,"
-    },
-    "his": {
-      "start_time": 8.32,
-      "end_time": 8.46,
+      "end_time": 3.22,
       "confidence": 0.969,
-      "original_text": "his"
-    },
-    "identity": {
-      "start_time": 8.46,
-      "end_time": 8.82,
-      "confidence": 0.99,
-      "original_text": "identity"
-    },
-    "hijacked": {
-      "start_time": 8.82,
-      "end_time": 9.28,
-      "confidence": 0.985,
-      "original_text": "hijacked"
-    },
-    "texts": {
-      "start_time": 9.42,
-      "end_time": 9.7,
-      "confidence": 0.992,
-      "original_text": "texts,"
-    },
-    "signal": {
-      "start_time": 9.96,
-      "end_time": 10.2,
-      "confidence": 0.984,
-      "original_text": "signal"
-    },
-    "messages": {
-      "start_time": 10.2,
-      "end_time": 10.56,
-      "confidence": 0.998,
-      "original_text": "messages"
-    },
-    "and": {
-      "start_time": 32.02,
-      "end_time": 32.22,
-      "confidence": 0.997,
-      "original_text": "and"
-    },
-    "voicemails": {
-      "start_time": 10.88,
-      "end_time": 11.4,
-      "confidence": 0.754,
-      "original_text": "voicemails."
-    },
-    "foreign": {
-      "start_time": 11.94,
-      "end_time": 12.18,
-      "confidence": 0.998,
-      "original_text": "Foreign"
-    },
-    "ministers": {
-      "start_time": 12.18,
-      "end_time": 12.54,
-      "confidence": 0.922,
-      "original_text": "ministers"
-    },
-    "us": {
-      "start_time": 12.86,
-      "end_time": 13.18,
-      "confidence": 0.807,
-      "original_text": "U.S."
-    },
-    "officials": {
-      "start_time": 13.36,
-      "end_time": 13.48,
-      "confidence": 0.995,
-      "original_text": "officials"
-    },
-    "were": {
-      "start_time": 13.48,
-      "end_time": 13.7,
-      "confidence": 0.999,
-      "original_text": "were"
-    },
-    "approached": {
-      "start_time": 13.7,
-      "end_time": 14.0,
-      "confidence": 0.998,
-      "original_text": "approached,"
-    },
-    "sparking": {
-      "start_time": 14.26,
-      "end_time": 14.6,
-      "confidence": 0.988,
-      "original_text": "sparking"
-    },
-    "state": {
-      "start_time": 14.6,
-      "end_time": 14.78,
-      "confidence": 0.647,
-      "original_text": "State"
-    },
-    "department": {
-      "start_time": 14.78,
-      "end_time": 15.14,
-      "confidence": 0.987,
-      "original_text": "Department"
-    },
-    "alarms": {
-      "start_time": 15.14,
-      "end_time": 15.5,
-      "confidence": 0.972,
-      "original_text": "alarms."
-    },
-    "this": {
-      "start_time": 16.14,
-      "end_time": 16.3,
-      "confidence": 0.999,
-      "original_text": "This"
-    },
-    "isnt": {
-      "start_time": 16.3,
-      "end_time": 16.5,
-      "confidence": 0.998,
-      "original_text": "isn't"
-    },
-    "new": {
-      "start_time": 16.5,
-      "end_time": 16.7,
-      "confidence": 0.998,
-      "original_text": "new,"
-    },
-    "remember": {
-      "start_time": 16.96,
-      "end_time": 17.22,
-      "confidence": 0.993,
-      "original_text": "remember"
-    },
-    "suzy": {
-      "start_time": 17.22,
-      "end_time": 17.62,
-      "confidence": 0.681,
-      "original_text": "Suzy"
-    },
-    "wiles": {
-      "start_time": 17.62,
-      "end_time": 18.06,
-      "confidence": 0.725,
-      "original_text": "Wiles'"
-    },
-    "impersonation": {
-      "start_time": 18.06,
-      "end_time": 18.7,
-      "confidence": 0.986,
-      "original_text": "impersonation."
-    },
-    "behind": {
-      "start_time": 19.36,
-      "end_time": 19.54,
-      "confidence": 0.997,
-      "original_text": "Behind"
-    },
-    "scams": {
-      "start_time": 19.72,
-      "end_time": 20.08,
-      "confidence": 0.986,
-      "original_text": "scams,"
-    },
-    "voice": {
-      "start_time": 20.5,
-      "end_time": 20.78,
-      "confidence": 0.974,
-      "original_text": "voice"
-    },
-    "generation": {
-      "start_time": 20.78,
-      "end_time": 21.24,
-      "confidence": 0.906,
-      "original_text": "generation"
-    },
-    "crafts": {
-      "start_time": 21.24,
-      "end_time": 21.64,
-      "confidence": 0.756,
-      "original_text": "crafts"
-    },
-    "flawless": {
-      "start_time": 21.64,
-      "end_time": 22.06,
-      "confidence": 0.987,
-      "original_text": "flawless"
-    },
-    "lies": {
-      "start_time": 22.06,
-      "end_time": 22.42,
-      "confidence": 0.98,
-      "original_text": "lies,"
-    },
-    "while": {
-      "start_time": 22.74,
-      "end_time": 22.86,
-      "confidence": 0.996,
-      "original_text": "while"
-    },
-    "detection": {
-      "start_time": 22.86,
-      "end_time": 23.18,
-      "confidence": 0.969,
-      "original_text": "detection"
-    },
-    "tools": {
-      "start_time": 23.18,
-      "end_time": 23.52,
-      "confidence": 0.997,
-      "original_text": "tools"
-    },
-    "scramble": {
-      "start_time": 23.52,
-      "end_time": 23.79,
-      "confidence": 0.99,
-      "original_text": "scramble"
-    },
-    "to": {
-      "start_time": 23.79,
-      "end_time": 24.18,
-      "confidence": 0.998,
-      "original_text": "to"
-    },
-    "keep": {
-      "start_time": 24.18,
-      "end_time": 24.36,
-      "confidence": 0.999,
-      "original_text": "keep"
-    },
-    "pace": {
-      "start_time": 24.36,
-      "end_time": 24.6,
-      "confidence": 0.999,
-      "original_text": "pace."
-    },
-    "arms": {
-      "start_time": 26.14,
-      "end_time": 26.4,
-      "confidence": 0.978,
-      "original_text": "arms"
-    },
-    "race": {
-      "start_time": 26.4,
-      "end_time": 26.7,
-      "confidence": 0.999,
-      "original_text": "race"
-    },
-    "unfolds": {
-      "start_time": 26.7,
-      "end_time": 27.48,
-      "confidence": 0.998,
-      "original_text": "unfolds,"
-    },
-    "nights": {
-      "start_time": 27.64,
-      "end_time": 27.82,
-      "confidence": 0.656,
-      "original_text": "nights"
-    },
-    "of": {
-      "start_time": 27.82,
-      "end_time": 28.0,
-      "confidence": 0.994,
-      "original_text": "of"
-    },
-    "code": {
-      "start_time": 28.0,
-      "end_time": 28.22,
-      "confidence": 0.989,
-      "original_text": "code"
-    },
-    "clashing": {
-      "start_time": 28.22,
-      "end_time": 28.66,
-      "confidence": 0.988,
-      "original_text": "clashing"
-    },
-    "cyberspace": {
-      "start_time": 28.84,
-      "end_time": 29.36,
-      "confidence": 0.987,
-      "original_text": "cyberspace."
-    },
-    "stay": {
-      "start_time": 29.98,
-      "end_time": 30.16,
-      "confidence": 0.997,
-      "original_text": "Stay"
-    },
-    "vigilant": {
-      "start_time": 30.16,
-      "end_time": 30.54,
-      "confidence": 0.99,
-      "original_text": "vigilant,"
-    },
-    "line": {
-      "start_time": 31.2,
-      "end_time": 31.42,
-      "confidence": 0.998,
-      "original_text": "line"
+      "original_text": "partnership"
     },
     "between": {
-      "start_time": 31.42,
-      "end_time": 31.72,
-      "confidence": 0.999,
+      "start_time": 3.22,
+      "end_time": 3.58,
+      "confidence": 0.946,
       "original_text": "between"
     },
-    "real": {
-      "start_time": 31.72,
-      "end_time": 32.02,
-      "confidence": 0.999,
-      "original_text": "real"
-    },
-    "is": {
-      "start_time": 32.46,
-      "end_time": 32.68,
-      "confidence": 0.998,
-      "original_text": "is"
-    },
-    "vanishing": {
-      "start_time": 32.68,
-      "end_time": 33.14,
+    "ai": {
+      "start_time": 13.28,
+      "end_time": 13.52,
       "confidence": 0.996,
-      "original_text": "vanishing."
+      "original_text": "AI"
+    },
+    "and": {
+      "start_time": 8.9,
+      "end_time": 9.16,
+      "confidence": 0.992,
+      "original_text": "and"
+    },
+    "human": {
+      "start_time": 4.22,
+      "end_time": 4.46,
+      "confidence": 0.96,
+      "original_text": "human"
+    },
+    "workers": {
+      "start_time": 4.46,
+      "end_time": 4.76,
+      "confidence": 0.946,
+      "original_text": "workers."
+    },
+    "as": {
+      "start_time": 31.46,
+      "end_time": 31.88,
+      "confidence": 0.499,
+      "original_text": "as"
+    },
+    "artificial": {
+      "start_time": 5.68,
+      "end_time": 6.02,
+      "confidence": 0.952,
+      "original_text": "artificial"
+    },
+    "intelligence": {
+      "start_time": 6.02,
+      "end_time": 6.6,
+      "confidence": 0.999,
+      "original_text": "intelligence"
+    },
+    "reshapes": {
+      "start_time": 6.6,
+      "end_time": 7.16,
+      "confidence": 0.955,
+      "original_text": "reshapes"
+    },
+    "industries": {
+      "start_time": 7.16,
+      "end_time": 7.56,
+      "confidence": 0.997,
+      "original_text": "industries,"
+    },
+    "companies": {
+      "start_time": 8.04,
+      "end_time": 8.28,
+      "confidence": 0.96,
+      "original_text": "companies"
+    },
+    "like": {
+      "start_time": 8.28,
+      "end_time": 8.56,
+      "confidence": 0.997,
+      "original_text": "like"
+    },
+    "indeed": {
+      "start_time": 26.16,
+      "end_time": 26.52,
+      "confidence": 0.994,
+      "original_text": "Indeed"
+    },
+    "glastor": {
+      "start_time": 25.36,
+      "end_time": 25.98,
+      "confidence": 0.994,
+      "original_text": "Glastor"
+    },
+    "are": {
+      "start_time": 9.64,
+      "end_time": 9.78,
+      "confidence": 0.993,
+      "original_text": "are"
+    },
+    "making": {
+      "start_time": 9.78,
+      "end_time": 9.96,
+      "confidence": 0.998,
+      "original_text": "making"
+    },
+    "tough": {
+      "start_time": 9.96,
+      "end_time": 10.26,
+      "confidence": 0.999,
+      "original_text": "tough"
+    },
+    "decisions": {
+      "start_time": 10.26,
+      "end_time": 10.76,
+      "confidence": 0.999,
+      "original_text": "decisions,"
+    },
+    "cutting": {
+      "start_time": 11.22,
+      "end_time": 11.4,
+      "confidence": 0.998,
+      "original_text": "cutting"
+    },
+    "1300": {
+      "start_time": 11.4,
+      "end_time": 12.08,
+      "confidence": 0.925,
+      "original_text": "1,300"
+    },
+    "jobs": {
+      "start_time": 12.08,
+      "end_time": 12.6,
+      "confidence": 0.998,
+      "original_text": "jobs."
+    },
+    "isnt": {
+      "start_time": 13.52,
+      "end_time": 13.9,
+      "confidence": 0.997,
+      "original_text": "isn't"
+    },
+    "just": {
+      "start_time": 13.9,
+      "end_time": 14.02,
+      "confidence": 1.0,
+      "original_text": "just"
+    },
+    "tool": {
+      "start_time": 14.16,
+      "end_time": 14.38,
+      "confidence": 1.0,
+      "original_text": "tool,"
+    },
+    "its": {
+      "start_time": 14.62,
+      "end_time": 14.76,
+      "confidence": 0.985,
+      "original_text": "it's"
+    },
+    "replacing": {
+      "start_time": 14.76,
+      "end_time": 15.06,
+      "confidence": 0.998,
+      "original_text": "replacing"
+    },
+    "roles": {
+      "start_time": 15.06,
+      "end_time": 15.42,
+      "confidence": 0.988,
+      "original_text": "roles,"
+    },
+    "transforming": {
+      "start_time": 15.64,
+      "end_time": 16.04,
+      "confidence": 0.998,
+      "original_text": "transforming"
+    },
+    "workforce": {
+      "start_time": 16.26,
+      "end_time": 16.6,
+      "confidence": 0.975,
+      "original_text": "workforce."
+    },
+    "behind": {
+      "start_time": 17.36,
+      "end_time": 17.58,
+      "confidence": 0.998,
+      "original_text": "Behind"
+    },
+    "every": {
+      "start_time": 17.58,
+      "end_time": 17.92,
+      "confidence": 0.999,
+      "original_text": "every"
+    },
+    "statistic": {
+      "start_time": 17.92,
+      "end_time": 18.42,
+      "confidence": 0.999,
+      "original_text": "statistic,"
+    },
+    "employees": {
+      "start_time": 18.88,
+      "end_time": 19.28,
+      "confidence": 0.994,
+      "original_text": "employees"
+    },
+    "packing": {
+      "start_time": 19.28,
+      "end_time": 19.64,
+      "confidence": 0.976,
+      "original_text": "packing"
+    },
+    "desks": {
+      "start_time": 19.64,
+      "end_time": 20.24,
+      "confidence": 0.996,
+      "original_text": "desks,"
+    },
+    "futures": {
+      "start_time": 20.42,
+      "end_time": 20.66,
+      "confidence": 0.983,
+      "original_text": "futures"
+    },
+    "uncertain": {
+      "start_time": 20.66,
+      "end_time": 21.12,
+      "confidence": 0.583,
+      "original_text": "uncertain."
+    },
+    "recruit": {
+      "start_time": 21.82,
+      "end_time": 22.16,
+      "confidence": 0.953,
+      "original_text": "Recruit"
+    },
+    "holdings": {
+      "start_time": 22.16,
+      "end_time": 22.56,
+      "confidence": 0.754,
+      "original_text": "Holdings"
+    },
+    "ceo": {
+      "start_time": 22.56,
+      "end_time": 22.94,
+      "confidence": 0.77,
+      "original_text": "CEO"
+    },
+    "hisyuki": {
+      "start_time": 22.94,
+      "end_time": 23.5,
+      "confidence": 0.602,
+      "original_text": "Hisyuki"
+    },
+    "aitkoba": {
+      "start_time": 23.5,
+      "end_time": 24.02,
+      "confidence": 0.506,
+      "original_text": "Aitkoba"
+    },
+    "faces": {
+      "start_time": 24.02,
+      "end_time": 24.38,
+      "confidence": 0.984,
+      "original_text": "faces"
+    },
+    "challenge": {
+      "start_time": 24.66,
+      "end_time": 25.0,
+      "confidence": 0.997,
+      "original_text": "challenge"
+    },
+    "merging": {
+      "start_time": 25.0,
+      "end_time": 25.36,
+      "confidence": 0.854,
+      "original_text": "merging"
+    },
+    "into": {
+      "start_time": 25.98,
+      "end_time": 26.16,
+      "confidence": 0.995,
+      "original_text": "into"
+    },
+    "to": {
+      "start_time": 26.64,
+      "end_time": 26.78,
+      "confidence": 0.977,
+      "original_text": "to"
+    },
+    "streamline": {
+      "start_time": 26.78,
+      "end_time": 27.1,
+      "confidence": 0.436,
+      "original_text": "streamline"
+    },
+    "hiring": {
+      "start_time": 27.1,
+      "end_time": 27.52,
+      "confidence": 0.999,
+      "original_text": "hiring."
+    },
+    "ship": {
+      "start_time": 29.28,
+      "end_time": 29.3,
+      "confidence": 0.103,
+      "original_text": "ship"
+    },
+    "shifts": {
+      "start_time": 29.3,
+      "end_time": 29.62,
+      "confidence": 0.984,
+      "original_text": "shifts,"
+    },
+    "christian": {
+      "start_time": 29.88,
+      "end_time": 30.14,
+      "confidence": 0.95,
+      "original_text": "Christian"
+    },
+    "sutherland": {
+      "start_time": 30.14,
+      "end_time": 30.66,
+      "confidence": 0.922,
+      "original_text": "Sutherland"
+    },
+    "wung": {
+      "start_time": 30.66,
+      "end_time": 30.88,
+      "confidence": 0.364,
+      "original_text": "Wung"
+    },
+    "departs": {
+      "start_time": 30.88,
+      "end_time": 31.46,
+      "confidence": 0.944,
+      "original_text": "departs"
+    },
+    "layoffs": {
+      "start_time": 31.88,
+      "end_time": 32.32,
+      "confidence": 0.947,
+      "original_text": "layoffs"
+    },
+    "span": {
+      "start_time": 32.32,
+      "end_time": 32.6,
+      "confidence": 0.99,
+      "original_text": "span"
+    },
+    "globe": {
+      "start_time": 32.76,
+      "end_time": 33.06,
+      "confidence": 0.995,
+      "original_text": "globe."
+    },
+    "yet": {
+      "start_time": 33.72,
+      "end_time": 33.86,
+      "confidence": 0.996,
+      "original_text": "Yet"
+    },
+    "in": {
+      "start_time": 33.86,
+      "end_time": 34.0,
+      "confidence": 0.979,
+      "original_text": "in"
+    },
+    "this": {
+      "start_time": 34.0,
+      "end_time": 34.16,
+      "confidence": 0.997,
+      "original_text": "this"
+    },
+    "aidriven": {
+      "start_time": 34.16,
+      "end_time": 34.72,
+      "confidence": 0.823,
+      "original_text": "AI-driven"
+    },
+    "world": {
+      "start_time": 34.72,
+      "end_time": 35.06,
+      "confidence": 0.999,
+      "original_text": "world,"
+    },
+    "future": {
+      "start_time": 35.38,
+      "end_time": 35.64,
+      "confidence": 0.998,
+      "original_text": "future"
+    },
+    "of": {
+      "start_time": 35.64,
+      "end_time": 35.84,
+      "confidence": 0.997,
+      "original_text": "of"
+    },
+    "work": {
+      "start_time": 35.84,
+      "end_time": 36.02,
+      "confidence": 0.996,
+      "original_text": "work"
+    },
+    "remains": {
+      "start_time": 36.02,
+      "end_time": 36.38,
+      "confidence": 0.994,
+      "original_text": "remains"
+    },
+    "shared": {
+      "start_time": 36.58,
+      "end_time": 36.8,
+      "confidence": 0.999,
+      "original_text": "shared"
+    },
+    "journey": {
+      "start_time": 36.8,
+      "end_time": 37.14,
+      "confidence": 0.999,
+      "original_text": "journey."
     }
   },
   "all_words": [
     {
-      "word": "in",
-      "start_time": 0.38,
-      "end_time": 0.48,
-      "confidence": 0.967
-    },
-    {
-      "word": "the",
-      "start_time": 0.48,
-      "end_time": 0.6,
-      "confidence": 0.985
-    },
-    {
-      "word": "shadows",
-      "start_time": 0.6,
-      "end_time": 0.94,
-      "confidence": 0.985
-    },
-    {
-      "word": "ai",
-      "start_time": 1.26,
-      "end_time": 1.42,
-      "confidence": 0.889
-    },
-    {
-      "word": "manipulators",
-      "start_time": 1.42,
-      "end_time": 2.14,
-      "confidence": 0.989
-    },
-    {
-      "word": "weave",
-      "start_time": 2.14,
-      "end_time": 2.4,
-      "confidence": 0.926
-    },
-    {
-      "word": "digital",
-      "start_time": 2.4,
-      "end_time": 2.68,
-      "confidence": 0.991
-    },
-    {
-      "word": "masks",
-      "start_time": 2.68,
-      "end_time": 3.08,
-      "confidence": 0.987
-    },
-    {
-      "word": "faces",
-      "start_time": 3.4,
-      "end_time": 3.74,
-      "confidence": 0.659
-    },
-    {
-      "word": "forged",
-      "start_time": 3.74,
-      "end_time": 4.12,
-      "confidence": 0.983
-    },
-    {
-      "word": "by",
-      "start_time": 4.12,
-      "end_time": 4.32,
-      "confidence": 0.987
-    },
-    {
-      "word": "deep",
-      "start_time": 4.32,
-      "end_time": 4.5,
-      "confidence": 0.914
-    },
-    {
-      "word": "fake",
-      "start_time": 4.5,
-      "end_time": 4.7,
-      "confidence": 0.686
-    },
-    {
-      "word": "technology",
-      "start_time": 4.7,
-      "end_time": 5.18,
-      "confidence": 0.977
-    },
-    {
-      "word": "senator",
-      "start_time": 5.96,
-      "end_time": 6.22,
-      "confidence": 0.976
-    },
-    {
-      "word": "marco",
-      "start_time": 6.22,
-      "end_time": 6.52,
-      "confidence": 0.974
-    },
-    {
-      "word": "rubio",
-      "start_time": 6.52,
-      "end_time": 6.94,
-      "confidence": 0.998
-    },
-    {
-      "word": "became",
-      "start_time": 6.94,
-      "end_time": 7.18,
-      "confidence": 0.996
-    },
-    {
-      "word": "their",
-      "start_time": 7.18,
-      "end_time": 7.38,
-      "confidence": 0.999
-    },
-    {
-      "word": "latest",
-      "start_time": 7.38,
-      "end_time": 7.62,
-      "confidence": 0.996
-    },
-    {
-      "word": "target",
-      "start_time": 7.62,
-      "end_time": 7.98,
-      "confidence": 1.0
-    },
-    {
-      "word": "his",
-      "start_time": 8.32,
-      "end_time": 8.46,
-      "confidence": 0.969
-    },
-    {
-      "word": "identity",
-      "start_time": 8.46,
-      "end_time": 8.82,
-      "confidence": 0.99
-    },
-    {
-      "word": "hijacked",
-      "start_time": 8.82,
-      "end_time": 9.28,
-      "confidence": 0.985
-    },
-    {
-      "word": "in",
-      "start_time": 9.28,
-      "end_time": 9.42,
+      "word": "robotic",
+      "start_time": 0.52,
+      "end_time": 0.86,
       "confidence": 0.995
     },
     {
-      "word": "texts",
-      "start_time": 9.42,
-      "end_time": 9.7,
-      "confidence": 0.992
-    },
-    {
-      "word": "signal",
-      "start_time": 9.96,
-      "end_time": 10.2,
-      "confidence": 0.984
-    },
-    {
-      "word": "messages",
-      "start_time": 10.2,
-      "end_time": 10.56,
-      "confidence": 0.998
-    },
-    {
-      "word": "and",
-      "start_time": 10.74,
-      "end_time": 10.88,
-      "confidence": 1.0
-    },
-    {
-      "word": "voicemails",
-      "start_time": 10.88,
-      "end_time": 11.4,
-      "confidence": 0.754
-    },
-    {
-      "word": "foreign",
-      "start_time": 11.94,
-      "end_time": 12.18,
-      "confidence": 0.998
-    },
-    {
-      "word": "ministers",
-      "start_time": 12.18,
-      "end_time": 12.54,
-      "confidence": 0.922
-    },
-    {
-      "word": "and",
-      "start_time": 12.54,
-      "end_time": 12.86,
-      "confidence": 0.999
-    },
-    {
-      "word": "us",
-      "start_time": 12.86,
-      "end_time": 13.18,
-      "confidence": 0.807
-    },
-    {
-      "word": "officials",
-      "start_time": 13.36,
-      "end_time": 13.48,
+      "word": "handshake",
+      "start_time": 0.86,
+      "end_time": 1.4,
       "confidence": 0.995
     },
     {
-      "word": "were",
-      "start_time": 13.48,
-      "end_time": 13.7,
-      "confidence": 0.999
-    },
-    {
-      "word": "approached",
-      "start_time": 13.7,
-      "end_time": 14.0,
-      "confidence": 0.998
-    },
-    {
-      "word": "sparking",
-      "start_time": 14.26,
-      "end_time": 14.6,
-      "confidence": 0.988
-    },
-    {
-      "word": "state",
-      "start_time": 14.6,
-      "end_time": 14.78,
-      "confidence": 0.647
-    },
-    {
-      "word": "department",
-      "start_time": 14.78,
-      "end_time": 15.14,
-      "confidence": 0.987
-    },
-    {
-      "word": "alarms",
-      "start_time": 15.14,
-      "end_time": 15.5,
-      "confidence": 0.972
-    },
-    {
-      "word": "this",
-      "start_time": 16.14,
-      "end_time": 16.3,
-      "confidence": 0.999
-    },
-    {
-      "word": "isnt",
-      "start_time": 16.3,
-      "end_time": 16.5,
-      "confidence": 0.998
-    },
-    {
-      "word": "new",
-      "start_time": 16.5,
-      "end_time": 16.7,
-      "confidence": 0.998
-    },
-    {
-      "word": "remember",
-      "start_time": 16.96,
-      "end_time": 17.22,
-      "confidence": 0.993
-    },
-    {
-      "word": "suzy",
-      "start_time": 17.22,
-      "end_time": 17.62,
-      "confidence": 0.681
-    },
-    {
-      "word": "wiles",
-      "start_time": 17.62,
-      "end_time": 18.06,
-      "confidence": 0.725
-    },
-    {
-      "word": "impersonation",
-      "start_time": 18.06,
-      "end_time": 18.7,
-      "confidence": 0.986
-    },
-    {
-      "word": "behind",
-      "start_time": 19.36,
-      "end_time": 19.54,
-      "confidence": 0.997
+      "word": "symbolizing",
+      "start_time": 1.4,
+      "end_time": 2.18,
+      "confidence": 0.789
     },
     {
       "word": "the",
-      "start_time": 19.54,
-      "end_time": 19.72,
-      "confidence": 0.998
-    },
-    {
-      "word": "scams",
-      "start_time": 19.72,
-      "end_time": 20.08,
-      "confidence": 0.986
-    },
-    {
-      "word": "ai",
-      "start_time": 20.3,
-      "end_time": 20.5,
-      "confidence": 0.954
-    },
-    {
-      "word": "voice",
-      "start_time": 20.5,
-      "end_time": 20.78,
-      "confidence": 0.974
-    },
-    {
-      "word": "generation",
-      "start_time": 20.78,
-      "end_time": 21.24,
-      "confidence": 0.906
-    },
-    {
-      "word": "crafts",
-      "start_time": 21.24,
-      "end_time": 21.64,
-      "confidence": 0.756
-    },
-    {
-      "word": "flawless",
-      "start_time": 21.64,
-      "end_time": 22.06,
-      "confidence": 0.987
-    },
-    {
-      "word": "lies",
-      "start_time": 22.06,
-      "end_time": 22.42,
-      "confidence": 0.98
-    },
-    {
-      "word": "while",
-      "start_time": 22.74,
-      "end_time": 22.86,
-      "confidence": 0.996
-    },
-    {
-      "word": "detection",
-      "start_time": 22.86,
-      "end_time": 23.18,
-      "confidence": 0.969
-    },
-    {
-      "word": "tools",
-      "start_time": 23.18,
-      "end_time": 23.52,
-      "confidence": 0.997
-    },
-    {
-      "word": "scramble",
-      "start_time": 23.52,
-      "end_time": 23.79,
-      "confidence": 0.99
-    },
-    {
-      "word": "to",
-      "start_time": 23.79,
-      "end_time": 24.18,
-      "confidence": 0.998
-    },
-    {
-      "word": "keep",
-      "start_time": 24.18,
-      "end_time": 24.36,
-      "confidence": 0.999
-    },
-    {
-      "word": "pace",
-      "start_time": 24.36,
-      "end_time": 24.6,
-      "confidence": 0.999
-    },
-    {
-      "word": "digital",
-      "start_time": 25.94,
-      "end_time": 26.14,
-      "confidence": 0.979
-    },
-    {
-      "word": "arms",
-      "start_time": 26.14,
-      "end_time": 26.4,
+      "start_time": 2.18,
+      "end_time": 2.36,
       "confidence": 0.978
     },
     {
-      "word": "race",
-      "start_time": 26.4,
-      "end_time": 26.7,
+      "word": "uneasy",
+      "start_time": 2.36,
+      "end_time": 2.68,
+      "confidence": 0.981
+    },
+    {
+      "word": "partnership",
+      "start_time": 2.68,
+      "end_time": 3.22,
+      "confidence": 0.969
+    },
+    {
+      "word": "between",
+      "start_time": 3.22,
+      "end_time": 3.58,
+      "confidence": 0.946
+    },
+    {
+      "word": "ai",
+      "start_time": 3.58,
+      "end_time": 3.92,
+      "confidence": 0.978
+    },
+    {
+      "word": "and",
+      "start_time": 3.92,
+      "end_time": 4.22,
+      "confidence": 0.992
+    },
+    {
+      "word": "human",
+      "start_time": 4.22,
+      "end_time": 4.46,
+      "confidence": 0.96
+    },
+    {
+      "word": "workers",
+      "start_time": 4.46,
+      "end_time": 4.76,
+      "confidence": 0.946
+    },
+    {
+      "word": "as",
+      "start_time": 5.56,
+      "end_time": 5.68,
       "confidence": 0.999
     },
     {
-      "word": "unfolds",
-      "start_time": 26.7,
-      "end_time": 27.48,
-      "confidence": 0.998
+      "word": "artificial",
+      "start_time": 5.68,
+      "end_time": 6.02,
+      "confidence": 0.952
     },
     {
-      "word": "nights",
-      "start_time": 27.64,
-      "end_time": 27.82,
-      "confidence": 0.656
+      "word": "intelligence",
+      "start_time": 6.02,
+      "end_time": 6.6,
+      "confidence": 0.999
     },
     {
-      "word": "of",
-      "start_time": 27.82,
-      "end_time": 28.0,
-      "confidence": 0.994
+      "word": "reshapes",
+      "start_time": 6.6,
+      "end_time": 7.16,
+      "confidence": 0.955
     },
     {
-      "word": "code",
-      "start_time": 28.0,
-      "end_time": 28.22,
-      "confidence": 0.989
-    },
-    {
-      "word": "clashing",
-      "start_time": 28.22,
-      "end_time": 28.66,
-      "confidence": 0.988
-    },
-    {
-      "word": "in",
-      "start_time": 28.66,
-      "end_time": 28.84,
-      "confidence": 0.996
-    },
-    {
-      "word": "cyberspace",
-      "start_time": 28.84,
-      "end_time": 29.36,
-      "confidence": 0.987
-    },
-    {
-      "word": "stay",
-      "start_time": 29.98,
-      "end_time": 30.16,
+      "word": "industries",
+      "start_time": 7.16,
+      "end_time": 7.56,
       "confidence": 0.997
     },
     {
-      "word": "vigilant",
-      "start_time": 30.16,
-      "end_time": 30.54,
+      "word": "companies",
+      "start_time": 8.04,
+      "end_time": 8.28,
+      "confidence": 0.96
+    },
+    {
+      "word": "like",
+      "start_time": 8.28,
+      "end_time": 8.56,
+      "confidence": 0.997
+    },
+    {
+      "word": "indeed",
+      "start_time": 8.56,
+      "end_time": 8.9,
+      "confidence": 0.968
+    },
+    {
+      "word": "and",
+      "start_time": 8.9,
+      "end_time": 9.16,
+      "confidence": 0.992
+    },
+    {
+      "word": "glastor",
+      "start_time": 9.16,
+      "end_time": 9.64,
+      "confidence": 0.761
+    },
+    {
+      "word": "are",
+      "start_time": 9.64,
+      "end_time": 9.78,
+      "confidence": 0.993
+    },
+    {
+      "word": "making",
+      "start_time": 9.78,
+      "end_time": 9.96,
+      "confidence": 0.998
+    },
+    {
+      "word": "tough",
+      "start_time": 9.96,
+      "end_time": 10.26,
+      "confidence": 0.999
+    },
+    {
+      "word": "decisions",
+      "start_time": 10.26,
+      "end_time": 10.76,
+      "confidence": 0.999
+    },
+    {
+      "word": "cutting",
+      "start_time": 11.22,
+      "end_time": 11.4,
+      "confidence": 0.998
+    },
+    {
+      "word": "1300",
+      "start_time": 11.4,
+      "end_time": 12.08,
+      "confidence": 0.925
+    },
+    {
+      "word": "jobs",
+      "start_time": 12.08,
+      "end_time": 12.6,
+      "confidence": 0.998
+    },
+    {
+      "word": "ai",
+      "start_time": 13.28,
+      "end_time": 13.52,
+      "confidence": 0.996
+    },
+    {
+      "word": "isnt",
+      "start_time": 13.52,
+      "end_time": 13.9,
+      "confidence": 0.997
+    },
+    {
+      "word": "just",
+      "start_time": 13.9,
+      "end_time": 14.02,
+      "confidence": 1.0
+    },
+    {
+      "word": "tool",
+      "start_time": 14.16,
+      "end_time": 14.38,
+      "confidence": 1.0
+    },
+    {
+      "word": "its",
+      "start_time": 14.62,
+      "end_time": 14.76,
+      "confidence": 0.985
+    },
+    {
+      "word": "replacing",
+      "start_time": 14.76,
+      "end_time": 15.06,
+      "confidence": 0.998
+    },
+    {
+      "word": "roles",
+      "start_time": 15.06,
+      "end_time": 15.42,
+      "confidence": 0.988
+    },
+    {
+      "word": "transforming",
+      "start_time": 15.64,
+      "end_time": 16.04,
+      "confidence": 0.998
+    },
+    {
+      "word": "the",
+      "start_time": 16.04,
+      "end_time": 16.26,
+      "confidence": 0.998
+    },
+    {
+      "word": "workforce",
+      "start_time": 16.26,
+      "end_time": 16.6,
+      "confidence": 0.975
+    },
+    {
+      "word": "behind",
+      "start_time": 17.36,
+      "end_time": 17.58,
+      "confidence": 0.998
+    },
+    {
+      "word": "every",
+      "start_time": 17.58,
+      "end_time": 17.92,
+      "confidence": 0.999
+    },
+    {
+      "word": "statistic",
+      "start_time": 17.92,
+      "end_time": 18.42,
+      "confidence": 0.999
+    },
+    {
+      "word": "employees",
+      "start_time": 18.88,
+      "end_time": 19.28,
+      "confidence": 0.994
+    },
+    {
+      "word": "packing",
+      "start_time": 19.28,
+      "end_time": 19.64,
+      "confidence": 0.976
+    },
+    {
+      "word": "desks",
+      "start_time": 19.64,
+      "end_time": 20.24,
+      "confidence": 0.996
+    },
+    {
+      "word": "futures",
+      "start_time": 20.42,
+      "end_time": 20.66,
+      "confidence": 0.983
+    },
+    {
+      "word": "uncertain",
+      "start_time": 20.66,
+      "end_time": 21.12,
+      "confidence": 0.583
+    },
+    {
+      "word": "recruit",
+      "start_time": 21.82,
+      "end_time": 22.16,
+      "confidence": 0.953
+    },
+    {
+      "word": "holdings",
+      "start_time": 22.16,
+      "end_time": 22.56,
+      "confidence": 0.754
+    },
+    {
+      "word": "ceo",
+      "start_time": 22.56,
+      "end_time": 22.94,
+      "confidence": 0.77
+    },
+    {
+      "word": "hisyuki",
+      "start_time": 22.94,
+      "end_time": 23.5,
+      "confidence": 0.602
+    },
+    {
+      "word": "aitkoba",
+      "start_time": 23.5,
+      "end_time": 24.02,
+      "confidence": 0.506
+    },
+    {
+      "word": "faces",
+      "start_time": 24.02,
+      "end_time": 24.38,
+      "confidence": 0.984
+    },
+    {
+      "word": "the",
+      "start_time": 24.38,
+      "end_time": 24.66,
+      "confidence": 0.998
+    },
+    {
+      "word": "challenge",
+      "start_time": 24.66,
+      "end_time": 25.0,
+      "confidence": 0.997
+    },
+    {
+      "word": "merging",
+      "start_time": 25.0,
+      "end_time": 25.36,
+      "confidence": 0.854
+    },
+    {
+      "word": "glastor",
+      "start_time": 25.36,
+      "end_time": 25.98,
+      "confidence": 0.994
+    },
+    {
+      "word": "into",
+      "start_time": 25.98,
+      "end_time": 26.16,
+      "confidence": 0.995
+    },
+    {
+      "word": "indeed",
+      "start_time": 26.16,
+      "end_time": 26.52,
+      "confidence": 0.994
+    },
+    {
+      "word": "to",
+      "start_time": 26.64,
+      "end_time": 26.78,
+      "confidence": 0.977
+    },
+    {
+      "word": "streamline",
+      "start_time": 26.78,
+      "end_time": 27.1,
+      "confidence": 0.436
+    },
+    {
+      "word": "hiring",
+      "start_time": 27.1,
+      "end_time": 27.52,
+      "confidence": 0.999
+    },
+    {
+      "word": "as",
+      "start_time": 29.24,
+      "end_time": 29.26,
+      "confidence": 0.104
+    },
+    {
+      "word": "the",
+      "start_time": 29.26,
+      "end_time": 29.28,
+      "confidence": 0.262
+    },
+    {
+      "word": "ship",
+      "start_time": 29.28,
+      "end_time": 29.3,
+      "confidence": 0.103
+    },
+    {
+      "word": "shifts",
+      "start_time": 29.3,
+      "end_time": 29.62,
+      "confidence": 0.984
+    },
+    {
+      "word": "christian",
+      "start_time": 29.88,
+      "end_time": 30.14,
+      "confidence": 0.95
+    },
+    {
+      "word": "sutherland",
+      "start_time": 30.14,
+      "end_time": 30.66,
+      "confidence": 0.922
+    },
+    {
+      "word": "wung",
+      "start_time": 30.66,
+      "end_time": 30.88,
+      "confidence": 0.364
+    },
+    {
+      "word": "departs",
+      "start_time": 30.88,
+      "end_time": 31.46,
+      "confidence": 0.944
+    },
+    {
+      "word": "as",
+      "start_time": 31.46,
+      "end_time": 31.88,
+      "confidence": 0.499
+    },
+    {
+      "word": "layoffs",
+      "start_time": 31.88,
+      "end_time": 32.32,
+      "confidence": 0.947
+    },
+    {
+      "word": "span",
+      "start_time": 32.32,
+      "end_time": 32.6,
       "confidence": 0.99
     },
     {
       "word": "the",
-      "start_time": 31.04,
-      "end_time": 31.2,
-      "confidence": 0.988
+      "start_time": 32.6,
+      "end_time": 32.76,
+      "confidence": 0.996
     },
     {
-      "word": "line",
-      "start_time": 31.2,
-      "end_time": 31.42,
-      "confidence": 0.998
+      "word": "globe",
+      "start_time": 32.76,
+      "end_time": 33.06,
+      "confidence": 0.995
     },
     {
-      "word": "between",
-      "start_time": 31.42,
-      "end_time": 31.72,
-      "confidence": 0.999
+      "word": "yet",
+      "start_time": 33.72,
+      "end_time": 33.86,
+      "confidence": 0.996
     },
     {
-      "word": "real",
-      "start_time": 31.72,
-      "end_time": 32.02,
-      "confidence": 0.999
+      "word": "in",
+      "start_time": 33.86,
+      "end_time": 34.0,
+      "confidence": 0.979
     },
     {
-      "word": "and",
-      "start_time": 32.02,
-      "end_time": 32.22,
+      "word": "this",
+      "start_time": 34.0,
+      "end_time": 34.16,
       "confidence": 0.997
     },
     {
-      "word": "fake",
-      "start_time": 32.22,
-      "end_time": 32.46,
+      "word": "aidriven",
+      "start_time": 34.16,
+      "end_time": 34.72,
+      "confidence": 0.823
+    },
+    {
+      "word": "world",
+      "start_time": 34.72,
+      "end_time": 35.06,
       "confidence": 0.999
     },
     {
-      "word": "is",
-      "start_time": 32.46,
-      "end_time": 32.68,
+      "word": "the",
+      "start_time": 35.32,
+      "end_time": 35.38,
+      "confidence": 0.993
+    },
+    {
+      "word": "future",
+      "start_time": 35.38,
+      "end_time": 35.64,
       "confidence": 0.998
     },
     {
-      "word": "vanishing",
-      "start_time": 32.68,
-      "end_time": 33.14,
+      "word": "of",
+      "start_time": 35.64,
+      "end_time": 35.84,
+      "confidence": 0.997
+    },
+    {
+      "word": "work",
+      "start_time": 35.84,
+      "end_time": 36.02,
       "confidence": 0.996
+    },
+    {
+      "word": "remains",
+      "start_time": 36.02,
+      "end_time": 36.38,
+      "confidence": 0.994
+    },
+    {
+      "word": "shared",
+      "start_time": 36.58,
+      "end_time": 36.8,
+      "confidence": 0.999
+    },
+    {
+      "word": "journey",
+      "start_time": 36.8,
+      "end_time": 37.14,
+      "confidence": 0.999
     }
   ],
   "segments": [
@@ -962,238 +974,211 @@
       "id": 0,
       "seek": 0,
       "start": 0.38,
-      "end": 5.18,
-      "text": " In the shadows, AI manipulators weave digital masks, faces forged by deep fake technology.",
+      "end": 4.76,
+      "text": " A robotic handshake symbolizing the uneasy partnership between AI and human workers.",
       "tokens": [
         50364,
-        682,
+        316,
+        30468,
+        2377,
+        34593,
+        5986,
+        3319,
         264,
-        14740,
-        11,
+        48589,
+        9982,
+        1296,
         7318,
-        9258,
-        39265,
-        29145,
-        4562,
-        11830,
-        11,
-        8475,
-        40226,
-        538,
-        2452,
-        7592,
-        2899,
+        293,
+        1952,
+        5600,
         13,
-        50676
+        50648
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.921,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.943,
       "words": [
         {
-          "text": "In",
+          "text": "A",
           "start": 0.38,
-          "end": 0.48,
-          "confidence": 0.967
+          "end": 0.52,
+          "confidence": 0.922
+        },
+        {
+          "text": "robotic",
+          "start": 0.52,
+          "end": 0.86,
+          "confidence": 0.995
+        },
+        {
+          "text": "handshake",
+          "start": 0.86,
+          "end": 1.4,
+          "confidence": 0.995
+        },
+        {
+          "text": "symbolizing",
+          "start": 1.4,
+          "end": 2.18,
+          "confidence": 0.789
         },
         {
           "text": "the",
-          "start": 0.48,
-          "end": 0.6,
-          "confidence": 0.985
+          "start": 2.18,
+          "end": 2.36,
+          "confidence": 0.978
         },
         {
-          "text": "shadows,",
-          "start": 0.6,
-          "end": 0.94,
-          "confidence": 0.985
+          "text": "uneasy",
+          "start": 2.36,
+          "end": 2.68,
+          "confidence": 0.981
+        },
+        {
+          "text": "partnership",
+          "start": 2.68,
+          "end": 3.22,
+          "confidence": 0.969
+        },
+        {
+          "text": "between",
+          "start": 3.22,
+          "end": 3.58,
+          "confidence": 0.946
         },
         {
           "text": "AI",
-          "start": 1.26,
-          "end": 1.42,
-          "confidence": 0.889
+          "start": 3.58,
+          "end": 3.92,
+          "confidence": 0.978
         },
         {
-          "text": "manipulators",
-          "start": 1.42,
-          "end": 2.14,
-          "confidence": 0.989
+          "text": "and",
+          "start": 3.92,
+          "end": 4.22,
+          "confidence": 0.992
         },
         {
-          "text": "weave",
-          "start": 2.14,
-          "end": 2.4,
-          "confidence": 0.926
+          "text": "human",
+          "start": 4.22,
+          "end": 4.46,
+          "confidence": 0.96
         },
         {
-          "text": "digital",
-          "start": 2.4,
-          "end": 2.68,
-          "confidence": 0.991
-        },
-        {
-          "text": "masks,",
-          "start": 2.68,
-          "end": 3.08,
-          "confidence": 0.987
-        },
-        {
-          "text": "faces",
-          "start": 3.4,
-          "end": 3.74,
-          "confidence": 0.659
-        },
-        {
-          "text": "forged",
-          "start": 3.74,
-          "end": 4.12,
-          "confidence": 0.983
-        },
-        {
-          "text": "by",
-          "start": 4.12,
-          "end": 4.32,
-          "confidence": 0.987
-        },
-        {
-          "text": "deep",
-          "start": 4.32,
-          "end": 4.5,
-          "confidence": 0.914
-        },
-        {
-          "text": "fake",
-          "start": 4.5,
-          "end": 4.7,
-          "confidence": 0.686
-        },
-        {
-          "text": "technology.",
-          "start": 4.7,
-          "end": 5.18,
-          "confidence": 0.977
+          "text": "workers.",
+          "start": 4.46,
+          "end": 4.76,
+          "confidence": 0.946
         }
       ]
     },
     {
       "id": 1,
       "seek": 0,
-      "start": 5.96,
-      "end": 10.56,
-      "text": " Senator Marco Rubio became their latest target, his identity hijacked in texts, signal messages",
+      "start": 5.56,
+      "end": 9.96,
+      "text": " As artificial intelligence reshapes industries, companies like Indeed and Glastor are making",
       "tokens": [
-        50676,
-        10893,
-        26535,
-        10518,
-        1004,
-        3062,
-        641,
-        6792,
-        3779,
+        50648,
+        1018,
+        11677,
+        7599,
+        725,
+        71,
+        569,
+        279,
+        13284,
         11,
-        702,
-        6575,
-        10625,
-        25949,
-        294,
-        15765,
-        11,
-        6358,
-        7897,
-        50900
+        3431,
+        411,
+        15061,
+        293,
+        5209,
+        525,
+        284,
+        366,
+        1455,
+        50866
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.989,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.934,
       "words": [
         {
-          "text": "Senator",
-          "start": 5.96,
-          "end": 6.22,
-          "confidence": 0.976
-        },
-        {
-          "text": "Marco",
-          "start": 6.22,
-          "end": 6.52,
-          "confidence": 0.974
-        },
-        {
-          "text": "Rubio",
-          "start": 6.52,
-          "end": 6.94,
-          "confidence": 0.998
-        },
-        {
-          "text": "became",
-          "start": 6.94,
-          "end": 7.18,
-          "confidence": 0.996
-        },
-        {
-          "text": "their",
-          "start": 7.18,
-          "end": 7.38,
+          "text": "As",
+          "start": 5.56,
+          "end": 5.68,
           "confidence": 0.999
         },
         {
-          "text": "latest",
-          "start": 7.38,
-          "end": 7.62,
-          "confidence": 0.996
+          "text": "artificial",
+          "start": 5.68,
+          "end": 6.02,
+          "confidence": 0.952
         },
         {
-          "text": "target,",
-          "start": 7.62,
-          "end": 7.98,
-          "confidence": 1.0
+          "text": "intelligence",
+          "start": 6.02,
+          "end": 6.6,
+          "confidence": 0.999
         },
         {
-          "text": "his",
-          "start": 8.32,
-          "end": 8.46,
-          "confidence": 0.969
+          "text": "reshapes",
+          "start": 6.6,
+          "end": 7.16,
+          "confidence": 0.955
         },
         {
-          "text": "identity",
-          "start": 8.46,
-          "end": 8.82,
-          "confidence": 0.99
+          "text": "industries,",
+          "start": 7.16,
+          "end": 7.56,
+          "confidence": 0.997
         },
         {
-          "text": "hijacked",
-          "start": 8.82,
-          "end": 9.28,
-          "confidence": 0.985
+          "text": "companies",
+          "start": 8.04,
+          "end": 8.28,
+          "confidence": 0.96
         },
         {
-          "text": "in",
-          "start": 9.28,
-          "end": 9.42,
-          "confidence": 0.995
+          "text": "like",
+          "start": 8.28,
+          "end": 8.56,
+          "confidence": 0.997
         },
         {
-          "text": "texts,",
-          "start": 9.42,
-          "end": 9.7,
+          "text": "Indeed",
+          "start": 8.56,
+          "end": 8.9,
+          "confidence": 0.968
+        },
+        {
+          "text": "and",
+          "start": 8.9,
+          "end": 9.16,
           "confidence": 0.992
         },
         {
-          "text": "signal",
-          "start": 9.96,
-          "end": 10.2,
-          "confidence": 0.984
+          "text": "Glastor",
+          "start": 9.16,
+          "end": 9.64,
+          "confidence": 0.761
         },
         {
-          "text": "messages",
-          "start": 10.2,
-          "end": 10.56,
+          "text": "are",
+          "start": 9.64,
+          "end": 9.78,
+          "confidence": 0.993
+        },
+        {
+          "text": "making",
+          "start": 9.78,
+          "end": 9.96,
           "confidence": 0.998
         }
       ]
@@ -1201,559 +1186,619 @@
     {
       "id": 2,
       "seek": 0,
-      "start": 10.74,
-      "end": 11.4,
-      "text": " and voicemails.",
+      "start": 9.96,
+      "end": 12.6,
+      "text": " tough decisions, cutting 1,300 jobs.",
       "tokens": [
-        50900,
-        293,
-        1650,
-        46343,
-        6227,
+        50866,
+        4930,
+        5327,
+        11,
+        6492,
+        502,
+        11,
+        12566,
+        4782,
         13,
-        50976
+        51020
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.809,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.966,
       "words": [
         {
-          "text": "and",
-          "start": 10.74,
-          "end": 10.88,
-          "confidence": 1.0
+          "text": "tough",
+          "start": 9.96,
+          "end": 10.26,
+          "confidence": 0.999
         },
         {
-          "text": "voicemails.",
-          "start": 10.88,
+          "text": "decisions,",
+          "start": 10.26,
+          "end": 10.76,
+          "confidence": 0.999
+        },
+        {
+          "text": "cutting",
+          "start": 11.22,
           "end": 11.4,
-          "confidence": 0.754
+          "confidence": 0.998
+        },
+        {
+          "text": "1,300",
+          "start": 11.4,
+          "end": 12.08,
+          "confidence": 0.925
+        },
+        {
+          "text": "jobs.",
+          "start": 12.08,
+          "end": 12.6,
+          "confidence": 0.998
         }
       ]
     },
     {
       "id": 3,
       "seek": 0,
-      "start": 11.94,
-      "end": 15.5,
-      "text": " Foreign ministers and U.S. officials were approached, sparking State Department alarms.",
+      "start": 13.28,
+      "end": 16.6,
+      "text": " AI isn't just a tool, it's replacing roles, transforming the workforce.",
       "tokens": [
-        50976,
-        20430,
-        26220,
-        293,
-        624,
-        13,
-        50,
-        13,
-        9798,
-        645,
-        17247,
+        51020,
+        7318,
+        1943,
+        380,
+        445,
+        257,
+        2290,
         11,
-        9908,
-        278,
-        4533,
-        5982,
-        45039,
+        309,
+        311,
+        19139,
+        9604,
+        11,
+        27210,
+        264,
+        14201,
         13,
-        51178
+        51248
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.916,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.993,
       "words": [
         {
-          "text": "Foreign",
-          "start": 11.94,
-          "end": 12.18,
-          "confidence": 0.998
+          "text": "AI",
+          "start": 13.28,
+          "end": 13.52,
+          "confidence": 0.996
         },
         {
-          "text": "ministers",
-          "start": 12.18,
-          "end": 12.54,
-          "confidence": 0.922
+          "text": "isn't",
+          "start": 13.52,
+          "end": 13.9,
+          "confidence": 0.997
         },
         {
-          "text": "and",
-          "start": 12.54,
-          "end": 12.86,
+          "text": "just",
+          "start": 13.9,
+          "end": 14.02,
+          "confidence": 1.0
+        },
+        {
+          "text": "a",
+          "start": 14.02,
+          "end": 14.16,
           "confidence": 0.999
         },
         {
-          "text": "U.S.",
-          "start": 12.86,
-          "end": 13.18,
-          "confidence": 0.807
+          "text": "tool,",
+          "start": 14.16,
+          "end": 14.38,
+          "confidence": 1.0
         },
         {
-          "text": "officials",
-          "start": 13.36,
-          "end": 13.48,
-          "confidence": 0.995
+          "text": "it's",
+          "start": 14.62,
+          "end": 14.76,
+          "confidence": 0.985
         },
         {
-          "text": "were",
-          "start": 13.48,
-          "end": 13.7,
-          "confidence": 0.999
-        },
-        {
-          "text": "approached,",
-          "start": 13.7,
-          "end": 14.0,
+          "text": "replacing",
+          "start": 14.76,
+          "end": 15.06,
           "confidence": 0.998
         },
         {
-          "text": "sparking",
-          "start": 14.26,
-          "end": 14.6,
+          "text": "roles,",
+          "start": 15.06,
+          "end": 15.42,
           "confidence": 0.988
         },
         {
-          "text": "State",
-          "start": 14.6,
-          "end": 14.78,
-          "confidence": 0.647
+          "text": "transforming",
+          "start": 15.64,
+          "end": 16.04,
+          "confidence": 0.998
         },
         {
-          "text": "Department",
-          "start": 14.78,
-          "end": 15.14,
-          "confidence": 0.987
+          "text": "the",
+          "start": 16.04,
+          "end": 16.26,
+          "confidence": 0.998
         },
         {
-          "text": "alarms.",
-          "start": 15.14,
-          "end": 15.5,
-          "confidence": 0.972
+          "text": "workforce.",
+          "start": 16.26,
+          "end": 16.6,
+          "confidence": 0.975
         }
       ]
     },
     {
       "id": 4,
       "seek": 0,
-      "start": 16.14,
-      "end": 18.7,
-      "text": " This isn't new, remember Suzy Wiles' impersonation.",
+      "start": 17.36,
+      "end": 21.12,
+      "text": " Behind every statistic, employees packing desks, futures uncertain.",
       "tokens": [
-        51178,
-        639,
-        1943,
-        380,
-        777,
+        51248,
+        20475,
+        633,
+        29588,
         11,
-        1604,
-        2746,
-        1229,
-        343,
-        4680,
-        6,
-        38147,
-        399,
+        6619,
+        20815,
+        730,
+        1694,
+        11,
+        26071,
+        11308,
         13,
-        51346
+        51460
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.863,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.936,
       "words": [
         {
-          "text": "This",
-          "start": 16.14,
-          "end": 16.3,
+          "text": "Behind",
+          "start": 17.36,
+          "end": 17.58,
+          "confidence": 0.998
+        },
+        {
+          "text": "every",
+          "start": 17.58,
+          "end": 17.92,
           "confidence": 0.999
         },
         {
-          "text": "isn't",
-          "start": 16.3,
-          "end": 16.5,
-          "confidence": 0.998
+          "text": "statistic,",
+          "start": 17.92,
+          "end": 18.42,
+          "confidence": 0.999
         },
         {
-          "text": "new,",
-          "start": 16.5,
-          "end": 16.7,
-          "confidence": 0.998
+          "text": "employees",
+          "start": 18.88,
+          "end": 19.28,
+          "confidence": 0.994
         },
         {
-          "text": "remember",
-          "start": 16.96,
-          "end": 17.22,
-          "confidence": 0.993
+          "text": "packing",
+          "start": 19.28,
+          "end": 19.64,
+          "confidence": 0.976
         },
         {
-          "text": "Suzy",
-          "start": 17.22,
-          "end": 17.62,
-          "confidence": 0.681
+          "text": "desks,",
+          "start": 19.64,
+          "end": 20.24,
+          "confidence": 0.996
         },
         {
-          "text": "Wiles'",
-          "start": 17.62,
-          "end": 18.06,
-          "confidence": 0.725
+          "text": "futures",
+          "start": 20.42,
+          "end": 20.66,
+          "confidence": 0.983
         },
         {
-          "text": "impersonation.",
-          "start": 18.06,
-          "end": 18.7,
-          "confidence": 0.986
+          "text": "uncertain.",
+          "start": 20.66,
+          "end": 21.12,
+          "confidence": 0.583
         }
       ]
     },
     {
       "id": 5,
       "seek": 0,
-      "start": 19.36,
-      "end": 23.79,
-      "text": " Behind the scams, AI voice generation crafts flawless lies, while detection tools scramble",
+      "start": 21.82,
+      "end": 26.52,
+      "text": " Recruit Holdings CEO Hisyuki Aitkoba faces the challenge merging Glastor into Indeed",
       "tokens": [
-        51346,
-        20475,
+        51460,
+        9647,
+        18891,
+        6962,
+        1109,
+        9282,
+        2812,
+        88,
+        11788,
+        316,
+        270,
+        74,
+        19481,
+        8475,
         264,
-        795,
-        4070,
-        11,
-        7318,
-        3177,
-        5125,
-        27831,
-        45693,
-        9134,
-        11,
-        1339,
-        17784,
-        3873,
-        795,
-        48382,
-        51566
+        3430,
+        44559,
+        5209,
+        525,
+        284,
+        666,
+        15061,
+        51696
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.962,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.774,
       "words": [
         {
-          "text": "Behind",
-          "start": 19.36,
-          "end": 19.54,
-          "confidence": 0.997
+          "text": "Recruit",
+          "start": 21.82,
+          "end": 22.16,
+          "confidence": 0.953
+        },
+        {
+          "text": "Holdings",
+          "start": 22.16,
+          "end": 22.56,
+          "confidence": 0.754
+        },
+        {
+          "text": "CEO",
+          "start": 22.56,
+          "end": 22.94,
+          "confidence": 0.77
+        },
+        {
+          "text": "Hisyuki",
+          "start": 22.94,
+          "end": 23.5,
+          "confidence": 0.602
+        },
+        {
+          "text": "Aitkoba",
+          "start": 23.5,
+          "end": 24.02,
+          "confidence": 0.506
+        },
+        {
+          "text": "faces",
+          "start": 24.02,
+          "end": 24.38,
+          "confidence": 0.984
         },
         {
           "text": "the",
-          "start": 19.54,
-          "end": 19.72,
+          "start": 24.38,
+          "end": 24.66,
           "confidence": 0.998
         },
         {
-          "text": "scams,",
-          "start": 19.72,
-          "end": 20.08,
-          "confidence": 0.986
-        },
-        {
-          "text": "AI",
-          "start": 20.3,
-          "end": 20.5,
-          "confidence": 0.954
-        },
-        {
-          "text": "voice",
-          "start": 20.5,
-          "end": 20.78,
-          "confidence": 0.974
-        },
-        {
-          "text": "generation",
-          "start": 20.78,
-          "end": 21.24,
-          "confidence": 0.906
-        },
-        {
-          "text": "crafts",
-          "start": 21.24,
-          "end": 21.64,
-          "confidence": 0.756
-        },
-        {
-          "text": "flawless",
-          "start": 21.64,
-          "end": 22.06,
-          "confidence": 0.987
-        },
-        {
-          "text": "lies,",
-          "start": 22.06,
-          "end": 22.42,
-          "confidence": 0.98
-        },
-        {
-          "text": "while",
-          "start": 22.74,
-          "end": 22.86,
-          "confidence": 0.996
-        },
-        {
-          "text": "detection",
-          "start": 22.86,
-          "end": 23.18,
-          "confidence": 0.969
-        },
-        {
-          "text": "tools",
-          "start": 23.18,
-          "end": 23.52,
+          "text": "challenge",
+          "start": 24.66,
+          "end": 25.0,
           "confidence": 0.997
         },
         {
-          "text": "scramble",
-          "start": 23.52,
-          "end": 23.79,
-          "confidence": 0.99
+          "text": "merging",
+          "start": 25.0,
+          "end": 25.36,
+          "confidence": 0.854
+        },
+        {
+          "text": "Glastor",
+          "start": 25.36,
+          "end": 25.98,
+          "confidence": 0.994
+        },
+        {
+          "text": "into",
+          "start": 25.98,
+          "end": 26.16,
+          "confidence": 0.995
+        },
+        {
+          "text": "Indeed",
+          "start": 26.16,
+          "end": 26.52,
+          "confidence": 0.994
         }
       ]
     },
     {
       "id": 6,
       "seek": 0,
-      "start": 23.79,
-      "end": 24.6,
-      "text": " to keep pace.",
+      "start": 26.64,
+      "end": 27.52,
+      "text": " to streamline hiring.",
       "tokens": [
-        51566,
+        51696,
         281,
-        1066,
-        11638,
+        47141,
+        15335,
         13,
-        51628
+        51826
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.1643126426486794,
-      "compression_ratio": 1.510135135135135,
-      "no_speech_prob": 0.046715714037418365,
-      "confidence": 0.998,
+      "avg_logprob": -0.19628267030458194,
+      "compression_ratio": 1.5315614617940199,
+      "no_speech_prob": 0.04553690180182457,
+      "confidence": 0.753,
       "words": [
         {
           "text": "to",
-          "start": 23.79,
-          "end": 24.18,
-          "confidence": 0.998
+          "start": 26.64,
+          "end": 26.78,
+          "confidence": 0.977
         },
         {
-          "text": "keep",
-          "start": 24.18,
-          "end": 24.36,
-          "confidence": 0.999
+          "text": "streamline",
+          "start": 26.78,
+          "end": 27.1,
+          "confidence": 0.436
         },
         {
-          "text": "pace.",
-          "start": 24.36,
-          "end": 24.6,
+          "text": "hiring.",
+          "start": 27.1,
+          "end": 27.52,
           "confidence": 0.999
         }
       ]
     },
     {
       "id": 7,
-      "seek": 2528,
-      "start": 25.78,
-      "end": 29.36,
-      "text": " A digital arms race unfolds, nights of code clashing in cyberspace.",
+      "seek": 2924,
+      "start": 29.24,
+      "end": 33.06,
+      "text": " As the ship shifts, Christian Sutherland Wung departs as layoffs span the globe.",
       "tokens": [
-        50390,
-        316,
-        4562,
-        5812,
-        4569,
-        17980,
-        82,
+        50364,
+        1018,
+        264,
+        5374,
+        19201,
         11,
-        13249,
-        295,
-        3089,
-        596,
-        11077,
-        294,
-        3185,
-        1616,
-        17940,
+        5778,
+        318,
+        17696,
+        1661,
+        343,
+        1063,
+        9110,
+        82,
+        382,
+        2360,
+        19231,
+        16174,
+        264,
+        15371,
         13,
-        50602
+        50594
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.23489657810756137,
-      "compression_ratio": 1.1981132075471699,
-      "no_speech_prob": 0.4057205319404602,
-      "confidence": 0.964,
+      "avg_logprob": -0.37581738971528555,
+      "compression_ratio": 1.2222222222222223,
+      "no_speech_prob": 0.28290680050849915,
+      "confidence": 0.602,
       "words": [
         {
-          "text": "A",
-          "start": 25.78,
-          "end": 25.94,
-          "confidence": 0.998
+          "text": "As",
+          "start": 29.24,
+          "end": 29.26,
+          "confidence": 0.104
         },
         {
-          "text": "digital",
-          "start": 25.94,
-          "end": 26.14,
-          "confidence": 0.979
+          "text": "the",
+          "start": 29.26,
+          "end": 29.28,
+          "confidence": 0.262
         },
         {
-          "text": "arms",
-          "start": 26.14,
-          "end": 26.4,
-          "confidence": 0.978
+          "text": "ship",
+          "start": 29.28,
+          "end": 29.3,
+          "confidence": 0.103
         },
         {
-          "text": "race",
-          "start": 26.4,
-          "end": 26.7,
-          "confidence": 0.999
+          "text": "shifts,",
+          "start": 29.3,
+          "end": 29.62,
+          "confidence": 0.984
         },
         {
-          "text": "unfolds,",
-          "start": 26.7,
-          "end": 27.48,
-          "confidence": 0.998
+          "text": "Christian",
+          "start": 29.88,
+          "end": 30.14,
+          "confidence": 0.95
         },
         {
-          "text": "nights",
-          "start": 27.64,
-          "end": 27.82,
-          "confidence": 0.656
+          "text": "Sutherland",
+          "start": 30.14,
+          "end": 30.66,
+          "confidence": 0.922
         },
         {
-          "text": "of",
-          "start": 27.82,
-          "end": 28.0,
-          "confidence": 0.994
+          "text": "Wung",
+          "start": 30.66,
+          "end": 30.88,
+          "confidence": 0.364
         },
         {
-          "text": "code",
-          "start": 28.0,
-          "end": 28.22,
-          "confidence": 0.989
+          "text": "departs",
+          "start": 30.88,
+          "end": 31.46,
+          "confidence": 0.944
         },
         {
-          "text": "clashing",
-          "start": 28.22,
-          "end": 28.66,
-          "confidence": 0.988
+          "text": "as",
+          "start": 31.46,
+          "end": 31.88,
+          "confidence": 0.499
         },
         {
-          "text": "in",
-          "start": 28.66,
-          "end": 28.84,
+          "text": "layoffs",
+          "start": 31.88,
+          "end": 32.32,
+          "confidence": 0.947
+        },
+        {
+          "text": "span",
+          "start": 32.32,
+          "end": 32.6,
+          "confidence": 0.99
+        },
+        {
+          "text": "the",
+          "start": 32.6,
+          "end": 32.76,
           "confidence": 0.996
         },
         {
-          "text": "cyberspace.",
-          "start": 28.84,
-          "end": 29.36,
-          "confidence": 0.987
+          "text": "globe.",
+          "start": 32.76,
+          "end": 33.06,
+          "confidence": 0.995
         }
       ]
     },
     {
       "id": 8,
-      "seek": 2528,
-      "start": 29.98,
-      "end": 33.14,
-      "text": " Stay vigilant, the line between real and fake is vanishing.",
+      "seek": 2924,
+      "start": 33.72,
+      "end": 37.14,
+      "text": " Yet in this AI-driven world, the future of work remains a shared journey.",
       "tokens": [
-        50602,
-        8691,
-        45737,
+        50594,
+        10890,
+        294,
+        341,
+        7318,
+        12,
+        25456,
+        1002,
         11,
         264,
-        1622,
-        1296,
-        957,
-        293,
-        7592,
-        307,
-        3161,
-        3807,
+        2027,
+        295,
+        589,
+        7023,
+        257,
+        5507,
+        4671,
         13,
-        50764
+        50766
       ],
       "temperature": 0.0,
-      "avg_logprob": -0.23489657810756137,
-      "compression_ratio": 1.1981132075471699,
-      "no_speech_prob": 0.4057205319404602,
-      "confidence": 0.996,
+      "avg_logprob": -0.37581738971528555,
+      "compression_ratio": 1.2222222222222223,
+      "no_speech_prob": 0.28290680050849915,
+      "confidence": 0.958,
       "words": [
         {
-          "text": "Stay",
-          "start": 29.98,
-          "end": 30.16,
+          "text": "Yet",
+          "start": 33.72,
+          "end": 33.86,
+          "confidence": 0.996
+        },
+        {
+          "text": "in",
+          "start": 33.86,
+          "end": 34.0,
+          "confidence": 0.979
+        },
+        {
+          "text": "this",
+          "start": 34.0,
+          "end": 34.16,
           "confidence": 0.997
         },
         {
-          "text": "vigilant,",
-          "start": 30.16,
-          "end": 30.54,
-          "confidence": 0.99
+          "text": "AI-driven",
+          "start": 34.16,
+          "end": 34.72,
+          "confidence": 0.823
+        },
+        {
+          "text": "world,",
+          "start": 34.72,
+          "end": 35.06,
+          "confidence": 0.999
         },
         {
           "text": "the",
-          "start": 31.04,
-          "end": 31.2,
-          "confidence": 0.988
+          "start": 35.32,
+          "end": 35.38,
+          "confidence": 0.993
         },
         {
-          "text": "line",
-          "start": 31.2,
-          "end": 31.42,
+          "text": "future",
+          "start": 35.38,
+          "end": 35.64,
           "confidence": 0.998
         },
         {
-          "text": "between",
-          "start": 31.42,
-          "end": 31.72,
-          "confidence": 0.999
-        },
-        {
-          "text": "real",
-          "start": 31.72,
-          "end": 32.02,
-          "confidence": 0.999
-        },
-        {
-          "text": "and",
-          "start": 32.02,
-          "end": 32.22,
+          "text": "of",
+          "start": 35.64,
+          "end": 35.84,
           "confidence": 0.997
         },
         {
-          "text": "fake",
-          "start": 32.22,
-          "end": 32.46,
-          "confidence": 0.999
+          "text": "work",
+          "start": 35.84,
+          "end": 36.02,
+          "confidence": 0.996
         },
         {
-          "text": "is",
-          "start": 32.46,
-          "end": 32.68,
+          "text": "remains",
+          "start": 36.02,
+          "end": 36.38,
+          "confidence": 0.994
+        },
+        {
+          "text": "a",
+          "start": 36.38,
+          "end": 36.58,
           "confidence": 0.998
         },
         {
-          "text": "vanishing.",
-          "start": 32.68,
-          "end": 33.14,
-          "confidence": 0.996
+          "text": "shared",
+          "start": 36.58,
+          "end": 36.8,
+          "confidence": 0.999
+        },
+        {
+          "text": "journey.",
+          "start": 36.8,
+          "end": 37.14,
+          "confidence": 0.999
         }
       ]
     }
   ],
-  "total_duration": 33.14,
-  "text": " In the shadows, AI manipulators weave digital masks, faces forged by deep fake technology. Senator Marco Rubio became their latest target, his identity hijacked in texts, signal messages and voicemails. Foreign ministers and U.S. officials were approached, sparking State Department alarms. This isn't new, remember Suzy Wiles' impersonation. Behind the scams, AI voice generation crafts flawless lies, while detection tools scramble to keep pace. A digital arms race unfolds, nights of code clashing in cyberspace. Stay vigilant, the line between real and fake is vanishing."
+  "total_duration": 37.14,
+  "text": " A robotic handshake symbolizing the uneasy partnership between AI and human workers. As artificial intelligence reshapes industries, companies like Indeed and Glastor are making tough decisions, cutting 1,300 jobs. AI isn't just a tool, it's replacing roles, transforming the workforce. Behind every statistic, employees packing desks, futures uncertain. Recruit Holdings CEO Hisyuki Aitkoba faces the challenge merging Glastor into Indeed to streamline hiring. As the ship shifts, Christian Sutherland Wung departs as layoffs span the globe. Yet in this AI-driven world, the future of work remains a shared journey."
 }

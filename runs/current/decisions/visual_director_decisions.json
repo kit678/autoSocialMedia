@@ -1,8 +1,82 @@
 {
   "component": "visual_director",
-  "total_decisions": 0,
-  "decisions": [],
+  "total_decisions": 6,
+  "decisions": [
+    {
+      "component": "visual_director",
+      "step": "ai_generation_error",
+      "decision": "AI generation failed, continuing search",
+      "reasoning": "Failed to generate AI image for 'Indeed Glassdoor layoffs': Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-2.0-flash-preview-image-generation is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:37:23.575012",
+      "metadata": {}
+    },
+    {
+      "component": "visual_director",
+      "step": "ai_generation_error",
+      "decision": "AI generation failed, continuing search",
+      "reasoning": "Failed to generate AI image for 'AI job cuts': Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-2.0-flash-preview-image-generation is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:38:19.859280",
+      "metadata": {}
+    },
+    {
+      "component": "visual_director",
+      "step": "ai_generation_error",
+      "decision": "AI generation failed, continuing search",
+      "reasoning": "Failed to generate AI image for 'Indeed Glassdoor merger': Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-2.0-flash-preview-image-generation is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:40:52.875071",
+      "metadata": {}
+    },
+    {
+      "component": "visual_director",
+      "step": "ai_generation_error",
+      "decision": "AI generation failed, continuing search",
+      "reasoning": "Failed to generate AI image for 'company integration': Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-2.0-flash-preview-image-generation is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:41:41.584230",
+      "metadata": {}
+    },
+    {
+      "component": "visual_director",
+      "step": "ai_generation_error",
+      "decision": "AI generation failed, continuing search",
+      "reasoning": "Failed to generate AI image for 'simplified hiring': Gemini API error: 404 - {\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"models/gemini-2.0-flash-preview-image-generation is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.\",\n    \"status\": \"NOT_FOUND\"\n  }\n}\n",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:42:38.566213",
+      "metadata": {}
+    },
+    {
+      "component": "visual_director",
+      "step": "visual_director_error",
+      "decision": "Visual director failed",
+      "reasoning": "Error: CRITICAL: No visual found for segment visual_04 Pipeline configured to crash on missing visuals.",
+      "alternatives_considered": [],
+      "confidence_score": 0.0,
+      "input_data": {},
+      "timestamp": "2025-07-14T02:42:42.729730",
+      "metadata": {}
+    }
+  ],
   "summary": {
-    "message": "No decisions logged"
+    "total_decisions": 6,
+    "average_confidence": 0.0,
+    "fallback_decisions": 0,
+    "key_decisions": [],
+    "decision_steps": [
+      "visual_director_error",
+      "ai_generation_error"
+    ]
   }
 }

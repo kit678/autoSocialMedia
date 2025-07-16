@@ -9,6 +9,7 @@ from ..images.generate_ai import generate_ai_images
 from ..video_sources.pexels_video import search_and_download_pexels_video
 from ..visual_validation.gemini_validator import validate_visual_relevance
 from ..utils import get_audio_duration
+from agent.media_utils import standardize_image, standardize_video
 
 def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any], logger) -> Optional[Dict[str, Any]]:
     """
@@ -66,6 +67,32 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
             'segments': simple_timeline  # Add segments for compatibility with the slideshow component
         }
         
+        # ------------------------------------------------------------------
+        # Collect basic orientation statistics for debugging / quality checks
+        # ------------------------------------------------------------------
+        try:
+            from agent.media_utils import (
+                get_media_dimensions,
+                get_orientation,
+                get_aspect_ratio_str,
+            )
+
+            orientation_tally = {"portrait": 0, "landscape": 0, "square": 0, "unknown": 0}
+            for path in visual_map.values():
+                w, h = get_media_dimensions(path)
+                orient = get_orientation(w, h) or "unknown"
+                orientation_tally[orient] = orientation_tally.get(orient, 0) + 1
+            
+            # Log a single decision summarising aspect-ratio distribution
+            logger.log_decision(
+                step="visual_orientation_audit",
+                decision="Analysed aspect ratio of gathered visuals",
+                reasoning="Helps ensure that all collected visuals match the desired portrait orientation",
+                metadata={"orientation_stats": orientation_tally},
+            )
+        except Exception as exc:
+            logging.warning(f"Could not compute visual orientation stats: {exc}")
+
         # Step 6: Save visual map data
         visual_map_path = os.path.join(run_dir, 'visual_map.json')
         with open(visual_map_path, 'w', encoding='utf-8') as f:
@@ -151,6 +178,20 @@ def create_enhanced_visual_timeline(visual_story_plan: Dict[str, Any], run_dir: 
         
         # Execute search and get validated visual
         visual_file = _execute_planned_search(planned_search, run_dir, cue_id, logger)
+        
+        # Standardize visual to portrait orientation
+        if visual_file and os.path.exists(visual_file):
+            ext = os.path.splitext(visual_file)[1].lower()
+            if ext in ['.jpg', '.jpeg', '.png', '.webp']:
+                if standardize_image(visual_file):
+                    logging.info(f"Standardized image: {visual_file}")
+                else:
+                    logging.warning(f"Failed to standardize image: {visual_file}")
+            elif ext in ['.mp4', '.mov']:
+                if standardize_video(visual_file):
+                    logging.info(f"Standardized video: {visual_file}")
+                else:
+                    logging.warning(f"Failed to standardize video: {visual_file}")
         
         # Check if visual file exists
         file_exists = visual_file and os.path.exists(visual_file)
@@ -296,7 +337,18 @@ def _execute_planned_search(planned_search: Dict[str, Any], run_dir: str, cue_id
             elif source == "Pexels Photos":
                 candidates = search_pexels_primary([term], 3, visuals_dir, category=pexels_category)
             elif source == "AI Generation":
-                candidates = generate_ai_images([term], 1, visuals_dir) # AI gen is slow, only 1
+                try:
+                    candidates = generate_ai_images([term], 1, visuals_dir)  # AI gen is slow, only 1
+                except Exception as e:
+                    logging.error(f"AI generation failed for term '{term}': {e}")
+                    # Log the failed decision for transparency
+                    logger.log_decision(
+                        step="ai_generation_error",
+                        decision="AI generation failed, continuing search",
+                        reasoning=str(e),
+                        confidence=0.0
+                    )
+                    candidates = []
             elif source == "Pexels Video":
                 # Video search returns one validated path for now (no category support in video API)
                 video_path = search_and_download_pexels_video(term, visuals_dir, f"{cue_id}")
@@ -349,4 +401,4 @@ def _execute_planned_search(planned_search: Dict[str, Any], run_dir: str, cue_id
                     except OSError as e:
                         logging.error(f"Could not delete rejected image: {e}")
 
-    return validated_visual 
+    return validated_visual

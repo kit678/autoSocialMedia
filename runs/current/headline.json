@@ -1,5 +1,14 @@
 {
-  "title": "Impostor uses AI to impersonate Rubio and contact foreign and US officials",
-  "url": "https://apnews.com/article/rubio-artificial-intelligence-impersonation-1b3cc78464404b54e63f4eba9dd4f5a9",
-  "fallbacks": []
+  "title": "Indeed, Glassdoor cutting jobs as artificial intelligence utilization grows",
+  "url": "https://www.foxbusiness.com/technology/indeed-glassdoor-cutting-jobs-artificial-intelligence-utilization-grows",
+  "fallbacks": [
+    {
+      "title": "Impostor uses AI to impersonate Rubio and contact foreign and US officials",
+      "url": "https://apnews.com/article/rubio-artificial-intelligence-impersonation-1b3cc78464404b54e63f4eba9dd4f5a9"
+    },
+    {
+      "title": "The coder 'village' at the heart of China's AI frenzy",
+      "url": "https://www.msn.com/en-in/technology/artificial-intelligence/the-coder-village-at-the-heart-of-china-s-ai-frenzy/ar-AA1I3sGi"
+    }
+  ]
 }

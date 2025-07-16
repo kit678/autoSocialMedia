@@ -1,20 +1,20 @@
 {
   "story_angle": {
-    "angle_name": "The rise of AI-powered impersonation in political espionage.",
+    "angle_name": "The impact of AI on job markets and the human workforce.",
     "description": "Visual narrative with 0 planned story beats",
     "target_emotion": "concern"
   },
   "script_outline": {
-    "hook": "\"In the shadows, AI manipulators weave digital masks\u2014faces forged by deepfake technology.",
+    "hook": "\"A robotic handshake\u2014symbolizing the uneasy partnership between AI and human workers.",
     "main_points": [],
     "conclusion": "\" *",
-    "target_duration": 240,
+    "target_duration": "60",
     "narrative_style": "investigative",
-    "pacing_strategy": "fast-paced"
+    "pacing_strategy": "varied"
   },
   "visual_cues": [],
   "visual_strategy": {
-    "pacing_strategy": "fast-paced",
+    "pacing_strategy": "varied",
     "style_suggestion": "dynamic",
     "opening_strategy": {
       "style": "animated_scroll",

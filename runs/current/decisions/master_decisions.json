@@ -1,6 +1,6 @@
 {
   "pipeline_run": {
-    "timestamp": "2025-07-10T15:21:17.726347",
+    "timestamp": "2025-07-14T02:36:36.502332",
     "total_decisions": 4,
     "components_analyzed": [
       "discover",
@@ -8,9 +8,7 @@
       "screenshot",
       "script",
       "audio",
-      "timing_extraction",
-      "visual_director",
-      "slideshow"
+      "timing_extraction"
     ]
   },
   "summary": {
@@ -42,10 +40,10 @@
         "alternatives_considered": [],
         "confidence_score": 1.0,
         "input_data": {},
-        "timestamp": "2025-07-10T15:15:15.400252",
+        "timestamp": "2025-07-14T02:34:52.377473",
         "metadata": {
-          "headline": "Impostor uses AI to impersonate Rubio and contact foreign and US officials",
-          "article_length": 4384,
+          "headline": "Indeed, Glassdoor cutting jobs as artificial intelligence utilization grows",
+          "article_length": 2558,
           "approach": "reverse_engineering"
         }
       },
@@ -57,12 +55,12 @@
         "alternatives_considered": [],
         "confidence_score": 0.9,
         "input_data": {},
-        "timestamp": "2025-07-10T15:16:15.306560",
+        "timestamp": "2025-07-14T02:35:50.751662",
         "metadata": {
           "story_segments": 8,
-          "companies_identified": 4,
-          "visual_metaphors": 2,
-          "target_duration": 240
+          "companies_identified": 3,
+          "visual_metaphors": 1,
+          "target_duration": "60"
         }
       },
       {
@@ -73,7 +71,7 @@
         "alternatives_considered": [],
         "confidence_score": 0.9,
         "input_data": {},
-        "timestamp": "2025-07-10T15:16:25.559868",
+        "timestamp": "2025-07-14T02:36:01.352507",
         "metadata": {
           "script_length": 90,
           "estimated_duration": "36.0 seconds",
@@ -88,7 +86,7 @@
         "alternatives_considered": [],
         "confidence_score": 0.95,
         "input_data": {},
-        "timestamp": "2025-07-10T15:16:25.570193",
+        "timestamp": "2025-07-14T02:36:01.359399",
         "metadata": {
           "script_word_count": 83,
           "estimated_duration": "33.2 seconds",
@@ -101,9 +99,7 @@
       }
     ],
     "audio": [],
-    "timing_extraction": [],
-    "visual_director": [],
-    "slideshow": []
+    "timing_extraction": []
   },
   "all_decisions_chronological": [
     {
@@ -114,10 +110,10 @@
       "alternatives_considered": [],
       "confidence_score": 1.0,
       "input_data": {},
-      "timestamp": "2025-07-10T15:15:15.400252",
+      "timestamp": "2025-07-14T02:34:52.377473",
       "metadata": {
-        "headline": "Impostor uses AI to impersonate Rubio and contact foreign and US officials",
-        "article_length": 4384,
+        "headline": "Indeed, Glassdoor cutting jobs as artificial intelligence utilization grows",
+        "article_length": 2558,
         "approach": "reverse_engineering"
       }
     },
@@ -129,12 +125,12 @@
       "alternatives_considered": [],
       "confidence_score": 0.9,
       "input_data": {},
-      "timestamp": "2025-07-10T15:16:15.306560",
+      "timestamp": "2025-07-14T02:35:50.751662",
       "metadata": {
         "story_segments": 8,
-        "companies_identified": 4,
-        "visual_metaphors": 2,
-        "target_duration": 240
+        "companies_identified": 3,
+        "visual_metaphors": 1,
+        "target_duration": "60"
       }
     },
     {
@@ -145,7 +141,7 @@
       "alternatives_considered": [],
       "confidence_score": 0.9,
       "input_data": {},
-      "timestamp": "2025-07-10T15:16:25.559868",
+      "timestamp": "2025-07-14T02:36:01.352507",
       "metadata": {
         "script_length": 90,
         "estimated_duration": "36.0 seconds",
@@ -160,7 +156,7 @@
       "alternatives_considered": [],
       "confidence_score": 0.95,
       "input_data": {},
-      "timestamp": "2025-07-10T15:16:25.570193",
+      "timestamp": "2025-07-14T02:36:01.359399",
       "metadata": {
         "script_word_count": 83,
         "estimated_duration": "33.2 seconds",

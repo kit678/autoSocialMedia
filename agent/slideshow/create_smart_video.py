@@ -4,6 +4,10 @@ import json
 from typing import List, Dict, Any
 from agent.utils import run_command
 import random
+from agent.video_config import VideoConfig, get_default_config
+from agent.video.ffmpeg_utils import scale_crop_str, scale_pad_str, ken_burns_filter
+from agent.slideshow.validation import validate_slideshow_inputs, validate_mixed_media_inputs
+from agent.slideshow.exceptions import SlideshowError
 
 # List of visually appealing and non-jarring FFmpeg xfade transitions
 XFADE_TRANSITIONS = [
@@ -18,101 +22,170 @@ XFADE_TRANSITIONS = [
     'radial', 'zoomin'
 ]
 
-def run(visual_analysis: Dict[str, Any], all_image_paths: Dict[str, str], audio_path: str, audio_duration: float, output_path: str, fps: int = 30):
+def build_transition_chain(stream_tags: list, config: VideoConfig, timeline: list, rng_seed: int = None) -> str:
+    if not stream_tags:
+        return ""
+    if rng_seed is not None:
+        random.seed(rng_seed)
+    num_streams = len(stream_tags)
+    transition_duration = config.transition_duration
+    if num_streams == 1:
+        return f"{stream_tags[0]}copy[vout];"
+    filter_parts = []
+    last_output = stream_tags[0]
+    cumulative_offset = 0.0
+    for i in range(num_streams - 1):
+        segment_duration = (timeline[i]['end_time'] - timeline[i]['start_time'])
+        offset = cumulative_offset + segment_duration - transition_duration
+        current_output = f"[chain{i}]" if i < num_streams - 2 else "[vout]"
+        transition = random.choice(XFADE_TRANSITIONS)
+        filter_parts.append(f"{last_output}{stream_tags[i+1]}xfade=transition={transition}:duration={transition_duration}:offset={offset}{current_output};")
+        last_output = current_output
+        cumulative_offset += segment_duration
+    return "".join(filter_parts)
+
+def run(visual_analysis: Dict[str, Any], all_image_paths: Dict[str, str], audio_path: str, audio_duration: float, output_path: str, fps: int = 30, rng_seed: int = None, config: VideoConfig | None = None, orientation: str | None = None):
     """
     Main entry point for the smart video creation process using FFmpeg.
+    
+    Args:
+        visual_analysis: Visual analysis data with timeline
+        all_image_paths: Dictionary mapping image IDs to file paths
+        audio_path: Path to audio file
+        audio_duration: Duration of audio in seconds
+        output_path: Output video file path
+        fps: Frames per second
+        rng_seed: Optional RNG seed for reproducible transitions
     """
     logging.info("--- Starting Smart Video Assembly with FFmpeg ---")
 
-    if not visual_analysis.get('segments'):
-        logging.error("Visual analysis returned no segments. Cannot create video.")
-        return None
+    try:
+        timeline, actual_audio_duration = validate_slideshow_inputs(
+            visual_analysis, all_image_paths, audio_path, audio_duration
+        )
 
-    # Check for FFmpeg availability
-    success, _, _ = run_command(['ffmpeg', '-version'], timeout=10)
-    if not success:
-        logging.error("FFmpeg not found. Smart video assembly requires FFmpeg.")
-        return None
+        logging.info(f"Validation passed: {len(timeline)} segments, "
+                     f"audio duration {actual_audio_duration:.2f}s")
 
-    logging.info("FFmpeg detected, using FFmpeg-based video assembly...")
+        # Calculate total timeline duration and cap if necessary
+        total_timeline_duration = sum(seg['end_time'] - seg['start_time'] for seg in timeline)
+        logging.info(f"Timeline total: {total_timeline_duration:.2f}s vs audio: {actual_audio_duration:.2f}s")
+        if total_timeline_duration > actual_audio_duration:
+            excess = total_timeline_duration - actual_audio_duration
+            timeline[-1]['end_time'] -= excess
+            logging.info(f"Capped last segment by {excess:.2f}s to match audio duration")
 
-    # Calculate segment durations to match audio length
-    timeline = _calculate_segment_durations(visual_analysis['segments'], audio_duration, fps)
+        # Determine configuration to use
+        if config is None:
+            # If caller supplied an orientation string, use it; otherwise default to 'portrait'
+            if orientation is None:
+                orientation = "portrait"
+            config = get_default_config(orientation)
+        else:
+            # Ensure basic sanity (e.g. even dimensions)
+            try:
+                config.validate()
+            except Exception as e:
+                logging.warning(f"Provided VideoConfig is invalid – falling back to defaults: {e}")
+                config = get_default_config(orientation or "portrait")
+
+        # Build the filter graph for transitions and effects
+        filter_chains, inputs_args = _build_smart_filter(timeline, all_image_paths, config)
+
+        if not inputs_args:
+            raise SlideshowError("Could not build any valid video inputs. Aborting video creation.")
+
+        # Assemble the final command including audio
+        command = _assemble_ffmpeg_command(inputs_args, filter_chains, output_path, audio_path, config, rng_seed)
+
+        if not command:
+            raise SlideshowError("Failed to assemble FFmpeg command.")
     
-    if not timeline:
-        logging.error("Timeline calculation resulted in no segments. Cannot create video.")
+        logging.info("--- Running FFmpeg Command for Smart Video ---")
+        logging.info(" ".join(f'\"{c}\"' if " " in c else c for c in command))
+        
+        success, stdout, stderr = run_command(command, timeout=300)
+
+        if success:
+            logging.info(f"SUCCESS: Smart video generated at '{output_path}'")
+            return output_path
+        else:
+            raise SlideshowError("Smart video generation failed.")
+
+    except SlideshowError as e:
+        logging.error(e)
         return None
 
-    # Build the filter graph for transitions and effects
-    filter_chains, inputs_args = _build_smart_filter(timeline, all_image_paths, fps)
-
-    if not inputs_args:
-        logging.error("Could not build any valid video inputs. Aborting video creation.")
-        return None
-
-    # Assemble the final command including audio
-    command = _assemble_ffmpeg_command(inputs_args, filter_chains, output_path, audio_path, fps)
-    
-    if not command:
-        logging.error("Failed to assemble FFmpeg command.")
-        return None
-    
-    logging.info("--- Running FFmpeg Command for Smart Video ---")
-    logging.info(" ".join(f'\"{c}\"' if " " in c else c for c in command))
-    
-    success, stdout, stderr = run_command(command, timeout=300)
-
-    if success:
-        logging.info(f"SUCCESS: Smart video generated at '{output_path}'")
-        return output_path
-    else:
-        logging.error("Smart video generation failed.")
-        logging.error(f"FFmpeg STDOUT:\n{stdout}")
-        logging.error(f"FFmpeg STDERR:\n{stderr}")
-        return None
-
-def _build_smart_filter(timeline: list, all_image_paths: Dict[str, str], fps: int) -> tuple:
+def _build_smart_filter(timeline: list, all_image_paths: Dict[str, str], config: VideoConfig) -> tuple:
     """
     Build the filter graph for transitions and effects.
     Returns: (filter_chains, inputs_args)
     """
-    filter_chains = []
-    inputs_args = []
+    filter_chains: list[str] = []
+    inputs_args: list[str] = []
+    fps = config.fps
 
-    for i, segment in enumerate(timeline):
-        image_id = segment.get('cue_id', f'visual_{i:02d}')
-        if not image_id or image_id not in all_image_paths:
-            logging.warning(f"Skipping segment {i} due to missing image_id or path.")
+    # Maintain the *real* ffmpeg input index as we append to inputs_args.
+    input_stream_idx = 0
+
+    for seg_idx, segment in enumerate(timeline):
+        # Determine the source identifier – timeline may use either 'cue_id' (image) or
+        # 'image_source' (mixed-media pipelines).
+        src_id = segment.get('cue_id') or segment.get('image_source')
+        if not src_id:
+            logging.warning(f"Segment {seg_idx} missing cue_id/image_source field – skipped")
             continue
 
-        image_path = all_image_paths[image_id]
+        # Video segments inserted by upstream stages can specify an explicit path.
+        if segment.get('is_video') and segment.get('video_path'):
+            src_path = segment['video_path']
+        else:
+            if src_id not in all_image_paths:
+                logging.warning(f"Segment {seg_idx}: source '{src_id}' not present in asset map – skipped")
+                continue
+            src_path = all_image_paths[src_id]
+
+        if not os.path.exists(src_path):
+            logging.warning(f"File not found, skipping: {src_path}")
+            continue
+
         duration_frames = segment['duration_frames']
-        
-        # Ensure duration is at least 1 frame to avoid FFmpeg errors
         if duration_frames <= 0:
-            logging.warning(f"Skipping segment for '{image_id}' due to zero or negative duration.")
+            logging.warning(f"Skipping segment for '{cue_id}' due to non-positive duration.")
             continue
 
-        # Ensure path exists before adding to command
-        if not os.path.exists(image_path):
-            logging.warning(f"File not found, skipping: {image_path}")
-            continue
+        duration_sec = duration_frames / fps
 
-        # Add input arguments for this image
-        duration_seconds = duration_frames / fps
-        inputs_args.extend(['-loop', '1', '-t', str(duration_seconds), '-i', image_path])
+        # Determine if the source is a video clip (mp4/mov/mkv/webm/avi) or a still image.
+        video_exts = {'.mp4', '.mov', '.mkv', '.webm', '.avi'}
+        ext = os.path.splitext(src_path)[1].lower()
+        is_video = ext in video_exts
 
-        # Get Ken Burns effect parameters (simplified random generation)
-        ken_burns_filter = _get_ken_burns_params_simple(image_path, duration_frames, fps)
+        # --- Add input arguments ---
+        if is_video:
+            # Videos are read as-is (no looping). We will trim them to the required duration.
+            inputs_args.extend(['-i', src_path])
+        else:
+            # Still images must be looped so FFmpeg generates a stream.
+            inputs_args.extend(['-loop', '1', '-t', str(duration_sec), '-i', src_path])
 
-        # Build the filter chain for this segment
-        input_index = i  # Each image gets its own input index
-        filter_chains.append(f"[{input_index}:v]{ken_burns_filter}[v{i}];")
+        # --- Build per-segment filter ---
+        if is_video:
+            scale_crop = scale_pad_str(config)
+            filter_chains.append(
+                f"[{input_stream_idx}:v]trim=duration={duration_sec},setpts=PTS-STARTPTS,{scale_crop},fps={fps}[v{seg_idx}];"
+            )
+        else:
+            kb_filter = _get_ken_burns_params_simple(src_path, duration_frames, config)
+            filter_chains.append(f"[{input_stream_idx}:v]{kb_filter}[v{seg_idx}];")
+
+        # Increment stream index for the next loop iteration.
+        input_stream_idx += 1
 
     return filter_chains, inputs_args
 
-def _get_ken_burns_params_simple(image_path: str, duration_frames: int, fps: int) -> str:
-    """Get Ken Burns parameters for a single image."""
+def _get_ken_burns_params_simple(image_path: str, duration_frames: int, config: VideoConfig) -> str:
+    """Get Ken Burns parameters for a single image using the helper function."""
     # Generate random Ken Burns parameters for variety
     start_zoom = random.uniform(1.0, 1.1)
     end_zoom = random.uniform(1.2, 1.4)
@@ -136,17 +209,18 @@ def _get_ken_burns_params_simple(image_path: str, duration_frames: int, fps: int
     end_x = positions.get(end_pos, '0')
     end_y = positions.get(end_pos, '0') if end_pos in ['top', 'bottom'] else '0'
     
-    # Build the zoompan filter
-    return (
-        f"scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-        f"crop=1080:1920,"
-        f"zoompan=z='if(lte(on,1),{start_zoom},{start_zoom}+({end_zoom}-{start_zoom})*on/{duration_frames})'"
-        f":x='if(lte(on,1),{start_x},{start_x}+({end_x}-{start_x})*on/{duration_frames})'"
-        f":y='if(lte(on,1),{start_y},{start_y}+({end_y}-{start_y})*on/{duration_frames})'"
-        f":d={duration_frames}:s=1080x1920:fps={fps}"
+    return ken_burns_filter(
+        config=config,
+        duration_frames=duration_frames,
+        start_zoom=start_zoom,
+        end_zoom=end_zoom,
+        start_x=start_x,
+        start_y=start_y,
+        end_x=end_x,
+        end_y=end_y
     )
 
-def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path: str, audio_path: str, fps: int) -> list:
+def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path: str, audio_path: str, config: VideoConfig, rng_seed: int = None) -> list:
     """Assembles the final FFmpeg command."""
     
     # Check if there are any video chains to process
@@ -158,33 +232,10 @@ def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path
     
     num_streams = len(filter_chains)
     
-    if num_streams > 1:
-        # Build the transition chain
-        transition_duration = 0.7  # seconds for each fade
-        
-        # Start with the first video stream
-        last_output = "[v0]"
-        for i in range(num_streams - 1):
-            # Define the output of the current fade
-            current_output = f"[chain{i}]"
-            # The last one should be the final output stream
-            if i == num_streams - 2:
-                current_output = "[vout]"
-
-            # Calculate the offset for the fade
-            offset = (i + 1) * 4.0 - transition_duration  # Approximate timing
-            
-            transition = random.choice(XFADE_TRANSITIONS)
-            
-            filter_graph += (
-                f"{last_output}[v{i+1}]"
-                f"xfade=transition={transition}:duration={transition_duration}:offset={offset}"
-                f"{current_output};"
-            )
-            last_output = current_output
-    else:
-        # If there's only one video stream, just label it for output
-        filter_graph += "[v0]copy[vout];"
+    # Build transition chain using the new function
+    stream_tags = [f"[v{i}]" for i in range(num_streams)]
+    transition_filter = build_transition_chain(stream_tags, config, rng_seed)
+    filter_graph += transition_filter
     
     # --- COMMAND ASSEMBLY ---
     command = ['ffmpeg', '-y']  # Start with ffmpeg and overwrite flag
@@ -202,7 +253,7 @@ def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path
         '-map', f'{num_streams}:a', # Map the audio stream (audio is the last input)
         '-c:v', 'libx264',
         '-c:a', 'aac',
-        '-r', str(fps),
+        '-r', str(config.fps),
         '-pix_fmt', 'yuv420p',
         output_path
     ])
@@ -256,33 +307,6 @@ def _calculate_segment_durations(segments: list, total_duration: float, fps: int
 
     return timeline
 
-def _get_ken_burns_params(source_key: str, ken_burns_effects: Dict) -> Dict:
-    """Get Ken Burns parameters or generate random ones as a fallback."""
-    
-    # Use existing effect if provided by visual analysis
-    if source_key in ken_burns_effects:
-        effect = ken_burns_effects[source_key]
-        if all(k in effect for k in ['start_zoom', 'end_zoom', 'start_x', 'start_y', 'end_x', 'end_y']):
-            return effect
-
-    # Fallback to randomized Ken Burns effect
-    start_zoom = random.uniform(1.0, 1.25)
-    end_zoom = random.uniform(start_zoom + 0.1, 1.5)
-
-    # Random pan direction
-    start_x = random.uniform(0, 200)
-    start_y = random.uniform(0, 100)
-    end_x = start_x + random.uniform(-100, 100)
-    end_y = start_y + random.uniform(-50, 50)
-    
-    return {
-        'start_zoom': start_zoom,
-        'end_zoom': end_zoom,
-        'start_x': str(start_x),
-        'start_y': str(start_y),
-        'end_x': str(end_x),
-        'end_y': str(end_y)
-    }
 
 def create_with_scroll_video(visual_analysis: Dict, all_paths: Dict, scroll_video_path: str, 
                            audio_duration: float, output_path: str, fps: int = 30) -> bool:
@@ -313,19 +337,23 @@ def create_with_scroll_video(visual_analysis: Dict, all_paths: Dict, scroll_vide
                 segment['video_path'] = scroll_video_path
         
         # Build special filter for video incorporation
-        return _create_with_video_segments(timeline, all_paths, audio_duration, output_path, fps)
+        config = get_default_config("portrait")  # Mixed media typically uses portrait
+        return _create_with_video_segments(timeline, all_paths, audio_duration, output_path, config)
     else:
         # Regular image slideshow
-        return run(visual_analysis, all_paths, audio_duration, output_path, fps)
+        return run(visual_analysis, all_paths, "", audio_duration, output_path, fps)
 
 def _create_with_video_segments(timeline: List[Dict], all_paths: Dict, 
-                               audio_duration: float, output_path: str, fps: int) -> bool:
+                               audio_duration: float, output_path: str, config: VideoConfig, rng_seed: int = None) -> bool:
     """Create slideshow mixing static images and video segments with timebase normalization."""
     
     try:
+        # Validate mixed media inputs
+        validate_mixed_media_inputs(timeline, all_paths)
         cmd = ['ffmpeg', '-y']
         filter_parts = []
         input_idx = 0
+        fps = config.fps
         
         # Add inputs and create filter for each segment with consistent timebase handling
         for i, segment in enumerate(timeline):
@@ -334,11 +362,11 @@ def _create_with_video_segments(timeline: List[Dict], all_paths: Dict,
                 cmd.extend(['-i', segment['video_path']])
                 # Trim video to segment duration with deinterlacing, scaling, and fps normalization
                 duration = segment['end_time'] - segment['start_time']
+                scale_crop_filter = scale_pad_str(config)
                 filter_parts.append(
                     f"[{input_idx}:v]trim=duration={duration},setpts=PTS-STARTPTS,"
                     f"yadif=mode=0:parity=-1:deint=0,"  # Deinterlace if needed
-                    f"scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-                    f"crop=1080:1920,"
+                    f"{scale_crop_filter},"
                     f"fps={fps}[v{i}]"  # Normalize timebase for concat compatibility
                 )
             else:
@@ -347,13 +375,14 @@ def _create_with_video_segments(timeline: List[Dict], all_paths: Dict,
                 duration = segment['end_time'] - segment['start_time']
                 cmd.extend(['-loop', '1', '-t', str(duration), '-i', image_path])
                 # Apply Ken Burns to image with high-quality scaling and consistent fps
+                scale_crop_filter = scale_crop_str(config)
                 filter_parts.append(
-                    f"[{input_idx}:v]scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-                    f"crop=1080:1920,zoompan=z='1.0+0.2*on/{fps}':d={int(duration*fps)}:s=1080x1920:fps={fps}[v{i}]"
+                    f"[{input_idx}:v]{scale_crop_filter},zoompan=z='1.0+0.2*on/{fps}':d={int(duration*fps)}:s={config.width}x{config.height}:fps={fps}[v{i}]"
                 )
             input_idx += 1
         
-        # Concatenate all segments
+        # Use transition chain for consistency (even though we're using concat here)
+        # Future enhancement: could switch to xfade transitions for mixed media too
         concat_inputs = ''.join([f'[v{i}]' for i in range(len(timeline))])
         filter_parts.append(f"{concat_inputs}concat=n={len(timeline)}:v=1:a=0[final]")
         
@@ -387,7 +416,7 @@ def _create_with_video_segments(timeline: List[Dict], all_paths: Dict,
         return False
 
 def create_with_webpage_video(visual_analysis: Dict, all_paths: Dict, webpage_video_path: str,
-                            audio_duration: float, output_path: str, fps: int = 30) -> bool:
+                            audio_duration: float, output_path: str, config: VideoConfig) -> bool:
     """
     Creates slideshow incorporating webpage video clip.
     
@@ -403,7 +432,7 @@ def create_with_webpage_video(visual_analysis: Dict, all_paths: Dict, webpage_vi
     """
     if not os.path.exists(webpage_video_path):
         logging.warning("Webpage video not found, falling back to regular slideshow")
-        return run(visual_analysis, all_paths, audio_duration, output_path, fps)
+        return run(visual_analysis, all_paths, "", audio_duration, output_path, config.fps)
     
     logging.info("  > Creating slideshow with webpage video integration")
     
@@ -458,13 +487,13 @@ def create_with_webpage_video(visual_analysis: Dict, all_paths: Dict, webpage_vi
         
         for i, seg in enumerate(webpage_segments):
             duration = seg['end_time'] - seg['start_time']
+            scale_crop_filter = scale_pad_str(config)
             filter_parts.append(
                 f"[{webpage_input_idx}:v]trim=start={seg['video_start']}:duration={duration},"
                 f"setpts=PTS-STARTPTS,"
                 f"yadif=mode=0:parity=-1:deint=0,"  # Deinterlace if needed
-                f"scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-                f"crop=1080:1920,"
-                f"fps={fps}[webpage{i}]"  # Normalize timebase for consistent concat
+                f"{scale_crop_filter},"
+                f"fps={config.fps}[webpage{i}]"  # Normalize timebase for consistent concat
             )
             segment_outputs.append(f"[webpage{i}]")
         
@@ -479,15 +508,11 @@ def create_with_webpage_video(visual_analysis: Dict, all_paths: Dict, webpage_vi
                 
             duration = segment['end_time'] - segment['start_time']
             
-            # Apply Ken Burns if available
-            kb_params = _get_ken_burns_params(segment['image_source'], 
-                                            visual_analysis.get('ken_burns_effects', {}))
+            # Use simplified Ken Burns parameters
+            ken_burns_filter = _get_ken_burns_params_simple(segment['image_source'], int(duration*config.fps), config)
             
             filter_parts.append(
-                f"[{input_idx}:v]scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,"
-                f"crop=1080:1920,"
-                f"zoompan=z='{kb_params['start_zoom']}+({kb_params['end_zoom']}-{kb_params['start_zoom']})*on/{int(duration*fps)}'"
-                f":d={int(duration*fps)}:s=1080x1920:fps={fps}[img{i}]"
+                f"[{input_idx}:v]{ken_burns_filter}[img{i}]"
             )
             segment_outputs.append(f"[img{i}]")
         
@@ -509,7 +534,7 @@ def create_with_webpage_video(visual_analysis: Dict, all_paths: Dict, webpage_vi
             '-profile:v', 'high',
             '-level:v', '4.0',
             '-movflags', '+faststart',
-            '-r', str(fps),
+            '-r', str(config.fps),
             '-t', str(audio_duration),
             output_path
         ])
@@ -768,4 +793,4 @@ if __name__ == "__main__":
         exit(0)
     else:
         print("💥 SOME TESTS FAILED - Issues remain in slideshow component")
-        exit(1) 
+        exit(1)

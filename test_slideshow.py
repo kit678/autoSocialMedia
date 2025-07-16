@@ -26,6 +26,7 @@ def run_slideshow_test():
     
     from agent.slideshow.create_smart_video import run as create_smart_video
     from agent.utils import get_audio_duration
+    from agent.video_config import get_default_config
 
     run_dir = 'runs/current'
     logging.info(f"--- Running Slideshow Test using data from '{run_dir}' ---")
@@ -73,7 +74,8 @@ def run_slideshow_test():
             audio_path=audio_path,
             audio_duration=audio_duration,
             output_path=output_path,
-            fps=30
+            fps=30,
+            config=get_default_config("landscape")
         )
 
         if final_video_path and os.path.exists(final_video_path):

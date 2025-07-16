@@ -1,11 +1,11 @@
 # AutoSocialMedia Decision Log Summary
 
-**Generated:** 2025-07-10 15:21:17
+**Generated:** 2025-07-14 02:36:36
 
 ## Pipeline Overview
 
 - **Total Decisions:** 4
-- **Components Analyzed:** 8
+- **Components Analyzed:** 6
 - **Average Confidence:** 0.94
 
 ## Component Analysis

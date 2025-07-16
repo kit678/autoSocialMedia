@@ -1,8 +1,43 @@
 """
-Component Runner for Isolated Component Testing
+Component Runner for AutoSocialMedia Pipeline Orchestration
 
-Executes individual pipeline components with dependency validation
-and proper parameter handling.
+This module provides the core pipeline orchestration functionality for the AutoSocialMedia
+system. It manages the execution of individual pipeline components with proper dependency
+validation, error handling, and state management.
+
+Pipeline Components:
+    1. discover: Find trending news headlines from various sources
+    2. scrape: Extract article content and metadata from URLs
+    3. screenshot: Capture webpage visuals and create opening videos
+    4. script: Generate AI-powered narration scripts
+    5. audio: Convert scripts to speech using TTS providers
+    6. timing_extraction: Extract word-level timestamps from audio
+    7. visual_director: Orchestrate visual asset acquisition and timing
+    8. slideshow: Assemble final video with synchronized visuals
+    9. captions: Add word-level captions to the final video
+
+Dependency Management:
+    Each component has defined input/output requirements that are validated
+    before execution. The runner ensures proper dependency chains and provides
+    clear error messages for missing files or failed components.
+
+Error Handling:
+    - Comprehensive logging of all pipeline steps
+    - Graceful fallback for non-critical failures
+    - Detailed error reporting for debugging
+    - Component isolation to prevent cascade failures
+
+Configuration:
+    - TTS provider selection (Kokoro, Google TTS)
+    - Decision logging for AI component analysis
+    - Configurable run directories and file management
+
+Example:
+    >>> from agent.component_runner import ComponentRunner
+    >>> runner = ComponentRunner(run_dir="runs/test", logger=logger)
+    >>> success = runner.run_component("discover")
+    >>> if success:
+    ...     print("Discovery completed successfully")
 """
 
 import os
@@ -13,11 +48,50 @@ from typing import Dict, Any, Optional
 from agent.component_registry import ComponentRegistry, ComponentSpec
 from agent.utils import get_audio_duration
 from agent.decision_logger import DecisionLogger
+from agent.video_config import get_default_config
 
 class ComponentRunner:
-    """Handles isolated execution of pipeline components."""
+    """
+    Handles isolated execution of pipeline components with dependency management.
+    
+    The ComponentRunner orchestrates the execution of individual pipeline components,
+    managing their dependencies, validating inputs/outputs, and providing comprehensive
+    error handling and logging.
+    
+    Attributes:
+        run_dir (str): Directory for storing run-specific files and outputs
+        logger (DecisionLogger): Logger for tracking AI decisions and pipeline state
+        tts_provider (str): Text-to-speech provider ('kokoro' or 'google')
+        registry (ComponentRegistry): Registry for component specifications
+    
+    Example:
+        >>> from agent.component_runner import ComponentRunner
+        >>> from agent.decision_logger import DecisionLogger
+        >>> logger = DecisionLogger("runs/test")
+        >>> runner = ComponentRunner("runs/test", logger, "kokoro")
+        >>> success = runner.run_component("discover")
+    """
     
     def __init__(self, run_dir: str, logger: DecisionLogger, tts_provider: str = 'kokoro'):
+        """
+        Initialize the ComponentRunner with configuration and dependencies.
+        
+        Args:
+            run_dir (str): Directory path for storing run-specific files and outputs.
+                This directory will contain all intermediate and final files.
+            logger (DecisionLogger): Logger instance for tracking AI decisions,
+                component execution, and pipeline state.
+            tts_provider (str, optional): Text-to-speech provider to use for audio
+                generation. Supported values: 'kokoro', 'google'. Defaults to 'kokoro'.
+        
+        Example:
+            >>> logger = DecisionLogger("runs/current")
+            >>> runner = ComponentRunner(
+            ...     run_dir="runs/current",
+            ...     logger=logger,
+            ...     tts_provider="google"
+            ... )
+        """
         self.run_dir = run_dir
         self.logger = logger
         self.tts_provider = tts_provider.lower()
@@ -44,7 +118,23 @@ class ComponentRunner:
             f.write(text)
 
     def run_pipeline(self):
-        """Executes the full pipeline in sequence."""
+        """
+        Executes the full pipeline in sequence from discovery to final video.
+        
+        Runs all pipeline components in the correct dependency order:
+        1. discover -> scrape -> screenshot -> script -> audio
+        2. timing_extraction -> visual_director -> slideshow -> captions
+        
+        The pipeline will stop and raise an exception if any component fails,
+        except for timing_extraction which is allowed to fail gracefully.
+        
+        Raises:
+            Exception: If any critical component fails during execution
+            
+        Example:
+            >>> runner = ComponentRunner("runs/test", logger)
+            >>> runner.run_pipeline()  # Executes complete pipeline
+        """
         pipeline = [
             'discover',
             'scrape',
@@ -62,6 +152,31 @@ class ComponentRunner:
                 raise Exception(f"Pipeline failed at component: {component_name}")
 
     def run_component(self, component_name: str) -> bool:
+        """
+        Execute a single pipeline component with full error handling and logging.
+        
+        Validates component dependencies, executes the component logic, validates
+        outputs, and logs all decisions and errors for debugging.
+        
+        Args:
+            component_name (str): Name of the component to execute. Must be one of:
+                'discover', 'scrape', 'screenshot', 'script', 'audio',
+                'timing_extraction', 'visual_director', 'slideshow', 'captions'
+        
+        Returns:
+            bool: True if component executed successfully, False otherwise
+            
+        Example:
+            >>> runner = ComponentRunner("runs/test", logger)
+            >>> if runner.run_component("discover"):
+            ...     print("Discovery completed successfully")
+            ... else:
+            ...     print("Discovery failed - check logs")
+        
+        Note:
+            This method handles all exceptions internally and returns False
+            for any failure. Check the logs for detailed error information.
+        """
         component = self.registry.get_component(component_name)
         if not component:
             logging.error(f"Unknown component: {component_name}")
@@ -257,12 +372,40 @@ class ComponentRunner:
     def _run_slideshow(self) -> bool:
         from agent.slideshow.create_smart_video import run as create_smart_video
         from agent.utils import get_audio_duration
+        from agent.video_config import get_default_config
 
         # Load the necessary data for video creation
-        visual_analysis = self._load_json('visual_map.json') # The visual_map contains the 'segments'
-        all_image_paths = visual_analysis.get('visual_map', {})
+        visual_analysis = self._load_json('visual_map.json')  # The visual_map contains the 'segments'
+        all_image_paths = visual_analysis.get('visual_map', {}).copy()
         audio_path = self._get_path('voice.mp3')
-        
+
+        # ------------------------------------------------------------------
+        # Include the opening webpage capture video as the first visual
+        # ------------------------------------------------------------------
+        webpage_video_path = self._get_path('webpage_capture.mp4')
+        if os.path.exists(webpage_video_path):
+            logging.info("Adding webpage capture video as opening segment in slideshow")
+            opening_id = 'opening_video'
+            all_image_paths[opening_id] = webpage_video_path
+
+            # Insert a 3-second opening segment at the start of the timeline
+            opening_segment = {
+                'cue_id': opening_id,
+                'start_time': 0.0,
+                'end_time': 3.0,
+                'visual_type': 'video'
+            }
+            # Ensure segments key exists
+            if 'segments' not in visual_analysis:
+                visual_analysis['segments'] = visual_analysis.get('visual_timeline', [])
+            # Shift existing segments by 3 s
+            for seg in visual_analysis['segments']:
+                seg['start_time'] += 3.0
+                seg['end_time'] += 3.0
+            visual_analysis['segments'].insert(0, opening_segment)
+        else:
+            logging.warning("webpage_capture.mp4 not found – slideshow will start with first image")
+
         # Ensure we have the audio duration
         audio_duration = get_audio_duration(audio_path)
         if not audio_duration:
@@ -270,12 +413,28 @@ class ComponentRunner:
             return False
 
         # Directly call the new, unified smart video creation function
+        # --- Hard-code portrait orientation (1080×1920) across the pipeline ---
+        portrait_config = get_default_config("portrait")
+        
+        # Log the orientation choice for transparency
+        self.logger.log_decision(
+            step="slideshow_orientation",
+            decision="Using portrait orientation for final video",
+            reasoning="Aspect ratio hard-coded per product requirement",
+            metadata={
+                "width": portrait_config.width,
+                "height": portrait_config.height,
+                "orientation": "portrait"
+            }
+        )
+        
         video_path = create_smart_video(
             visual_analysis=visual_analysis,
             all_image_paths=all_image_paths,
             audio_path=audio_path,
             audio_duration=audio_duration,
-            output_path=self._get_path('slideshow.mp4')
+            output_path=self._get_path('slideshow.mp4'),
+            config=portrait_config
         )
         return video_path is not None
     
