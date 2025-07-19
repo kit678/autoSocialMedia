@@ -160,12 +160,15 @@ class ComponentRegistry:
                 description="Directs visuals by classifying script segments and sourcing media.",
                 inputs=[
                     ComponentDependency("creative_brief.json", True, "The overall creative direction", json_validator),
-                    ComponentDependency("transcript_data.json", True, "Word-level timestamp data", json_validator)
+                    ComponentDependency("transcript_data.json", True, "Word-level timestamp data", json_validator),
+                    ComponentDependency("visual_story_plan.json", True, "Visual story plan from script component", json_validator),
+                    ComponentDependency("article.txt", False, "Article text for LLM tagging", text_validator),
+                    ComponentDependency("headline.json", False, "Headline for context", json_validator)
                 ],
                 outputs=[
                     ComponentOutput("visual_map.json", "The final map of visual cues to media files", json_validator)
                 ],
-                function_module="agent.visual_director.direct_visuals",
+                function_module="agent.visual_director.enhanced_director",
                 function_name="run"
             ),
             

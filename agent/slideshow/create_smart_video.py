@@ -96,7 +96,7 @@ def run(visual_analysis: Dict[str, Any], all_image_paths: Dict[str, str], audio_
             raise SlideshowError("Could not build any valid video inputs. Aborting video creation.")
 
         # Assemble the final command including audio
-        command = _assemble_ffmpeg_command(inputs_args, filter_chains, output_path, audio_path, config, rng_seed)
+        command = _assemble_ffmpeg_command(inputs_args, filter_chains, output_path, audio_path, config, timeline, rng_seed)
 
         if not command:
             raise SlideshowError("Failed to assemble FFmpeg command.")
@@ -151,7 +151,7 @@ def _build_smart_filter(timeline: list, all_image_paths: Dict[str, str], config:
 
         duration_frames = segment['duration_frames']
         if duration_frames <= 0:
-            logging.warning(f"Skipping segment for '{cue_id}' due to non-positive duration.")
+            logging.warning(f"Skipping segment for '{src_id}' due to non-positive duration.")
             continue
 
         duration_sec = duration_frames / fps
@@ -163,8 +163,8 @@ def _build_smart_filter(timeline: list, all_image_paths: Dict[str, str], config:
 
         # --- Add input arguments ---
         if is_video:
-            # Videos are read as-is (no looping). We will trim them to the required duration.
-            inputs_args.extend(['-i', src_path])
+            # Videos must be limited to segment duration to prevent overrun
+            inputs_args.extend(['-t', str(duration_sec), '-i', src_path])
         else:
             # Still images must be looped so FFmpeg generates a stream.
             inputs_args.extend(['-loop', '1', '-t', str(duration_sec), '-i', src_path])
@@ -220,7 +220,7 @@ def _get_ken_burns_params_simple(image_path: str, duration_frames: int, config: 
         end_y=end_y
     )
 
-def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path: str, audio_path: str, config: VideoConfig, rng_seed: int = None) -> list:
+def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path: str, audio_path: str, config: VideoConfig, timeline: list, rng_seed: int = None) -> list:
     """Assembles the final FFmpeg command."""
     
     # Check if there are any video chains to process
@@ -234,7 +234,7 @@ def _assemble_ffmpeg_command(inputs_args: list, filter_chains: list, output_path
     
     # Build transition chain using the new function
     stream_tags = [f"[v{i}]" for i in range(num_streams)]
-    transition_filter = build_transition_chain(stream_tags, config, rng_seed)
+    transition_filter = build_transition_chain(stream_tags, config, timeline, rng_seed)
     filter_graph += transition_filter
     
     # --- COMMAND ASSEMBLY ---

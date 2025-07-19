@@ -193,9 +193,15 @@ class ComponentRunner:
             else:
                 logging.error(f"[FAIL] Component '{component_name}' execution failed")
             
-            self.logger.finish_component()
-            if success:
-                self.logger.save_master_log()
+            # Only save decision logs for components that actually log decisions
+            components_with_decisions = ['script', 'visual_director', 'slideshow']
+            if component_name in components_with_decisions:
+                self.logger.finish_component()
+                if success:
+                    self.logger.save_master_log()
+            else:
+                # Don't create empty decision files for components without decisions
+                self.logger._reset_current_component()
             return success
             
         except Exception as e:
@@ -363,7 +369,7 @@ class ComponentRunner:
         return True
     
     def _run_visual_director(self) -> bool:
-        from agent.visual_director.direct_visuals import run as run_visuals
+        from agent.visual_director.direct_visuals_v2 import run as run_visuals
         transcript = self._load_json('transcript_data.json')
         creative_brief = self._load_json('creative_brief.json')
         result = run_visuals(self.run_dir, transcript, creative_brief, self.logger)
@@ -378,33 +384,11 @@ class ComponentRunner:
         visual_analysis = self._load_json('visual_map.json')  # The visual_map contains the 'segments'
         all_image_paths = visual_analysis.get('visual_map', {}).copy()
         audio_path = self._get_path('voice.mp3')
-
-        # ------------------------------------------------------------------
-        # Include the opening webpage capture video as the first visual
-        # ------------------------------------------------------------------
-        webpage_video_path = self._get_path('webpage_capture.mp4')
-        if os.path.exists(webpage_video_path):
-            logging.info("Adding webpage capture video as opening segment in slideshow")
-            opening_id = 'opening_video'
-            all_image_paths[opening_id] = webpage_video_path
-
-            # Insert a 3-second opening segment at the start of the timeline
-            opening_segment = {
-                'cue_id': opening_id,
-                'start_time': 0.0,
-                'end_time': 3.0,
-                'visual_type': 'video'
-            }
-            # Ensure segments key exists
-            if 'segments' not in visual_analysis:
-                visual_analysis['segments'] = visual_analysis.get('visual_timeline', [])
-            # Shift existing segments by 3 s
-            for seg in visual_analysis['segments']:
-                seg['start_time'] += 3.0
-                seg['end_time'] += 3.0
-            visual_analysis['segments'].insert(0, opening_segment)
-        else:
-            logging.warning("webpage_capture.mp4 not found – slideshow will start with first image")
+        
+        # Visual director now handles opening/closing shots, so we use the timeline as-is
+        if 'segments' not in visual_analysis:
+            visual_analysis['segments'] = visual_analysis.get('visual_timeline_simple', 
+                                                            visual_analysis.get('visual_timeline', []))
 
         # Ensure we have the audio duration
         audio_duration = get_audio_duration(audio_path)

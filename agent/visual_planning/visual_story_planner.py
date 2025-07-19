@@ -42,7 +42,13 @@ Create a detailed visual story plan as JSON with the following structure:
       "narrative_context": "<Brief sentence describing the visual's purpose for validation>",
       "script_guidance": "<how to write the narration to naturally trigger this visual>",
       "emotional_tone": "<tone for this segment>",
-      "duration_target": "<suggested seconds for this segment>"
+      "duration_target": "<suggested seconds for this segment>",
+      "intent": "inform|excite|explain|warn|celebrate",
+      "emotion": "neutral|happy|concerned|surprised|serious",
+      "entities": ["<list of named entities in this segment>"],
+      "preferred_media": "image|video|reaction",
+      "motion_hint": "static|slow_pan|dynamic",
+      "licence_requirement": "any|commercial|editorial"
     }}
   ],
   "visual_entities": {{

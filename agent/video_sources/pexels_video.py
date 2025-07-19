@@ -7,7 +7,7 @@ import logging
 import requests
 import time
 from typing import Optional, Dict, Any
-from ..decision_logger import log_decision
+# Remove direct import - use logger instance instead
 
 def search_and_download_pexels_video(search_term: str, download_dir: str, cue_id: str, category: Optional[str] = None) -> Optional[str]:
     """
@@ -99,11 +99,8 @@ def search_and_download_pexels_video(search_term: str, download_dir: str, cue_id
             for chunk in video_response.iter_content(chunk_size=8192):
                 f.write(chunk)
         
-        # Log the decision
-        log_decision("pexels_video", 
-                     "Successfully downloaded video", 
-                     f"Query: {search_term}, URL: {video_url}",
-                     0.9)
+        # Log successful download
+        logging.info(f"Pexels video download successful for '{search_term}'")
         
         logging.info(f"Successfully downloaded Pexels video: {filename}")
         return file_path
@@ -201,13 +198,8 @@ def search_pexels_videos(query: str, api_key: str, duration_preference: str = "s
         logging.error(f"Pexels API request failed: {e}")
         return []
     except Exception as e:
-        # Log the decision to fallback with a clear reason
-        log_decision(
-            "pexels_video_search",
-            "Pexels video search failed",
-            f"An unexpected error occurred during Pexels video search for '{query}': {e}",
-            0.1
-        )
+        # Log the error
+        logging.error(f"Pexels video search failed for '{query}': {e}")
         logging.error(f"Error in Pexels video search: {e}")
         return []
 

@@ -351,7 +351,7 @@ def _execute_planned_search(planned_search: Dict[str, Any], run_dir: str, cue_id
                     candidates = []
             elif source == "Pexels Video":
                 # Video search returns one validated path for now (no category support in video API)
-                video_path = search_and_download_pexels_video(term, visuals_dir, f"{cue_id}")
+                video_path = search_and_download_pexels_video(term, visuals_dir, f"{cue_id}", category=pexels_category)
                 if video_path:
                     candidates.append(video_path)
             

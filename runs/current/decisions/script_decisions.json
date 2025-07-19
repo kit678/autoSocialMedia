@@ -10,10 +10,10 @@
       "alternatives_considered": [],
       "confidence_score": 1.0,
       "input_data": {},
-      "timestamp": "2025-07-14T02:34:52.377473",
+      "timestamp": "2025-07-17T20:55:56.788933",
       "metadata": {
-        "headline": "Indeed, Glassdoor cutting jobs as artificial intelligence utilization grows",
-        "article_length": 2558,
+        "headline": "The Artificial Intelligence Revolution: Part 1",
+        "article_length": 45082,
         "approach": "reverse_engineering"
       }
     },
@@ -25,11 +25,11 @@
       "alternatives_considered": [],
       "confidence_score": 0.9,
       "input_data": {},
-      "timestamp": "2025-07-14T02:35:50.751662",
+      "timestamp": "2025-07-17T20:57:33.375122",
       "metadata": {
         "story_segments": 8,
-        "companies_identified": 3,
-        "visual_metaphors": 1,
+        "companies_identified": 0,
+        "visual_metaphors": 2,
         "target_duration": "60"
       }
     },
@@ -41,25 +41,25 @@
       "alternatives_considered": [],
       "confidence_score": 0.9,
       "input_data": {},
-      "timestamp": "2025-07-14T02:36:01.352507",
+      "timestamp": "2025-07-17T20:57:48.281495",
       "metadata": {
-        "script_length": 90,
-        "estimated_duration": "36.0 seconds",
-        "narrative_style": "investigative"
+        "script_length": 103,
+        "estimated_duration": "41.2 seconds",
+        "narrative_style": "energetic"
       }
     },
     {
       "component": "script",
       "step": "script_creation_complete",
       "decision": "Successfully created script using visual story planning",
-      "reasoning": "Generated 83 word script engineered to trigger specific visual opportunities",
+      "reasoning": "Generated 103 word script engineered to trigger specific visual opportunities",
       "alternatives_considered": [],
       "confidence_score": 0.95,
       "input_data": {},
-      "timestamp": "2025-07-14T02:36:01.359399",
+      "timestamp": "2025-07-17T20:57:48.287542",
       "metadata": {
-        "script_word_count": 83,
-        "estimated_duration": "33.2 seconds",
+        "script_word_count": 103,
+        "estimated_duration": "41.2 seconds",
         "visual_beats_planned": 0,
         "script_file": "runs\\current\\script.txt",
         "clean_script_file": "runs\\current\\script_clean.txt",
@@ -79,9 +79,9 @@
       "script_creation_complete"
     ],
     "decision_steps": [
+      "script_engineered",
       "visual_story_planning_start",
       "visual_story_plan_created",
-      "script_engineered",
       "script_creation_complete"
     ]
   }

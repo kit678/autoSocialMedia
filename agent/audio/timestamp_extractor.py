@@ -54,7 +54,8 @@ def extract_word_timestamps(audio_path: str, script_text: str = None) -> Dict[st
         )
         
         # Process segments to extract word timing
-        word_timings = {}
+        word_timings = {}  # This will store first occurrence of each word for backward compatibility
+        word_occurrences = {}  # This will store all occurrences of each word
         all_words = []
         max_end_time = 0.0
         
@@ -78,19 +79,30 @@ def extract_word_timestamps(audio_path: str, script_text: str = None) -> Dict[st
                 import re
                 clean_word = re.sub(r'[^\w\s]', '', word).strip()
                 
-                if clean_word and len(clean_word) > 1:  # Skip very short words
-                    word_timings[clean_word] = {
+                if clean_word:  # Include all words, even single letters
+                    word_info = {
                         "start_time": start_time,
                         "end_time": end_time,
                         "confidence": confidence,
                         "original_text": word_data.get("text", "")
                     }
                     
+                    # Store first occurrence for backward compatibility
+                    if clean_word not in word_timings:
+                        word_timings[clean_word] = word_info
+                    
+                    # Store all occurrences with indices
+                    if clean_word not in word_occurrences:
+                        word_occurrences[clean_word] = []
+                    word_occurrences[clean_word].append(word_info)
+                    
+                    # Store in chronological order
                     all_words.append({
                         "word": clean_word,
                         "start_time": start_time,
                         "end_time": end_time,
-                        "confidence": confidence
+                        "confidence": confidence,
+                        "original_text": word_data.get("text", "")
                     })
         
         # Calculate total duration from actual content
@@ -100,8 +112,9 @@ def extract_word_timestamps(audio_path: str, script_text: str = None) -> Dict[st
         logging.info(f"Calculated audio duration: {calculated_duration:.1f}s")
         
         return {
-            "word_timings": word_timings,
-            "all_words": all_words,
+            "word_timings": word_timings,  # First occurrence of each word (backward compatibility)
+            "word_occurrences": word_occurrences,  # All occurrences of each word
+            "all_words": all_words,  # All words in chronological order
             "segments": result.get("segments", []),
             "total_duration": calculated_duration,
             "text": result.get("text", "")
@@ -111,17 +124,49 @@ def extract_word_timestamps(audio_path: str, script_text: str = None) -> Dict[st
         logging.error(f"Error extracting word timestamps: {e}")
         raise
 
-def find_keyword_timing(keyword: str, word_timings: Dict[str, Any]) -> Optional[float]:
+def find_keyword_timing(keyword: str, word_timings: Dict[str, Any], occurrence_index: int = 0) -> Optional[float]:
     """
     Find the timestamp when a keyword is spoken
     
     Args:
         keyword: The word/phrase to find
         word_timings: Word timing data from extract_word_timestamps
+        occurrence_index: Which occurrence of the word to find (0 = first, 1 = second, etc.)
         
     Returns:
         Start time in seconds when keyword is spoken, or None if not found
     """
+    # Try to use the new word_occurrences data if available
+    word_occurrences = word_timings.get("word_occurrences", {})
+    if word_occurrences:
+        # Use occurrence-based lookup
+        clean_keyword = keyword.lower().strip()
+        import re
+        clean_keyword = re.sub(r'[^\w\s]', '', clean_keyword).strip()
+        
+        # For single words
+        if " " not in clean_keyword:
+            if clean_keyword in word_occurrences:
+                occurrences = word_occurrences[clean_keyword]
+                if occurrence_index < len(occurrences):
+                    return occurrences[occurrence_index]["start_time"]
+        
+        # For phrases, find in chronological order
+        else:
+            all_words = word_timings.get("all_words", [])
+            phrase_words = clean_keyword.split()
+            
+            # Search for the phrase in the chronological word list
+            for i in range(len(all_words) - len(phrase_words) + 1):
+                match = True
+                for j, phrase_word in enumerate(phrase_words):
+                    if all_words[i + j]["word"] != phrase_word:
+                        match = False
+                        break
+                if match:
+                    return all_words[i]["start_time"]
+    
+    # Fall back to old method for backward compatibility
     word_data = word_timings.get("word_timings", {})
     
     # Try exact match first

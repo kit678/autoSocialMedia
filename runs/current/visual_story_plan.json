@@ -1,169 +1,213 @@
 {
   "story_hook": {
-    "opening_visual": "A futuristic robot hand shaking hands with a human, symbolizing the intersection of AI and human employment.",
-    "hook_concept": "The impact of AI on job markets and the human workforce.",
-    "emotional_target": "concern"
+    "opening_visual": "A time-lapse of human evolution from cavemen to modern cityscapes, ending on a futuristic AI city.",
+    "hook_concept": "The rapid acceleration of human progress and the impending AI revolution.",
+    "emotional_target": "urgency"
   },
   "visual_segments": [
     {
       "segment_number": 1,
-      "narrative_purpose": "Introduce the layoffs at Indeed and Glassdoor due to AI.",
-      "visual_type": "Proper Noun",
-      "primary_search_term": "Indeed Glassdoor layoffs",
+      "narrative_purpose": "Introduce the concept of exponential progress in human history.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "human progress timeline",
       "secondary_keywords": [
-        "AI job cuts",
-        "HR technology layoffs"
+        "evolution of technology",
+        "history of innovation"
       ],
-      "narrative_context": "Show the logos of Indeed and Glassdoor with a downward trend graph to illustrate layoffs.",
-      "script_guidance": "As AI reshapes industries, companies like Indeed and Glassdoor are making tough decisions.",
-      "emotional_tone": "serious",
-      "duration_target": "5"
+      "narrative_context": "This visual sets the stage for understanding how AI fits into the rapid pace of human advancement.",
+      "script_guidance": "Narrate the acceleration of human progress, highlighting key milestones.",
+      "emotional_tone": "awe",
+      "duration_target": "5",
+      "intent": "inform",
+      "emotion": "surprised",
+      "entities": [],
+      "preferred_media": "video",
+      "motion_hint": "dynamic",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 2,
-      "narrative_purpose": "Highlight the role of AI in changing the workforce.",
-      "visual_type": "Abstract Concept",
-      "primary_search_term": "AI changing jobs",
+      "narrative_purpose": "Illustrate the shock of a 1750 man transported to 2015.",
+      "visual_type": "Concrete Object/Action",
+      "primary_search_term": "time travel shock",
       "secondary_keywords": [
-        "automation workforce",
-        "technology employment impact"
+        "18th century man modern world",
+        "culture shock"
       ],
-      "narrative_context": "An animation of AI algorithms replacing traditional job roles.",
-      "script_guidance": "AI is not just a tool but a transformative force in the job market.",
-      "emotional_tone": "informative",
-      "duration_target": "6"
+      "narrative_context": "This visual emphasizes the incomprehensible advancements from 1750 to 2015.",
+      "script_guidance": "Describe the overwhelming experience of witnessing modern technology for the first time.",
+      "emotional_tone": "amazement",
+      "duration_target": "6",
+      "intent": "excite",
+      "emotion": "happy",
+      "entities": [],
+      "preferred_media": "video",
+      "motion_hint": "dynamic",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 3,
-      "narrative_purpose": "Show the human aspect of the layoffs.",
-      "visual_type": "Concrete Object/Action",
-      "primary_search_term": "office layoffs",
+      "narrative_purpose": "Compare the difference in progress between 1500-1750 and 1750-2015.",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "progress comparison",
       "secondary_keywords": [
-        "employees packing",
-        "job loss"
+        "technological advancement",
+        "historical progress"
       ],
-      "narrative_context": "Employees packing their desks, symbolizing the personal impact of layoffs.",
-      "script_guidance": "Behind every statistic are real people facing uncertain futures.",
-      "emotional_tone": "empathetic",
-      "duration_target": "7"
+      "narrative_context": "This visual highlights the exponential increase in the rate of progress.",
+      "script_guidance": "Contrast the relatively minor changes from 1500 to 1750 with the massive leaps from 1750 to 2015.",
+      "emotional_tone": "serious",
+      "duration_target": "4",
+      "intent": "explain",
+      "emotion": "neutral",
+      "entities": [],
+      "preferred_media": "image",
+      "motion_hint": "static",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 4,
-      "narrative_purpose": "Introduce Recruit Holdings and its decision.",
-      "visual_type": "Proper Noun",
-      "primary_search_term": "Recruit Holdings CEO",
+      "narrative_purpose": "Depict the concept of a Die Progress Unit (DPU).",
+      "visual_type": "Abstract Concept",
+      "primary_search_term": "future shock",
       "secondary_keywords": [
-        "HR technology",
-        "company layoffs"
+        "technological shock",
+        "progress shock"
       ],
-      "narrative_context": "A portrait of Hisayuki Idekoba with the Recruit Holdings logo.",
-      "script_guidance": "Recruit Holdings, the parent company, faces the challenge of adapting to AI.",
-      "emotional_tone": "authoritative",
-      "duration_target": "4"
+      "narrative_context": "This visual illustrates the idea that future advancements could be so rapid they're shocking.",
+      "script_guidance": "Explain how the rate of progress is increasing to the point where future changes could be overwhelming.",
+      "emotional_tone": "concern",
+      "duration_target": "5",
+      "intent": "warn",
+      "emotion": "concerned",
+      "entities": [],
+      "preferred_media": "image",
+      "motion_hint": "slow_pan",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 5,
-      "narrative_purpose": "Discuss the merger of Glassdoor into Indeed.",
+      "narrative_purpose": "Show the impact of the Agricultural Revolution on human progress.",
       "visual_type": "Concrete Object/Action",
-      "primary_search_term": "Indeed Glassdoor merger",
+      "primary_search_term": "Agricultural Revolution",
       "secondary_keywords": [
-        "company integration",
-        "simplified hiring"
+        "first cities",
+        "civilization rise"
       ],
-      "narrative_context": "A visual merger of the Indeed and Glassdoor logos.",
-      "script_guidance": "The merger aims to streamline the hiring process in the age of AI.",
-      "emotional_tone": "optimistic",
-      "duration_target": "5"
+      "narrative_context": "This visual demonstrates how the Agricultural Revolution marked a turning point in human history.",
+      "script_guidance": "Describe the transition from hunter-gatherer societies to settled agricultural communities.",
+      "emotional_tone": "informative",
+      "duration_target": "4",
+      "intent": "inform",
+      "emotion": "neutral",
+      "entities": [],
+      "preferred_media": "image",
+      "motion_hint": "static",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 6,
-      "narrative_purpose": "Highlight leadership changes.",
-      "visual_type": "Proper Noun",
-      "primary_search_term": "Glassdoor CEO departure",
+      "narrative_purpose": "Illustrate the concept of the Industrial Revolution's impact on progress.",
+      "visual_type": "Concrete Object/Action",
+      "primary_search_term": "Industrial Revolution",
       "secondary_keywords": [
-        "Christian Sutherland-Wong",
-        "leadership transition"
+        "steam engine",
+        "factory system"
       ],
-      "narrative_context": "A photo of Christian Sutherland-Wong with a departure announcement graphic.",
-      "script_guidance": "Leadership changes reflect the company's new direction.",
-      "emotional_tone": "neutral",
-      "duration_target": "4"
+      "narrative_context": "This visual shows how the Industrial Revolution drastically accelerated technological progress.",
+      "script_guidance": "Highlight the key inventions and societal changes brought about by the Industrial Revolution.",
+      "emotional_tone": "awe",
+      "duration_target": "5",
+      "intent": "inform",
+      "emotion": "surprised",
+      "entities": [],
+      "preferred_media": "video",
+      "motion_hint": "dynamic",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 7,
-      "narrative_purpose": "Show the global impact of the layoffs.",
+      "narrative_purpose": "Introduce the concept of AI as the next major leap in human progress.",
       "visual_type": "Abstract Concept",
-      "primary_search_term": "global job cuts",
+      "primary_search_term": "AI future",
       "secondary_keywords": [
-        "international layoffs",
-        "workforce reduction"
+        "artificial intelligence",
+        "technological singularity"
       ],
-      "narrative_context": "A world map with highlighted areas affected by layoffs.",
-      "script_guidance": "The layoffs span across functions and countries, showing a global trend.",
-      "emotional_tone": "concerned",
-      "duration_target": "6"
+      "narrative_context": "This visual transitions the narrative to focus on the impending AI revolution.",
+      "script_guidance": "Position AI as the next significant milestone in the exponential curve of human progress.",
+      "emotional_tone": "urgency",
+      "duration_target": "6",
+      "intent": "warn",
+      "emotion": "concerned",
+      "entities": [],
+      "preferred_media": "video",
+      "motion_hint": "dynamic",
+      "licence_requirement": "any"
     },
     {
       "segment_number": 8,
-      "narrative_purpose": "End with a look towards the future.",
+      "narrative_purpose": "Visualize the potential future with advanced AI.",
       "visual_type": "Abstract Concept",
-      "primary_search_term": "future of work",
+      "primary_search_term": "AI utopia",
       "secondary_keywords": [
-        "AI employment",
-        "technology workforce"
+        "future technology",
+        "AI society"
       ],
-      "narrative_context": "A futuristic cityscape with AI and humans working side by side.",
-      "script_guidance": "As we navigate these changes, the future of work remains a shared journey.",
-      "emotional_tone": "hopeful",
-      "duration_target": "8"
+      "narrative_context": "This visual offers a glimpse into a future transformed by AI.",
+      "script_guidance": "Speculate on the possibilities and challenges of a world dominated by AI.",
+      "emotional_tone": "optimism",
+      "duration_target": "7",
+      "intent": "celebrate",
+      "emotion": "happy",
+      "entities": [],
+      "preferred_media": "video",
+      "motion_hint": "dynamic",
+      "licence_requirement": "any"
     }
   ],
   "visual_entities": {
-    "companies": [
-      "Indeed",
-      "Glassdoor",
-      "Recruit Holdings"
-    ],
+    "companies": [],
     "people": [
-      "Hisayuki Idekoba",
-      "Christian Sutherland-Wong",
-      "LaFawn Davis",
-      "Ayano Senaha"
+      "Vernor Vinge",
+      "Ray Kurzweil"
     ],
-    "products_services": [
-      "HR technology",
-      "job search platforms"
-    ],
-    "locations": [
-      "Austin, Texas",
-      "Tokyo, Japan",
-      "Dublin, Ireland"
-    ],
+    "products_services": [],
+    "locations": [],
     "technologies": [
       "Artificial Intelligence",
-      "automation"
+      "Large Hadron Collider",
+      "International Space Station"
     ]
   },
   "visual_metaphors": {
     "primary_concepts": [
       {
-        "concept": "AI replacing jobs",
-        "visual_metaphor": "Robot hand taking a job application from a human hand.",
+        "concept": "Exponential progress",
+        "visual_metaphor": "A rocket taking off with increasing speed.",
         "search_terms": [
-          "AI job replacement",
-          "robot human interaction"
+          "rocket launch",
+          "exponential growth"
+        ]
+      },
+      {
+        "concept": "AI revolution",
+        "visual_metaphor": "A human hand and a robotic hand reaching towards each other.",
+        "search_terms": [
+          "human robot interaction",
+          "AI future"
         ]
       }
     ]
   },
   "script_structure": {
     "target_duration": "60",
-    "pacing": "varied",
-    "narrative_style": "investigative",
-    "call_to_action": "How will AI shape your career? Stay informed and adapt."
+    "pacing": "fast-paced",
+    "narrative_style": "energetic",
+    "call_to_action": "Stay tuned for Part 2, where we delve deeper into the AI revolution and its implications for humanity."
   },
   "visual_variety_plan": {
-    "proper_noun_count": "4",
+    "proper_noun_count": "2",
     "concrete_action_count": "3",
     "abstract_concept_count": "3",
     "total_visual_segments": "8"

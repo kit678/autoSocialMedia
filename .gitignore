@@ -78,3 +78,34 @@ node_modules/
 
 # Temporary files
 =*
+
+# AutoSocialMedia specific
+runs/
+cache/
+*.mp4
+*.mp3
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.cube
+
+# Temporary test files
+test_*.py
+debug_*.py
+check_*.py
+analyze_*.py
+fix_*.py
+
+# Temporary documentation
+*_analysis.md
+*_findings.md
+*_fixes.md
+*_status.md
+*_revamp.md
+*_implementation*.md
+*_comparison.md
+*_DOCS.md
+*_CONFIG.md

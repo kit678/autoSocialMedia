@@ -136,6 +136,20 @@ class DecisionLogger:
         logging.info(f"Saved {len(component_decisions)} decisions for {self.current_component}")
         self.current_component = None
     
+    def _reset_current_component(self):
+        """Reset current component without saving decision file (for components without decisions)."""
+        if self.current_component:
+            # Remove any decisions that might have been added
+            if self.current_component in self.component_decisions:
+                # Remove from global decisions list
+                component_decisions = self.component_decisions[self.current_component]
+                for decision in component_decisions:
+                    if decision in self.decisions:
+                        self.decisions.remove(decision)
+                # Clear component decisions
+                del self.component_decisions[self.current_component]
+            self.current_component = None
+    
     def save_master_log(self):
         """Save comprehensive decision log at end of pipeline."""
         

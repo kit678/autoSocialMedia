@@ -1,0 +1,51 @@
+# Visual Director Configuration
+
+visual_director:
+  allow_paid: false
+  max_results_per_source: 20
+  portrait_width: 1080
+  portrait_height: 1920
+  min_score: 0.45
+  reaction_min_conf: 0.6
+  providers:
+    searxng:
+      endpoint: http://localhost:8888/search
+      engines: [wikimedia, duckduckgo_images]
+    openverse:
+      api_key: null  # public
+    nasa:
+      api_key: DEMO_KEY
+    tenor:
+      api_key: ${TENOR_API_KEY}
+    pexels:
+      api_key: ${PEXELS_API_KEY}
+  
+  # Smart routing configuration
+  smart_routing:
+    enabled: true
+    max_adapters_per_query: 3
+    confidence_threshold: 0.7
+    cache_routing_decisions: true
+  
+  # Reaction detection configuration
+  reaction_detection:
+    enabled: true
+    min_intensity: 0.4
+    max_overlays_per_segment: 2
+    overlay_duration: 2.0
+    use_llm: false  # Set to true when LLM is available
+  
+  # Fallback queries when no assets found
+  fallback_queries:
+    - "abstract background"
+    - "technology concept"
+    - "business professional"
+    - "nature landscape"
+    - "colorful pattern"
+  
+  # Scoring weights
+  scoring:
+    relevance_weight: 0.5
+    quality_weight: 0.3
+    diversity_weight: 0.2
+

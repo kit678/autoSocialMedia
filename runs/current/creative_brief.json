@@ -1,20 +1,20 @@
 {
   "story_angle": {
-    "angle_name": "The impact of AI on job markets and the human workforce.",
+    "angle_name": "The rapid acceleration of human progress and the impending AI revolution.",
     "description": "Visual narrative with 0 planned story beats",
-    "target_emotion": "concern"
+    "target_emotion": "urgency"
   },
   "script_outline": {
-    "hook": "\"A robotic handshake\u2014symbolizing the uneasy partnership between AI and human workers.",
+    "hook": "\"From cavemen to skyscrapers\u2014human progress isn\u2019t linear, it\u2019s a rocket accelerating into the unknown.",
     "main_points": [],
-    "conclusion": "\" *",
+    "conclusion": ")",
     "target_duration": "60",
-    "narrative_style": "investigative",
-    "pacing_strategy": "varied"
+    "narrative_style": "energetic",
+    "pacing_strategy": "fast-paced"
   },
   "visual_cues": [],
   "visual_strategy": {
-    "pacing_strategy": "varied",
+    "pacing_strategy": "fast-paced",
     "style_suggestion": "dynamic",
     "opening_strategy": {
       "style": "animated_scroll",

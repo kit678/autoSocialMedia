@@ -23,8 +23,10 @@ try:
 except ImportError:  # pragma: no cover – Pillow should be installed
     Image = None  # type: ignore
 
+import os
 import subprocess
 from agent.video_config import VideoConfig, get_default_config
+from agent.video.ffmpeg_utils import scale_crop_str
 
 __all__ = [
     "get_media_dimensions",
@@ -121,6 +123,14 @@ def standardize_image(image_path: str, target_width: int = 1080, target_height: 
                 top = (img.height - new_height) // 2
                 img = img.crop((0, top, img.width, top + new_height))
             img = img.resize((target_width, target_height), Image.LANCZOS)
+            # Convert RGBA to RGB if saving as JPEG
+            if image_path.lower().endswith(('.jpg', '.jpeg')) and img.mode in ('RGBA', 'P'):
+                rgb_img = Image.new('RGB', img.size, (255, 255, 255))
+                if img.mode == 'RGBA':
+                    rgb_img.paste(img, mask=img.split()[3])
+                else:
+                    rgb_img.paste(img)
+                img = rgb_img
             img.save(image_path)
             return True
     except Exception as e:
