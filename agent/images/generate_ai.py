@@ -420,7 +420,7 @@ def generate_with_vertex_ai_imagen(prompts: List[str], output_dir: str):
     vertexai.init(project=project_id, location=location)
 
     # Load the pre-trained Imagen model using its simple identifier
-    model = ImageGenerationModel.from_pretrained("imagegeneration@006")
+    model = ImageGenerationModel.from_pretrained("imagegeneration@007")
 
     generated_files = []
 
