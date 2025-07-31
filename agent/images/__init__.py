@@ -12,7 +12,7 @@ def run_google_search(terms, max_images, output_dir):
 
 def run_ai_generation(terms, max_images, output_dir):
     """Wrapper for AI image generation using Imagen 3"""
-    return generate_ai_images(terms, max_images, output_dir)
+    return generate_ai_images(terms, output_dir)
 
 def run_openai_generation(terms, max_images, output_dir):
     """Wrapper for AI image generation using OpenAI DALL-E"""

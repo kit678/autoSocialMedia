@@ -1,7 +1,8 @@
-"""Visual Director V2 - Orchestrates visual acquisition using the new adapter system.
+"""
+Conventional Visual Director
 
-This module coordinates the entire visual acquisition process using the new
-adapter registry, LLM tagging, asset scoring, and caching systems.
+This module handles the existing visual acquisition workflow using adapters 
+like Pexels, SearXNG, and other external sources.
 """
 
 import os
@@ -11,20 +12,20 @@ import asyncio
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 
-from .asset_registry import get_registry, initialize_adapters
-from .asset_types import Asset, AssetScoringConfig
-from .asset_scorer import select_best_asset, get_scoring_report
-from .cache_manager import get_cache_manager
-from .llm_tagger import tag_segments_with_intent
-from .adapters import register_all_adapters
-from ..utils import get_audio_duration
-from ..media_utils import get_media_dimensions, get_orientation
-from .visual_timing_alignment import align_segments_with_transcript, ensure_segment_coverage, add_static_shots
+from .visual_director.asset_registry import get_registry, initialize_adapters
+from .visual_director.asset_types import Asset, AssetScoringConfig
+from .visual_director.asset_scorer import select_best_asset, get_scoring_report
+from .visual_director.cache_manager import get_cache_manager
+from .visual_director.llm_tagger import tag_segments_with_intent
+from .visual_director.adapters import register_all_adapters
+from .utils import get_audio_duration
+from .media_utils import get_media_dimensions, get_orientation
+from .visual_director.visual_timing_alignment import align_segments_with_transcript, ensure_segment_coverage, add_static_shots
 
 
 def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any], logger) -> Optional[Dict[str, Any]]:
     """
-    Main visual director function using the new adapter system.
+    Main conventional visual director function using the existing adapter system.
     
     Args:
         run_dir: Directory for the current run
@@ -36,7 +37,7 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
         Dictionary containing visual results or None if failed
     """
     try:
-        logging.info("🎬 Starting Visual Director V2 process")
+        logging.info("🎬 Starting Conventional Visual Director process")
         
         # Initialize the adapter system
         register_all_adapters()
@@ -299,6 +300,19 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
                 f"({os.path.basename(run_visual_path)}) - Score: {best_asset.composite_score:.2f}"
             )
         
+        # Convert to simple timeline for video assembly compatibility
+        simple_timeline = []
+        for entry in enhanced_timeline:
+            simple_entry = {
+                'cue_id': entry['cue_id'],
+                'start_time': entry['start_time'],
+                'end_time': entry['end_time'],
+                'trigger_keyword': entry['trigger_keyword'],
+                'visual_type': entry['visual_type'],
+                'visual_file': entry['visual_file']
+            }
+            simple_timeline.append(simple_entry)
+        
         # Add opening webpage video and closing logo to timeline
         webpage_video_path = os.path.join(run_dir, 'webpage_capture.mp4')
         logo_path = "E:\\Dev\\AutoSocialMedia\\assets\\company_logo_closing.mp4"
@@ -322,42 +336,20 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
         # Update the enhanced timeline
         enhanced_timeline = enhanced_timeline_with_static
         
-        # Convert to simple timeline for compatibility
+        # Convert to simple timeline for video assembly compatibility (updated with static shots)
         simple_timeline = []
         for entry in enhanced_timeline:
-            simple_timeline.append({
+            simple_entry = {
                 'cue_id': entry['cue_id'],
                 'start_time': entry['start_time'],
                 'end_time': entry['end_time'],
                 'trigger_keyword': entry['trigger_keyword'],
                 'visual_type': entry['visual_type'],
                 'visual_file': entry['visual_file']
-            })
-        
-        # Collect orientation statistics
-        orientation_stats = {"portrait": 0, "landscape": 0, "square": 0, "unknown": 0}
-        for asset in selected_assets:
-            if asset.dimensions[0] > 0 and asset.dimensions[1] > 0:
-                orient = get_orientation(asset.dimensions[0], asset.dimensions[1]) or "unknown"
-            else:
-                orient = "unknown"
-            orientation_stats[orient] += 1
-        
-        logger.log_decision(
-            step="visual_director_summary",
-            decision=f"Completed visual acquisition for {len(enhanced_timeline)} segments",
-            reasoning="Used new adapter system with scoring and caching",
-            confidence=0.95,
-            metadata={
-                "total_segments": len(enhanced_timeline),
-                "sources_used": list(set(a.source for a in selected_assets)),
-                "media_types": list(set(a.type for a in selected_assets)),
-                "orientation_stats": orientation_stats,
-                "average_score": sum(a.composite_score for a in selected_assets) / len(selected_assets) if selected_assets else 0
             }
-        )
+            simple_timeline.append(simple_entry)
         
-        # Create result structure
+        # Create output data structure
         result = {
             'visual_timeline': enhanced_timeline,
             'visual_timeline_simple': simple_timeline,
@@ -366,18 +358,9 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
                 'opening_strategy': {
                     'screenshot_duration': 3.0
                 },
-                'total_visuals': len(simple_timeline),
-                'adapters_used': list(set(a.source for a in selected_assets)),
-                'attribution_required': [
-                    {
-                        'cue_id': f"visual_{i:02d}",
-                        'attribution': asset.attribution
-                    }
-                    for i, asset in enumerate(selected_assets)
-                    if asset.requires_attribution()
-                ]
+                'total_visuals': len(simple_timeline)
             },
-            'segments': simple_timeline
+            'segments': simple_timeline  # Add segments for compatibility with the slideshow component
         }
         
         # Save visual map data
@@ -385,18 +368,14 @@ def run(run_dir: str, transcript: Dict[str, Any], creative_brief: Dict[str, Any]
         with open(visual_map_path, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2)
         
-        # Log cache statistics
-        cache_stats = cache_manager.get_cache_stats()
-        logging.info(f"📊 Cache stats: {cache_stats['total_files']} files, {cache_stats['total_size_mb']} MB")
-        
-        logging.info(f"✅ Visual Director V2 completed with {len(simple_timeline)} visuals")
+        logging.info(f"✅ Conventional visual director completed successfully with {len(simple_timeline)} visuals")
         return result
         
     except Exception as e:
-        logging.error(f"❌ Visual Director V2 failed: {e}")
+        logging.error(f"❌ Conventional visual director failed: {e}")
         logger.log_decision(
-            step="visual_director_error",
-            decision="Visual director failed",
+            step="conventional_visual_director_error",
+            decision="Conventional visual director failed",
             reasoning=f"Error: {e}",
             confidence=0.0
         )

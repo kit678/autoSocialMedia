@@ -1,0 +1,47 @@
+{
+  "ai_image_generation": {
+    "primary_provider": "gemini",
+    "fallback_providers": ["openai", "stability"],
+    "providers": {
+      "openai": {
+        "enabled": true,
+        "model": "dall-e-3",
+        "size": "1024x1792",
+        "quality": "standard",
+        "style": "natural"
+      },
+      "gemini": {
+        "enabled": true,
+        "model": "gemini-2.0-flash-preview",
+        "region": "us-central1",
+        "aspect_ratio": "9:16",
+        "sample_count": 1,
+        "safety_settings": {
+          "harm_category_hate_speech": "block_only_high",
+          "harm_category_dangerous_content": "block_only_high",
+          "harm_category_sexually_explicit": "block_only_high",
+          "harm_category_harassment": "block_only_high"
+        }
+      },
+      "stability": {
+        "enabled": false,
+        "model": "stable-diffusion-xl-1024-v1-0",
+        "height": 1792,
+        "width": 1024,
+        "cfg_scale": 7,
+        "samples": 1,
+        "steps": 30
+      }
+    },
+    "common_settings": {
+      "prompt_enhancement": {
+        "add_style_suffix": true,
+        "style_suffix": "high quality, detailed, vertical composition, portrait orientation, 9:16 aspect ratio",
+        "add_negative_prompt": true,
+        "negative_prompt": "blurry, low quality, distorted, text, watermark, logo"
+      },
+      "retry_attempts": 2,
+      "timeout_seconds": 60
+    }
+  }
+}

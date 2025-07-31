@@ -156,11 +156,13 @@ def add_word_captions(video_path: str, transcript_data: dict, output_path: str) 
         # 3. Decide which FFmpeg filter to use.
         # ------------------------------------------------------------------
         supports_drawtext = _ffmpeg_supports_filter("drawtext")
-        # Always try drawtext first because the subtitles filter is often missing on
-        # Windows builds; if drawtext genuinely is unavailable the attempt will fail
-        # quickly and we will fall back to subtitles.
-        method_order = ["drawtext", "subtitles"]
-        logging.info(f"Caption burn-in method preference: {method_order} (drawtext supported: {supports_drawtext})")
+        # On Windows, skip drawtext due to fontconfig issues and use subtitles directly
+        if sys.platform == "win32":
+            method_order = ["subtitles"]  # Skip drawtext on Windows
+            logging.info("Windows detected: Using subtitles filter to avoid fontconfig issues")
+        else:
+            method_order = ["drawtext", "subtitles"]
+            logging.info(f"Caption burn-in method preference: {method_order} (drawtext supported: {supports_drawtext})")
 
         # Prepare resources that are only needed for the drawtext branch once.
         caption_data_cache = None
@@ -424,10 +426,10 @@ def _burn_captions_with_drawtext(video_path: str, caption_data: list, output_pat
             # Escape text for FFmpeg
             safe_text = caption['text'].replace("'", "'\\''").replace(":", "\\:")
             
-            # Create drawtext filter for this caption
+            # Create drawtext filter for this caption - use default font to avoid fontconfig issues
             drawtext_filter = (
                 f"drawtext=text='{safe_text}'"
-                f":fontfile='C\\:/Windows/Fonts/arial.ttf'"
+                f":font='Arial'"
                 f":fontsize=38"
                 f":fontcolor=white"
                 f":borderw=2"

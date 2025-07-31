@@ -72,7 +72,7 @@ class ComponentRunner:
         >>> success = runner.run_component("discover")
     """
     
-    def __init__(self, run_dir: str, logger: DecisionLogger, tts_provider: str = 'kokoro'):
+    def __init__(self, run_dir: str, logger: DecisionLogger, tts_provider: str = 'kokoro', config: Dict[str, Any] = None):
         """
         Initialize the ComponentRunner with configuration and dependencies.
         
@@ -83,18 +83,23 @@ class ComponentRunner:
                 component execution, and pipeline state.
             tts_provider (str, optional): Text-to-speech provider to use for audio
                 generation. Supported values: 'kokoro', 'google'. Defaults to 'kokoro'.
+            config (Dict[str, Any], optional): Configuration dictionary for pipeline components.
+                Can specify visual director type and settings.
         
         Example:
             >>> logger = DecisionLogger("runs/current")
+            >>> config = {'visual_director': {'type': 'ai', 'ai_config': {...}}}
             >>> runner = ComponentRunner(
             ...     run_dir="runs/current",
             ...     logger=logger,
-            ...     tts_provider="google"
+            ...     tts_provider="google",
+            ...     config=config
             ... )
         """
         self.run_dir = run_dir
         self.logger = logger
         self.tts_provider = tts_provider.lower()
+        self.config = config or {}
         self.registry = ComponentRegistry(run_dir=self.run_dir)
     
     def _get_path(self, key: str) -> str:
@@ -182,6 +187,7 @@ class ComponentRunner:
             logging.error(f"Unknown component: {component_name}")
             return False
         
+        print(f"\n>>> EXECUTING COMPONENT: {component_name}")
         logging.info(f"Executing component '{component_name}'...")
         self.logger.start_component(component_name)
         
@@ -300,8 +306,12 @@ class ComponentRunner:
                 logging.info(f"Primary screenshot failed, trying fallback {i}/{len(fallbacks)}: {title}")
             
             try:
+                import time
+                start_time = time.time()
                 # Static screenshot
                 run_screenshot(url, self._get_path('url_screenshot.png'))
+                elapsed_time = time.time() - start_time
+                logging.info(f"  ⌛ Web capture took {elapsed_time:.2f} seconds for {url}")
                 
                 # Intelligent video capture with fallback
                 layout_data = analyze_webpage_layout(url)
@@ -369,10 +379,23 @@ class ComponentRunner:
         return True
     
     def _run_visual_director(self) -> bool:
-        from agent.visual_director.direct_visuals_v2 import run as run_visuals
-        transcript = self._load_json('transcript_data.json')
-        creative_brief = self._load_json('creative_brief.json')
-        result = run_visuals(self.run_dir, transcript, creative_brief, self.logger)
+        # Determine which visual director to use based on config
+        director_type = self.config.get('visual_director', {}).get('type', 'conventional')
+        
+        if director_type == 'ai':
+            from agent.visual_director_ai import run as run_ai_visuals
+            transcript = self._load_json('transcript_data.json')
+            full_script = self._load_text('script_clean.txt')
+            creative_brief = self._load_json('creative_brief.json')
+            ai_config = self.config.get('visual_director', {}).get('ai_config', {})
+            result = run_ai_visuals(self.run_dir, transcript, full_script, creative_brief, self.logger, ai_config)
+        else:
+            # Default to conventional director
+            from agent.visual_director_conventional import run as run_conventional_visuals
+            transcript = self._load_json('transcript_data.json')
+            creative_brief = self._load_json('creative_brief.json')
+            result = run_conventional_visuals(self.run_dir, transcript, creative_brief, self.logger)
+            
         return result is not None
 
     def _run_slideshow(self) -> bool:
@@ -381,7 +404,16 @@ class ComponentRunner:
         from agent.video_config import get_default_config
 
         # Load the necessary data for video creation
-        visual_analysis = self._load_json('visual_map.json')  # The visual_map contains the 'segments'
+        # Try both possible filenames for backward compatibility
+        visual_analysis = None
+        if os.path.exists(self._get_path('visual_map_ai.json')):
+            visual_analysis = self._load_json('visual_map_ai.json')
+        elif os.path.exists(self._get_path('visual_map.json')):
+            visual_analysis = self._load_json('visual_map.json')
+        else:
+            logging.error("No visual map file found (tried visual_map_ai.json and visual_map.json)")
+            return False
+            
         all_image_paths = visual_analysis.get('visual_map', {}).copy()
         audio_path = self._get_path('voice.mp3')
         

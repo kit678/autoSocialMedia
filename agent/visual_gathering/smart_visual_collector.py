@@ -761,7 +761,7 @@ def try_ai_generation(cue: Dict[str, Any], visuals_dir: str, cue_id: str) -> Opt
         try:
             logging.info(f"🎨 AI generation attempt {attempt + 1}/{max_attempts}")
             
-            generated_files = generate_ai_images(ai_prompts, 1, visuals_dir)
+            generated_files = generate_ai_images(ai_prompts, visuals_dir)
             if generated_files and os.path.exists(generated_files[0]):
                 # AI images always accepted (no validation needed - they're generated for purpose)
                 ai_file = generated_files[0]

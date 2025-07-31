@@ -12,6 +12,8 @@ import logging
 import re
 from typing import Dict, List, Any, Optional, Tuple
 import requests
+from .adapter_selector import create_segment_adapter_mapping
+from agent.media_duration_utils import analyze_visual_timeline_durations, find_duration_gaps, create_gap_fill_segments
 
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
 
@@ -280,6 +282,27 @@ def run(run_dir: str, headline: str, article_text: str, logger: 'DecisionLogger'
             }
         )
         
+        # Phase 1.5: Enhance segments with adapter recommendations
+        visual_segments = visual_story_plan.get('visual_segments', [])
+        enhanced_segments = create_segment_adapter_mapping(visual_segments)
+        visual_story_plan['visual_segments'] = enhanced_segments
+        
+        # Log adapter selection
+        logger.log_decision(
+            step="adapter_selection_complete",
+            decision="Selected optimal adapters for each visual segment",
+            reasoning="Analyzed segment types and matched with best visual sources",
+            confidence=0.85,
+            metadata={
+                "segments_enhanced": len(enhanced_segments),
+                "adapter_diversity": len(set(
+                    adapter['name'] 
+                    for segment in enhanced_segments 
+                    for adapter in segment.get('recommended_adapters', [])
+                ))
+            }
+        )
+        
         # Phase 2: Engineer script from visual plan
         engineered_script = engineer_script_from_visual_plan(visual_story_plan, article_text)
         
@@ -296,7 +319,7 @@ def run(run_dir: str, headline: str, article_text: str, logger: 'DecisionLogger'
             }
         )
         
-        # Save visual story plan
+        # Save visual story plan with adapter recommendations
         plan_path = os.path.join(run_dir, 'visual_story_plan.json')
         with open(plan_path, 'w', encoding='utf-8') as f:
             json.dump(visual_story_plan, f, indent=2)

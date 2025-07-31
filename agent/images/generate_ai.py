@@ -1,12 +1,16 @@
+import vertexai
 import os
+from vertexai.preview.vision_models import ImageGenerationModel
 import logging
 import requests
 import re
+import json
 from dotenv import load_dotenv
 from PIL import Image
 import io
 import base64
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
+import google.generativeai as genai
 
 from ..decision_logger import log_decision
 
@@ -35,6 +39,15 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 STABILITY_API_KEY = os.getenv('STABILITY_API_KEY')
 
+# Load configuration
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'config', 'image_generation_config.json')
+IMAGE_GEN_CONFIG = {}
+if os.path.exists(CONFIG_PATH):
+    with open(CONFIG_PATH, 'r') as f:
+        IMAGE_GEN_CONFIG = json.load(f).get('ai_image_generation', {})
+else:
+    logging.warning(f"Image generation config not found at {CONFIG_PATH}, using defaults")
+
 def generate_ai_images(prompts: list, output_dir: str):
     """
     Main entry point for AI image generation.
@@ -45,7 +58,7 @@ def run(prompts: list, output_dir: str):
     """
     Generates images using AI image generation APIs.
     
-    Priority order: OpenAI DALL-E > Stability AI > Gemini 2.0 Flash
+    Uses configuration to determine provider order.
     
     Args:
         prompts (list): List of text prompts for image generation
@@ -53,25 +66,38 @@ def run(prompts: list, output_dir: str):
     Returns:
         list: List of generated image paths
     """
-    # Try OpenAI DALL-E first
-    if OPENAI_API_KEY:
-        results = generate_with_openai(prompts, output_dir)
-        if results:
-            return results
+    # Get provider order from config
+    primary_provider = IMAGE_GEN_CONFIG.get('primary_provider', 'vertex_ai')
+    fallback_providers = IMAGE_GEN_CONFIG.get('fallback_providers', ['openai', 'gemini', 'stability'])
     
-    # Try Stability AI as fallback
-    if STABILITY_API_KEY:
-        results = generate_with_stability(prompts, output_dir)
-        if results:
-            return results
+    # Create ordered list of providers to try
+    providers_to_try = [primary_provider] + [p for p in fallback_providers if p != primary_provider]
     
-    # Try Gemini 2.0 Flash as last resort (but now it works!)
-    if GEMINI_API_KEY:
-        results = generate_with_gemini(prompts, output_dir)
-        if results:
-            return results
+    for provider in providers_to_try:
+        provider_config = IMAGE_GEN_CONFIG.get('providers', {}).get(provider, {})
+        if not provider_config.get('enabled', True):
+            continue
+            
+        if provider == 'vertex_ai':
+            # Check if we have the required environment variables for Vertex AI
+            if os.getenv('GOOGLE_APPLICATION_CREDENTIALS') and os.getenv('GOOGLE_CLOUD_PROJECT'):
+                results = generate_with_vertex_ai_imagen(prompts, output_dir)
+                if results:
+                    return results
+        elif provider == 'openai' and OPENAI_API_KEY:
+            results = generate_with_openai(prompts, output_dir)
+            if results:
+                return results
+        elif provider == 'gemini':
+            # Gemini image generation temporarily disabled due to model availability issues
+            logging.warning("Gemini image generation is temporarily disabled - using other providers")
+            continue
+        elif provider == 'stability' and STABILITY_API_KEY:
+            results = generate_with_stability(prompts, output_dir)
+            if results:
+                return results
     
-    logging.error("No AI image generation API keys found. Set OPENAI_API_KEY, STABILITY_API_KEY, or GEMINI_API_KEY")
+    logging.error("No AI image generation API keys found or all providers failed. Set up Vertex AI credentials, OPENAI_API_KEY, STABILITY_API_KEY, or GEMINI_API_KEY")
     return []
 
 def generate_with_openai(prompts: list, output_dir: str):
@@ -82,6 +108,8 @@ def generate_with_openai(prompts: list, output_dir: str):
         return []
     
     generated_images = []
+    config = IMAGE_GEN_CONFIG.get('providers', {}).get('openai', {})
+    prompt_config = IMAGE_GEN_CONFIG.get('common_settings', {}).get('prompt_enhancement', {})
     
     try:
         for i, prompt in enumerate(prompts):
@@ -95,16 +123,18 @@ def generate_with_openai(prompts: list, output_dir: str):
                     "Content-Type": "application/json"
                 }
                 
-                # Optimize prompt for DALL-E with portrait orientation
-                optimized_prompt = f"{prompt}, high quality, detailed, vertical composition, portrait orientation, 9:16 aspect ratio"
+                # Enhance prompt if configured
+                optimized_prompt = prompt
+                if prompt_config.get('add_style_suffix', True):
+                    optimized_prompt = f"{prompt}, {prompt_config.get('style_suffix', 'high quality')}"
                 
                 data = {
-                    "model": "dall-e-3",
-                    "prompt": optimized_prompt[:4000],  # DALL-E has a 4000 char limit
+                    "model": config.get('model', 'dall-e-3'),
+                    "prompt": optimized_prompt[:4000],  # 4000 char limit
                     "n": 1,
-                    "size": "1024x1792",  # Portrait aspect ratio (approximately 9:16)
-                    "quality": "standard",
-                    "response_format": "url"
+                    "size": config.get('size', '1024x1792'),
+                    "quality": config.get('quality', 'standard'),
+                    "style": config.get('style', 'natural')
                 }
                 
                 response = requests.post(url, headers=headers, json=data, timeout=60)
@@ -255,67 +285,66 @@ def generate_with_stability(prompts: list, output_dir: str):
         logging.error(f"Critical error in Stability AI generation: {e}")
         return []
 
+from google.cloud import aiplatform
+from google.auth import default
+
 def generate_with_gemini(prompts: list, output_dir: str):
     """
-    Generate images using the Gemini 2.0 Flash Image Generation model.
-    This implementation matches the working test script.
+    Generate images using Vertex AI Gemini model.
     """
-    if not GEMINI_API_KEY:
-        logging.warning("GEMINI_API_KEY not found. Skipping Gemini image generation.")
-        return []
-    
-    generated_images = []
-    model_id = "gemini-2.0-flash-preview-image-generation"
-    
+    # Set up project details
+    project_id = os.getenv('GOOGLE_CLOUD_PROJECT', 'gen-lang-client-0681207774')
+    location = "us-central1"
+    vertexai.init(project=project_id, location=location)
+
+    # Load the pre-trained Gemini model
+    model = ImageGenerationModel.from_pretrained("geminigeneration@latest")
+
+    generated_files = []
+
     for i, prompt in enumerate(prompts):
-        logging.info(f"  > Generating Gemini image {i+1}/{len(prompts)} with model '{model_id}': '{prompt[:50]}...'")
-        
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent?key={GEMINI_API_KEY}"
-            headers = {'Content-Type': 'application/json'}
-            data = {
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
-            }
+            logging.info(f"   Generating Vertex AI Gemini image {i+1}/{len(prompts)}: '{prompt[:50]}...'")
 
-            response = requests.post(url, headers=headers, json=data, timeout=90)
-            response.raise_for_status()
-            
-            response_data = response.json()
+            # Use the model's generate_images method
+            response = model.generate_images(prompt=prompt, number_of_images=1)
 
-            if 'candidates' in response_data and len(response_data['candidates']) > 0:
-                candidate = response_data['candidates'][0]
-                if 'content' in candidate and 'parts' in candidate['content']:
-                    parts = candidate['content']['parts']
-                    for part in parts:
-                        if 'inlineData' in part and 'data' in part['inlineData']:
-                            b64_string = part['inlineData']['data']
-                            image_bytes = base64.b64decode(b64_string)
-                            
-                            # Save the image with sanitized filename
-                            safe_prompt = sanitize_filename(prompt)
-                            file_name = f"ai_generated_{i}_{safe_prompt}.png"
-                            img_path = os.path.join(output_dir, file_name)
-                            with open(img_path, "wb") as f:
-                                f.write(image_bytes)
-                            
-                            generated_images.append(img_path)
-                            logging.info(f"    > AI Image saved successfully as '{img_path}'")
-                            break # Assume one image per prompt
-            else:
-                logging.warning(f"No valid image content found in Gemini response for prompt: {prompt}")
+            # Save each generated image
+            image_filename = f"gemini_{i:02d}.jpg"
+            temp_path = os.path.join(output_dir, f"gemini_{i:02d}_temp.png")
+            image_path = os.path.join(output_dir, f"gemini_{i:02d}.jpg")  # Standardized output
 
-        except requests.exceptions.RequestException as e:
-            logging.error(f"Error calling Gemini Image Generation API for prompt '{prompt[:50]}...': {e}")
-            # Optionally, inspect the response body for more details
-            if e.response is not None:
-                logging.error(f"    > Response body: {e.response.text}")
-            continue
+            # Save temporary image first
+            response.images[0].save(location=temp_path)
+
+            # Standardize the image to 1080x1920 pixels
+            from agent.utils import standardize_image_for_video
+            try:
+                standardize_image_for_video(temp_path, image_path)
+
+                # Remove temporary file
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+
+                if os.path.exists(image_path) and os.path.getsize(image_path) > 1000:
+                    generated_files.append(image_path)
+                    logging.info(f"     Saved and standardized Vertex AI Gemini image: {os.path.basename(image_path)}")
+                else:
+                    if os.path.exists(image_path):
+                        os.remove(image_path)
+            except Exception as e:
+                logging.error(f"Failed to standardize Vertex AI Gemini image: {e}")
+                # Clean up temporary files
+                for cleanup_path in [temp_path, image_path]:
+                    if os.path.exists(cleanup_path):
+                        os.remove(cleanup_path)
+                continue
+
         except Exception as e:
-            logging.error(f"An unexpected error occurred during Gemini image generation for prompt '{prompt[:50]}...': {e}")
-            continue
-            
-    return generated_images
+            logging.error(f"Failed to generate Vertex AI Gemini image for '{prompt}': {e}")
+
+    logging.info(f"   Successfully generated {len(generated_files)} Vertex AI Gemini images")
+    return generated_files
 
 def generate_with_style(prompts: list, style: str, output_dir: str):
     """
@@ -382,171 +411,61 @@ def generate_for_video_concepts(concepts: list, script_context: str, output_dir:
     
     return run(video_prompts, output_dir) 
 
-def generate_ai_images(terms: List[str], max_images: int, output_dir: str, debug: bool = False) -> List[str]:
-    """Generate AI images using Gemini 2.0 Flash Image Generation"""
-    
-    if debug:
-        log_decision("ai_image_generation", 
-                    f"Starting AI image generation for {len(terms)} terms: {terms}", 
-                    f"Attempting to generate {max_images} images using Gemini 2.0 Flash",
-                    0.8, 
-                    ["Use OpenAI DALL-E", "Use Stability AI", "Skip AI generation"])
-    
-    # Get API key
-    api_key = os.getenv('GEMINI_API_KEY')
-    if not api_key:
-        error_msg = "GEMINI_API_KEY environment variable not set"
-        if debug:
-            log_decision("ai_image_generation", 
-                        "API key missing", 
-                        error_msg,
-                        0.0, 
-                        ["Set up API key", "Use different image source"])
-        raise Exception(error_msg)
-    
+def generate_with_vertex_ai_imagen(prompts: List[str], output_dir: str):
+    """Generate AI images using Vertex AI Imagen with ImageGenerationModel"""
+
+    # Set up project details
+    project_id = os.getenv('GOOGLE_CLOUD_PROJECT', 'gen-lang-client-0681207774')
+    location = "us-central1"
+    vertexai.init(project=project_id, location=location)
+
+    # Load the pre-trained Imagen model using its simple identifier
+    model = ImageGenerationModel.from_pretrained("imagegeneration@006")
+
     generated_files = []
-    
-    for i, term in enumerate(terms[:max_images]):
-        if debug:
-            log_decision("ai_image_generation", 
-                        f"Generating image {i+1}/{min(len(terms), max_images)}", 
-                        f"Creating image for term: '{term}' using Gemini 2.0 Flash",
-                        0.7, 
-                        ["Skip this term", "Use different prompt"])
-        
+
+    for i, prompt in enumerate(prompts):
         try:
-            # The 'term' is now a fully-formed prompt from the collector
-            prompt = term
-            
-            # Use Gemini 2.0 Flash model
-            model_id = "gemini-2.0-flash-preview-image-generation"
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_id}:generateContent?key={api_key}"
-            
-            headers = {
-                'Content-Type': 'application/json'
-            }
-            
-            data = {
-                "contents": [
-                    {
-                        "parts": [
-                            {
-                                "text": prompt
-                            }
-                        ]
-                    }
-                ],
-                "generationConfig": {
-                    "responseModalities": ["TEXT", "IMAGE"]
-                }
-            }
-            
-            response = requests.post(url, headers=headers, json=data, timeout=60)
-            
-            if response.status_code == 200:
-                result = response.json()
+            logging.info(f"  > Generating Vertex AI Imagen image {i+1}/{len(prompts)}: '{prompt[:50]}...'")
+
+            # Use ImageGenerationModel's generate_images method
+            response = model.generate_images(prompt=prompt, number_of_images=1)
+
+            # Save each generated image
+            image_filename = f"imagen_{i:02d}.png"
+            temp_path = os.path.join(output_dir, f"imagen_{i:02d}_temp.png")
+            image_path = os.path.join(output_dir, f"imagen_{i:02d}.jpg")  # Standardized output
+
+            # Save temporary image first
+            response.images[0].save(location=temp_path)
+
+            # Standardize the image to 1080x1920 pixels
+            from agent.utils import standardize_image_for_video
+            try:
+                standardize_image_for_video(temp_path, image_path)
                 
-                if 'candidates' in result and len(result['candidates']) > 0:
-                    candidate = result['candidates'][0]
-                    if 'content' in candidate and 'parts' in candidate['content']:
-                        parts = candidate['content']['parts']
-                        
-                        for part in parts:
-                            if 'inlineData' in part:
-                                inline_data = part['inlineData']
-                                if 'data' in inline_data:
-                                    # Decode and save image
-                                    image_data = base64.b64decode(inline_data['data'])
-                                    
-                                    # Sanitize filename for Windows compatibility - use .jpg for standardized output
-                                    safe_term = sanitize_filename(term)
-                                    filename = f"ai_generated_{i}_{safe_term}.jpg"
-                                    temp_filename = f"ai_generated_{i}_{safe_term}_temp.png"
-                                    filepath = os.path.join(output_dir, filename)
-                                    temp_filepath = os.path.join(output_dir, temp_filename)
-                                    
-                                    # First save the original image temporarily
-                                    with open(temp_filepath, 'wb') as f:
-                                        f.write(image_data)
-                                    
-                                    # Standardize the image to 1080x1920 pixels
-                                    from agent.utils import standardize_image_for_video
-                                    try:
-                                        standardize_image_for_video(temp_filepath, filepath)
-                                        
-                                        # Remove temporary file
-                                        if os.path.exists(temp_filepath):
-                                            os.remove(temp_filepath)
-                                        
-                                        generated_files.append(filepath)
-                                    except Exception as e:
-                                        logging.error(f"Failed to standardize Gemini image: {e}")
-                                        # Clean up temporary files
-                                        for cleanup_path in [temp_filepath, filepath]:
-                                            if os.path.exists(cleanup_path):
-                                                os.remove(cleanup_path)
-                                        continue
-                                    
-                                    if debug:
-                                        log_decision("ai_image_generation", 
-                                                    f"Successfully generated image {i+1}", 
-                                                    f"Image saved to {filepath} ({len(image_data)} bytes)",
-                                                    0.9, 
-                                                    ["Generate another variation", "Move to next term"])
-                                    break  # Take first image found
-                        
-                        if not any('inlineData' in part for part in parts):
-                            if debug:
-                                log_decision("ai_image_generation", 
-                                            f"Image {i+1} filtered by safety", 
-                                            f"No image data in response for term: {term}",
-                                            0.3, 
-                                            ["Try different prompt", "Skip this term"])
-                    else:
-                        if debug:
-                            log_decision("ai_image_generation", 
-                                        f"No content in response for image {i+1}", 
-                                        f"Invalid response structure for term: {term}",
-                                        0.2, 
-                                        ["Retry with different prompt", "Skip this term"])
+                # Remove temporary file
+                if os.path.exists(temp_path):
+                    os.remove(temp_path)
+                
+                if os.path.exists(image_path) and os.path.getsize(image_path) > 1000:
+                    generated_files.append(image_path)
+                    logging.info(f"    > Saved and standardized Vertex AI Imagen image: {os.path.basename(image_path)}")
                 else:
-                    if debug:
-                        log_decision("ai_image_generation", 
-                                    f"No candidates in response for image {i+1}", 
-                                    f"Empty response for term: {term}",
-                                    0.2, 
-                                    ["Retry with different prompt", "Skip this term"])
-            else:
-                error_msg = f"Gemini API error: {response.status_code} - {response.text}"
-                if debug:
-                    log_decision("ai_image_generation", 
-                                f"API error for image {i+1}", 
-                                error_msg,
-                                0.1, 
-                                ["Retry request", "Use fallback image source"])
-                
-                # Pipeline should crash on API failure as requested
-                raise Exception(error_msg)
-                
+                    if os.path.exists(image_path):
+                        os.remove(image_path)
+            except Exception as e:
+                logging.error(f"Failed to standardize Vertex AI Imagen image: {e}")
+                # Clean up temporary files
+                for cleanup_path in [temp_path, image_path]:
+                    if os.path.exists(cleanup_path):
+                        os.remove(cleanup_path)
+                continue
+
         except Exception as e:
-            error_msg = f"Failed to generate AI image for '{term}': {str(e)}"
-            if debug:
-                log_decision("ai_image_generation", 
-                            f"Exception during image {i+1} generation", 
-                            error_msg,
-                            0.0, 
-                            ["Retry", "Skip this term", "Use fallback source"])
-            
-            # Pipeline should crash on API failure as requested
-            raise Exception(error_msg)
-    
-    if debug:
-        log_decision("ai_image_generation", 
-                    f"AI image generation completed", 
-                    f"Generated {len(generated_files)} images: {[os.path.basename(f) for f in generated_files]}",
-                    0.9 if generated_files else 0.1, 
-                    ["Generate more images", "Use these images"])
-    
+            logging.error(f"Failed to generate Vertex AI Imagen image for '{prompt}': {e}")
+
+    logging.info(f"  > Successfully generated {len(generated_files)} Vertex AI Imagen images")
     return generated_files
 
 # Alternative implementation using OpenAI DALL-E as fallback

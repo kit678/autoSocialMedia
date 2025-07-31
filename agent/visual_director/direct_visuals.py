@@ -338,7 +338,7 @@ def _execute_planned_search(planned_search: Dict[str, Any], run_dir: str, cue_id
                 candidates = search_pexels_primary([term], 3, visuals_dir, category=pexels_category)
             elif source == "AI Generation":
                 try:
-                    candidates = generate_ai_images([term], 1, visuals_dir)  # AI gen is slow, only 1
+                    candidates = generate_ai_images([term], visuals_dir)  # AI gen is slow, only 1
                 except Exception as e:
                     logging.error(f"AI generation failed for term '{term}': {e}")
                     # Log the failed decision for transparency

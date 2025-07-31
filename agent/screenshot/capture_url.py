@@ -38,28 +38,41 @@ def run(url: str, output_path: str, viewport_width: int = 375, viewport_height: 
         logging.error("No URL provided for screenshot capture.")
         return False
     
+    start_time = time.time()
+    logging.info(f"=== STARTING WEB CAPTURE FOR: {url} ===")
+    
     try:
         with sync_playwright() as p:
             # Launch browser with enhanced anti-detection settings
+            browser_start = time.time()
+            logging.debug("  > Launching stealth browser...")
             browser = _launch_stealth_browser(p)
             page = _setup_stealth_page(browser, viewport_width, viewport_height)
+            logging.debug(f"  > Browser setup took {time.time() - browser_start:.2f} seconds")
             
             logging.info(f"  > Navigating to: {url}")
+            nav_start = time.time()
             
             # Navigate to the URL
             page.goto(url, wait_until='domcontentloaded')
+            logging.debug(f"  > Navigation took {time.time() - nav_start:.2f} seconds")
             
             # Wait for initial load
+            logging.debug("  > Waiting 3 seconds for initial load...")
             time.sleep(3)
             
             # Enhanced verification handling
+            verify_start = time.time()
+            logging.debug("  > Checking for verification pages (Cloudflare, etc.)...")
             verification_cleared = _handle_verification_page(page, url, max_wait_time=45)
             if not verification_cleared:
                 # Still on verification page - this URL is problematic
                 logging.error(f"  ✗ Verification page could not be cleared for: {url}")
                 raise Exception("VERIFICATION_FAILED")
+            logging.debug(f"  > Verification handling took {time.time() - verify_start:.2f} seconds")
             
             # Additional wait after verification
+            logging.debug("  > Post-verification wait (2 seconds)...")
             time.sleep(2)
             
             # Try to dismiss common cookie banners/pop-ups
@@ -110,7 +123,9 @@ def run(url: str, output_path: str, viewport_width: int = 375, viewport_height: 
             
             # Verify screenshot was created
             if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
+                total_time = time.time() - start_time
                 logging.info(f"  > Screenshot saved: {output_path}")
+                logging.info(f"=== WEB CAPTURE COMPLETED IN {total_time:.2f} SECONDS ===")
                 return True
             else:
                 logging.error("Screenshot file was not created or is empty.")
@@ -1179,10 +1194,16 @@ def _handle_verification_page(page, url, max_wait_time: int = 60) -> bool:
         bool: True if verification cleared, False if still stuck
     """
     verification_start = time.time()
+    
+    # Quick check if the page needs verification handling
+    page_content = page.content().lower()
+    if not any(indicator in page_content for indicator in ['cloudflare', 'checking your browser', 'cf-browser-verification', 'recaptcha', 'hcaptcha']):
+        logging.debug("  > No verification indicators found, skipping verification handling")
+        return True
 
-    # Use the new verification handler
+    # Use the new verification handler with reduced attempts for faster failure
     verification_handler = get_verification_handler()
-    return verification_handler.handle_verification(page, url, max_attempts=max_wait_time // 10)
+    return verification_handler.handle_verification(page, url, max_attempts=2)
 
 def _launch_stealth_browser(p):
     """

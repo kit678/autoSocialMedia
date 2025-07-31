@@ -1,0 +1,27 @@
+{
+  "visual_director": {
+    "type": "ai",
+    "ai_config": {
+      "api_endpoints": {
+        "IMAGE_API_URL": "http://localhost:8000/generate-image",
+        "DIFFUSION_API_URL": "http://localhost:8000/animate-image", 
+        "VIDEO_API_URL": "http://localhost:8000/generate-video"
+      },
+      "generation_settings": {
+        "default_duration": 4.0,
+        "image_resolution": {
+          "width": 1080,
+          "height": 1920
+        },
+        "motion_strength": 0.7,
+        "timeout": 300
+      },
+      "quality_settings": {
+        "steps": 30,
+        "guidance_scale": 7.5,
+        "sampler": "DPM++ 2M Karras",
+        "fps": 24
+      }
+    }
+  }
+}

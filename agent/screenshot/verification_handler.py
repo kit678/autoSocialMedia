@@ -63,38 +63,39 @@ class VerificationHandler:
             options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
             
             driver = uc.Chrome(options=options, version_main=None)
-            
-            # Set window size to avoid detection
-            driver.set_window_size(1920, 1080)
-            
-            # Navigate to URL
-            driver.get(url)
-            
-            # Wait longer for Cloudflare challenge to resolve
-            time.sleep(10)
-            
-            # Check if still on Cloudflare page
-            if "checking your browser" in driver.page_source.lower():
-                # Wait more if still verifying
-                time.sleep(5)
-            
-            # Extract cookies
-            cookies = {}
-            for cookie in driver.get_cookies():
-                if cookie['name'] in ['cf_clearance', '__cf_bm', 'cf_chl_prog']:
-                    cookies[cookie['name']] = cookie['value']
-            
-            # Ensure driver is properly closed
             try:
-                driver.quit()
-            except:
-                pass
-            
-            if cookies:
-                logging.info(f"  > Successfully obtained {len(cookies)} tokens via undetected-chromedriver")
-                return cookies
-            else:
-                return None
+                # Set window size to avoid detection
+                driver.set_window_size(1920, 1080)
+                
+                # Navigate to URL
+                driver.get(url)
+                
+                # Wait longer for Cloudflare challenge to resolve
+                time.sleep(10)
+                
+                # Check if still on Cloudflare page
+                if "checking your browser" in driver.page_source.lower():
+                    # Wait more if still verifying
+                    time.sleep(5)
+                
+                # Extract cookies
+                cookies = {}
+                for cookie in driver.get_cookies():
+                    if cookie['name'] in ['cf_clearance', '__cf_bm', 'cf_chl_prog']:
+                        cookies[cookie['name']] = cookie['value']
+                
+                if cookies:
+                    logging.info(f"  > Successfully obtained {len(cookies)} tokens via undetected-chromedriver")
+                    return cookies
+                else:
+                    return None
+            finally:
+                # Properly close the driver to avoid handle errors
+                try:
+                    driver.quit()
+                except Exception:
+                    # Silently ignore any errors during cleanup
+                    pass
                 
         except Exception as e:
             logging.error(f"  > Failed with undetected-chromedriver: {e}")
@@ -113,8 +114,8 @@ class VerificationHandler:
         try:
             logging.info(f"  > Attempting to get Cloudflare tokens for: {url}")
             
-            # Make request with cloudscraper
-            response = scraper.get(url, timeout=30)
+            # Make request with cloudscraper - reduced timeout for faster failure
+            response = scraper.get(url, timeout=10)
             
             # Extract relevant cookies
             cookies = {}
@@ -126,11 +127,11 @@ class VerificationHandler:
                 logging.info(f"  > Successfully obtained {len(cookies)} Cloudflare tokens")
                 return cookies
             else:
-                logging.warning("  > No Cloudflare tokens found in response")
+                logging.debug("  > No Cloudflare tokens found in response")
                 return None
                 
         except Exception as e:
-            logging.error(f"  > Failed to get Cloudflare tokens: {e}")
+            logging.debug(f"  > Cloudscraper failed (expected for most sites): {e}")
             return None
     
     def solve_recaptcha_v2(self, page, site_key: str, page_url: str) -> Optional[str]:
@@ -169,34 +170,40 @@ class VerificationHandler:
                 return None
             
             driver = uc.Chrome(options=options)
-            driver.get(page_url)
-            time.sleep(5)
-            
-            # Switch to reCAPTCHA iframe
-            WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[src^='https://www.google.com/recaptcha/api2/anchor?']")))
-            
-            # Click checkbox to activate challenge
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
-            driver.switch_to.default_content()
-            
-            # Switch to audio challenge iframe
-            WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[title='recaptcha challenge expires in two minutes']")))
-            
-            # Click Buster button
-            WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "solver-button"))).click()
-            time.sleep(10)  # Wait for solving
-            
-            # Extract token
-            token = driver.execute_script("return document.getElementById('g-recaptcha-response').value;")
-            
-            driver.quit()
-            
-            if token:
-                logging.info("  > reCAPTCHA solved successfully with Buster")
-                return token
-            else:
-                logging.error("  > Failed to get CAPTCHA solution")
-                return None
+            try:
+                driver.get(page_url)
+                time.sleep(5)
+                
+                # Switch to reCAPTCHA iframe
+                WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[src^='https://www.google.com/recaptcha/api2/anchor']")))
+                
+                # Click checkbox to activate challenge
+                WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
+                driver.switch_to.default_content()
+                
+                # Switch to audio challenge iframe
+                WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR, "iframe[title='recaptcha challenge expires in two minutes']")))
+                
+                # Click Buster button
+                WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, "solver-button"))).click()
+                time.sleep(10)  # Wait for solving
+                
+                # Extract token
+                token = driver.execute_script("return document.getElementById('g-recaptcha-response').value;")
+                
+                if token:
+                    logging.info("  > reCAPTCHA solved successfully with Buster")
+                    return token
+                else:
+                    logging.error("  > Failed to get CAPTCHA solution")
+                    return None
+            finally:
+                # Properly close the driver to avoid handle errors
+                try:
+                    driver.quit()
+                except Exception:
+                    # Silently ignore any errors during cleanup
+                    pass
                 
         except Exception as e:
             logging.error(f"  > Error solving reCAPTCHA with Buster: {e}")

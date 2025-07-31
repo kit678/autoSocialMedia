@@ -96,7 +96,7 @@ def run(run_dir: str, article_text: str, headline: str, logger: 'DecisionLogger'
 
 def _clean_script_text(script_text: str) -> str:
     """
-    Cleans the script text to remove any unwanted formatting or stage directions.
+    Cleans the script text to remove any unwanted formatting, stage directions, and visual cues.
     """
     # Remove any **bold** formatting that might be spoken
     script_text = re.sub(r'\*\*Narration Text:\*\*', '', script_text)
@@ -109,10 +109,18 @@ def _clean_script_text(script_text: str) -> str:
     script_text = re.sub(r'^\s*[-•]\s*', '', script_text, flags=re.MULTILINE)
     script_text = re.sub(r'^\s*\d+\.\s*', '', script_text, flags=re.MULTILINE)
     
-    # CRITICAL FIX: Remove metadata in parentheses at the end (Word count, duration, notes)
-    # This pattern removes content like "(Word count: ~80 / Target duration: ~35 seconds) *Note: ..."
+    # CRITICAL FIX: Remove visual cues and metadata in parentheses
+    # This removes content like "(Visual triggers embedded: "futuristic cityscapes," "ChatGPT," etc.)"
+    script_text = re.sub(r'\s*\(Visual triggers embedded:.*?\)\s*', '', script_text, flags=re.DOTALL)
+    
+    # Remove metadata in parentheses at the end (Word count, duration, notes)
     script_text = re.sub(r'\s*\(Word count:.*?\)\s*\*?Note:.*$', '', script_text, flags=re.DOTALL)
     script_text = re.sub(r'\s*\(Word count:.*?\).*$', '', script_text, flags=re.DOTALL)
+    
+    # Remove any parenthetical stage directions or technical notes
+    script_text = re.sub(r'\s*\([^)]*pacing[^)]*\)\s*', '', script_text, flags=re.IGNORECASE)
+    script_text = re.sub(r'\s*\([^)]*with\s+pacing[^)]*\)\s*', '', script_text, flags=re.IGNORECASE)
+    script_text = re.sub(r'\s*\([^)]*alternates[^)]*\)\s*', '', script_text, flags=re.IGNORECASE)
     
     # Also remove any asterisks used for emphasis
     script_text = re.sub(r'\*([^*]+)\*', r'\1', script_text)
@@ -123,6 +131,9 @@ def _clean_script_text(script_text: str) -> str:
         script_text = script_text[1:-1]
     if script_text.startswith('*"') and script_text.endswith('"*'):
         script_text = script_text[2:-2]
+    
+    # Remove any remaining trailing punctuation that might be technical notes
+    script_text = re.sub(r'\s*\([^)]*\)\s*$', '', script_text)
     
     # Normalize whitespace
     script_text = ' '.join(script_text.split())
